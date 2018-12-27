@@ -1,0 +1,75 @@
+{
+  "description": "行政主管部门综合查询",
+  "author": {
+    "email": "1285913468@qq.com",
+    "name": "sunshixong",
+    "url": "meide"
+  },
+  "name": "administrative-departments-comprehensive",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "@antv/data-set": "^0.10.1",
+    "@material-ui/core": "^3.6.1",
+    "@material-ui/icons": "^3.0.1",
+    "@types/redux-actions": "^2.3.1",
+    "antd": "^3.11.0",
+    "axios": "^0.18.0",
+    "excellentexport": "^3.2.0",
+    "immutable": "^4.0.0-rc.12",
+    "react": "^16.6.3",
+    "react-dom": "^16.6.3",
+    "react-jss": "^8.6.1",
+    "react-loadable": "^5.5.0",
+    "react-redux": "^5.1.1",
+    "react-router": "^4.3.1",
+    "react-router-config": "^4.4.0-beta.6",
+    "react-router-dom": "^4.3.1",
+    "react-scripts-ts": "3.1.0",
+    "redux": "^4.0.1",
+    "redux-actions": "^2.6.4",
+    "redux-immutable": "^4.0.0",
+    "redux-saga": "^0.16.2",
+    "reselect": "^4.0.0",
+    "typeface-roboto": "^0.0.54"
+  },
+  "scripts": {
+    "start": "set PORT=80 && react-app-rewired start --scripts-version react-scripts-ts",
+    "build": "react-app-rewired build --scripts-version react-scripts-ts",
+    "test": "react-app-rewired test --env=jsdom --scripts-version react-scripts-ts"
+  },
+  "devDependencies": {
+    "@babel/plugin-syntax-dynamic-import": "^7.2.0",
+    "@types/jest": "^23.3.10",
+    "@types/node": "^10.12.12",
+    "@types/react": "^16.7.13",
+    "@types/react-dom": "^16.0.11",
+    "@types/react-jss": "^8.6.0",
+    "@types/react-loadable": "^5.4.2",
+    "@types/react-redux": "^6.0.10",
+    "@types/react-router": "^4.4.1",
+    "@types/react-router-config": "^1.1.0",
+    "@types/react-router-dom": "^4.3.1",
+    "@types/redux-action": "^1.2.4",
+    "@types/redux-immutable": "^4.0.0",
+    "react-app-rewire-less": "^2.1.3",
+    "react-app-rewired": "^1.6.2",
+    "ts-import-plugin": "^1.5.5",
+    "typescript": "^3.2.1"
+  },
+  "devServer": {
+    "disableHostCheck": true,
+    "historyApiFallback": {
+      "index": "src/index.html"
+    }
+  },
+  "proxy": {
+    "/api": {
+      "target": "http://192.168.15.216:8086",
+      "pathRewrite": {
+        "^/api" : ""
+      },
+      "changeOrigin": true
+    }
+  }
+}
