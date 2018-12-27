@@ -31,8 +31,8 @@ const styles = (theme: Theme) =>
     }
   });
 export interface menuArray {
-  path: string;
-  name: string;
+  path?: string;
+  name?: string;
   IconType?: string;
   children?: menuArray[];
 }
@@ -46,7 +46,7 @@ function RecursionMenu(params: menuArray[]): any {
     if (!value.children) {
       return (
         <Menu.Item key={value.name}>
-          <Link to={value.path}>
+          <Link to={value.path?value.path:""}>
             <Icon type={value.IconType} />
             <span>{value.name}</span>
           </Link>
