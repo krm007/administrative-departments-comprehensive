@@ -16,7 +16,8 @@ const styles = (theme: Theme) =>
       backgroundPositionX: "center",
       "& .ant-menu-inline": {
         width: 220
-      }
+      },
+
     },
     logo: {
       "& img": {
@@ -27,7 +28,13 @@ const styles = (theme: Theme) =>
     },
     menu: {
       margin: "20px 10px 0 10px",
-      borderRadius: 4
+      borderRadius: 4,
+      "& .ant-menu-submenu-title":{
+        paddingLeft:"12px!important",
+      },
+      "& .ant-menu-item":{
+        paddingLeft:"35px!important",
+      }
     }
   });
 export interface menuArray {
