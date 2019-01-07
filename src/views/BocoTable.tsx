@@ -24,13 +24,16 @@ import infoIcon from "../images/info.png";
 import * as moment from "moment";
 
 const styles = (theme: Theme) =>
-  createStyles<"root">({
+  createStyles<"root"|"title">({
     root: {
       padding: 20,
-      "& .ant-table-middle > .ant-table-title": {
+      "& .ant-table-small > .ant-table-title": {
         padding: "20px 8px"
       }
-    }
+    },
+      title:{
+        margin:"10px 0"
+      }
   });
 
 interface Iprops extends WithStyles<typeof styles>, FormComponentProps {
@@ -122,7 +125,6 @@ class BocoTable extends React.Component<Iprops> {
         alt=""
         style={{
           float: "left",
-          marginLeft: "1vw",
           marginRight: "0.5vw"
         }}
       />
@@ -167,14 +169,15 @@ class BocoTable extends React.Component<Iprops> {
             </Button>
           </Form.Item>
         </Form>
+        <div className={classes.title}>{this.tableTitle([])}</div>
         {this.props.chart ? (
           <Row>
             <Col span={10}>
               <Table
                 dataSource={this.props.data}
                 columns={this.table}
-                title={this.tableTitle}
-                size={"middle"}
+                // title={this.tableTitle}
+                size={"small"}
                 pagination={false}
               />
             </Col>
@@ -182,7 +185,6 @@ class BocoTable extends React.Component<Iprops> {
               <br />
               <img
                 src={require("../images/chartIcon.png")}
-                alt=""
                 style={{ float: "left", marginLeft: "1vw" }}
               />
               <p style={{ marginLeft: "1vw", float: "left" }}>
@@ -198,9 +200,10 @@ class BocoTable extends React.Component<Iprops> {
             dataSource={this.props.data}
             columns={this.table}
             bordered={true}
-            title={this.tableTitle}
-            size={"middle"}
+            // title={this.tableTitle}
+            size={"small"}
             pagination={false}
+            rowKey="id"
           />
         )}
       </div>

@@ -18,11 +18,8 @@ interface Iprops extends WithStyles<typeof styles> {
     mixData:BocoMixtable[]
 }
 
-interface Istates {
-    infoList: BocoMixtable[],
-}
 
-class MixTable extends React.Component<Iprops, Istates> {
+class MixTable extends React.Component<Iprops> {
     private tableColumns: Array<ColumnProps<BocoMixtable>> = [{
         title: '一级指标',
         dataIndex: 'kind',
@@ -88,6 +85,7 @@ class MixTable extends React.Component<Iprops, Istates> {
                        title={()=>(this.props.title)}
                        bordered={true}
                        pagination={false}
+                       rowKey="id"
                 />
             </div>
         );
