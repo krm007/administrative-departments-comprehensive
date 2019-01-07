@@ -3,13 +3,10 @@ import { WithStyles } from "@material-ui/core/styles/withStyles";
 import * as React from "react";
 import {
   Button,
-  Col,
   DatePicker,
   Form,
   Icon,
-  Row,
-  Select,
-  Table,
+  Select, Table,
   Tooltip
 } from "antd";
 import { Bocotable, FilterData } from "../typings/CommonData";
@@ -22,6 +19,8 @@ import { getTableDataSource } from "../redux/action/ActionSaga";
 import { getTransformData } from "../redux/relesect/selectors";
 import infoIcon from "../images/info.png";
 import * as moment from "moment";
+import ReactHTMLTableToExcel from "../component/ReactHTMLTableToExcel";
+import * as ReactDOM from 'react-dom';
 
 const styles = (theme: Theme) =>
   createStyles<"root">({
@@ -99,8 +98,16 @@ class BocoTable extends React.Component<Iprops> {
     }
   ];
   private urlDO: string;
+  private tableRefs:any;
   public componentDidMount(): void {
     this.getData({});
+
+    const tableCon = ReactDOM.findDOMNode(this.tableRefs);
+    if (tableCon) {
+      // @ts-ignore
+      const table = tableCon.querySelector("table");
+      table.setAttribute("id", "table-to-xls");
+    }
   }
 
   public getData(params: any, timeLast?: any) {
@@ -167,33 +174,14 @@ class BocoTable extends React.Component<Iprops> {
             </Button>
           </Form.Item>
         </Form>
-        {this.props.chart ? (
-          <Row>
-            <Col span={10}>
-              <Table
-                dataSource={this.props.data}
-                columns={this.table}
-                title={this.tableTitle}
-                size={"middle"}
-                pagination={false}
-              />
-            </Col>
-            <Col span={11} offset={1}>
-              <br />
-              <img
-                src={require("../images/chartIcon.png")}
-                alt=""
-                style={{ float: "left", marginLeft: "1vw" }}
-              />
-              <p style={{ marginLeft: "1vw", float: "left" }}>
-                {this.props.chartTitle}
-              </p>
-              <br />
-              <br />
-              {this.props.chart}
-            </Col>
-          </Row>
-        ) : (
+        <ReactHTMLTableToExcel
+            id="test-table-xls-button"
+            className="download-table-xls-button"
+            table="table-to-xls"
+            filename="tablexls"
+            sheet="tablexls"
+            buttonText="导出"
+        />
           <Table
             dataSource={this.props.data}
             columns={this.table}
@@ -202,7 +190,6 @@ class BocoTable extends React.Component<Iprops> {
             size={"middle"}
             pagination={false}
           />
-        )}
       </div>
     );
   }
