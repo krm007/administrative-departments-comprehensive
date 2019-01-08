@@ -25,6 +25,8 @@ const tableDataResource = handleActions<any>(
     }
   },
   fromJS({ dataResource: [] })
+
+
 );
 /**
  * redux-immutable提供一个combineReducers()函数，

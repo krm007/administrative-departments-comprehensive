@@ -3,11 +3,10 @@ import service from "../../request/Service";
 import { Action } from "redux-action";
 import { tableDataSource } from "../action/Actions";
 import { getTableDataSource } from "../action/ActionSaga";
-import { FilterData } from "../../typings/CommonData";
 /**
  * 获取输入存入srote
  */
-function* getTableDataSaga(action: Action<FilterData>) {
+function* getTableDataSaga(action: Action<any>) {
   let res;
   let resLast;
   try {

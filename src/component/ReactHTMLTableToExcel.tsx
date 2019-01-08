@@ -1,6 +1,6 @@
 /* global window, document, Blob */
 import * as React from "react";
-import { Button } from "antd";
+import { Button, message } from "antd";
 
 /*const defaultProps = {
   id: 'button-download-as-xls',
@@ -37,7 +37,6 @@ class ReactHTMLTableToExcel extends React.Component<Iprops> {
       return null;
     }
     const tableExport = document.getElementById(this.props.table);
-    let table: string;
     if (tableExport !== null) {
       if (tableExport.nodeType !== 1 || tableExport.nodeName !== "TABLE") {
         if (process.env.NODE_ENV !== "production") {
@@ -46,11 +45,14 @@ class ReactHTMLTableToExcel extends React.Component<Iprops> {
 
         return null;
       }
-      table = tableExport.outerHTML;
-      table.replace(/<(img).*?>/g, "");
-    } else {
-      table = "";
     }
+
+    if (tableExport === null) {
+      message.error("没有数据")
+      return null;
+    }
+    const table = tableExport.outerHTML;
+    table.replace(/<(img).*?>/g, "");
     const sheet = String(this.props.sheet);
     const filename = `${String(this.props.filename)}.xls`;
 
@@ -107,7 +109,6 @@ class ReactHTMLTableToExcel extends React.Component<Iprops> {
         id={this.props.id}
         className={this.props.className}
         type="primary"
-        style={{ float: "right",display:"online" }}
         onClick={this.handleDownload}
       >
         {this.props.buttonText}
