@@ -1,14 +1,14 @@
 import { RouteConfig } from "react-router-config";
-// import * as loadable from "react-loadable";
+import * as loadable from "react-loadable";
 import BocoTable from "../views/BocoTable";
 import * as React from "react";
 import NormalTableTitleConfig from "../config/NormalTableTitleConfig";
-// import Loading from "../component/Loading";
+import Loading from "../component/Loading";
 
-// const ComprehensiveWorkWatch = loadable({
-//     loader: () => import("../views/ComprehensiveWorkWatch"),
-//     loading: Loading
-// });
+const ChronicDiseaseTable = loadable({
+  loader: () => import("../views/ChronicDiseaseTable"),
+  loading: Loading
+});
 const RegulationConfigs: RouteConfig[] = [
   {
     path: "/administrativeDepartment/hospitalFinancial/outpatientBillingFee",
@@ -140,7 +140,7 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/administrativeDepartment/slowDiseaseManagement/query",
-    component: () => <BocoTable title={"慢病统计查询"} />
+    component: ChronicDiseaseTable
   },
   {
     path: "/administrativeDepartment/criticalPatients/query",

@@ -35,7 +35,8 @@ service.interceptors.response.use(
       if (error.response.data.message) {
         Modal.error({ content: error.response.data.message });
       } else {
-        Modal.error({ content: error.response.data });
+        Modal.error({ content: "服务器错误" });
+        console.log(error.response.data);
       }
     }
     if (error.response.status === 504 || error.response.status === 404) {
