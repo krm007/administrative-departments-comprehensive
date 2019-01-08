@@ -4,7 +4,7 @@ const MenuConfig: menuArray[] = [
   {
     name: "行政主管部门综合查询",
     path: "/administrativeDepartment",
-    IconType:"star",
+    IconType:"search",
     children: [
       {
         name: "医院财务报表",
@@ -242,7 +242,7 @@ const MenuConfig: menuArray[] = [
   {
     name: "决策分析报表管理",
     path: "/decisionAnalysisReport",
-    IconType:"star",
+    IconType:"appstore",
     children: [
       {
         name: "综合查询",
@@ -338,7 +338,7 @@ const MenuConfig: menuArray[] = [
   {
     name: "全流程危急值管理",
     path: "/criticalValue",
-    IconType:"star",
+    IconType:"book",
     children: [
       {
         name: "医生工作站危急值",

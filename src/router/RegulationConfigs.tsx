@@ -2,6 +2,7 @@ import {RouteConfig} from "react-router-config";
 // import * as loadable from "react-loadable";
 import BocoTable from "../views/BocoTable";
 import * as React from "react";
+import NormalTableTitleConfig from "../config/NormalTableTitleConfig";
 // import Loading from "../component/Loading";
 
 // const ComprehensiveWorkWatch = loadable({
@@ -12,7 +13,7 @@ const RegulationConfigs: RouteConfig[] = [
   {
     path: "/administrativeDepartment/hospitalFinancial/outpatientBillingFee",
     component: () => (
-      <BocoTable title={"门诊开单费用统计"}  />
+      <BocoTable title={"门诊开单费用统计"} tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}  />
     )
   },{
     path: "/administrativeDepartment/hospitalFinancial/paymentOfOutpatient",
@@ -37,7 +38,7 @@ const RegulationConfigs: RouteConfig[] = [
   },{
     path: "/administrativeDepartment/drugQuery/dugDeliveryAndStorage",
     component: () => (
-      <BocoTable title={"药品收发存表"}  />
+      <BocoTable title={"药品收发存表"}   />
     )
   },{
     path: "/administrativeDepartment/drugQuery/pharmacyPayments",
