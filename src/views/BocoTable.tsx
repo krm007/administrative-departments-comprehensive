@@ -10,6 +10,9 @@ import { getTransformData } from "../redux/reselect/selectors";
 import * as moment from "moment";
 import ReactHTMLTableToExcel from "../component/ReactHTMLTableToExcel";
 import * as ReactDOM from "react-dom";
+import { PaginationConfig } from "antd/lib/pagination";
+import { SorterResult } from "antd/lib/table";
+import { FormSelectData, FormStructure } from "../typings/tablePropsData";
 
 const styles = (theme: Theme) =>
   createStyles<"root">({
@@ -21,19 +24,23 @@ const styles = (theme: Theme) =>
     }
   });
 
-export interface IBocoTableProps extends WithStyles<typeof styles>, FormComponentProps {
+export interface IBocoTableProps
+  extends WithStyles<typeof styles>,
+    FormComponentProps {
   url: string;
   tableName?: string;
-  chartTitle?: string;
   title: string;
-  tableTitle:[];
+  formStructure: FormStructure[];
+  tableTitle: [];
   data: [];
-  serchData: (param:any) => void;
+  formData: Map<string, FormSelectData[]>;
+  serchData: (param: any) => void;
+  month?: boolean;
 }
 /**
  * 描述：
- *  所有的二维表
- * @author 12859
+ *  公用表格
+ * @author sunshixiong
  * @date 2018/12/6-15:20
  */
 class BocoTable extends React.Component<IBocoTableProps> {
@@ -63,6 +70,16 @@ class BocoTable extends React.Component<IBocoTableProps> {
       params
     });
   }
+  /**
+   * 分页、排序、筛选变化时触发
+   */
+  public handleTableChange = (
+    pagination: PaginationConfig,
+    filters: Record<keyof any, string[]>,
+    sorter: SorterResult<any>
+  ) => {
+    this.props.serchData(pagination);
+  };
   public tableTitle = (currentPageData: any[]) => (
     <span style={{ padding: "10px" }}>
       <img
@@ -79,6 +96,37 @@ class BocoTable extends React.Component<IBocoTableProps> {
     </span>
   );
 
+  /**
+   * 动态生成表单
+   */
+  public FormBuild = (): any => {
+    return this.props.formStructure.map((value, index) => {
+      return (
+        <Form.Item key={value.text}>
+          {this.props.form.getFieldDecorator(value.value)(
+            <Select placeholder={value.text} style={{ width: 174 }}>
+              {() => {
+                const selectList = this.props.formData.get(value.value);
+                if (selectList) {
+                  selectList.map((value1, index1) => {
+                    return (
+                      <Select.Option value={value1.value} key={value1.value}>
+                        {value1.text}
+                      </Select.Option>
+                    );
+                  });
+                }
+              }}
+            </Select>
+          )}
+        </Form.Item>
+      );
+    });
+  };
+
+  /**
+   * 按查询数据展示
+   */
   public onSubmit = (event: React.FormEvent<any>) => {
     event.preventDefault();
     const timeNow = moment(this.props.form.getFieldValue("createTime"));
@@ -104,11 +152,20 @@ class BocoTable extends React.Component<IBocoTableProps> {
               </Select>
             )}
           </Form.Item>
-          <Form.Item>
-            {getFieldDecorator("createTime", {
-              initialValue: [moment().subtract(1, "days"), moment()]
-            })(<DatePicker.RangePicker />)}
-          </Form.Item>
+          {this.FormBuild()}
+          {this.props.month ? (
+            <Form.Item>
+              {getFieldDecorator("riQi", {
+                initialValue: moment()
+              })(<DatePicker.MonthPicker />)}
+            </Form.Item>
+          ) : (
+            <Form.Item>
+              {getFieldDecorator("riQi", {
+                initialValue: [moment().subtract(1, "days"), moment()]
+              })(<DatePicker.RangePicker />)}
+            </Form.Item>
+          )}
           <Form.Item>
             <Button htmlType={"submit"} type={"primary"}>
               搜索
@@ -131,7 +188,8 @@ class BocoTable extends React.Component<IBocoTableProps> {
           bordered={true}
           title={this.tableTitle}
           size={"small"}
-          pagination={false}
+          pagination={{}}
+          onChange={this.props.serchData}
         />
       </div>
     );
@@ -140,7 +198,7 @@ class BocoTable extends React.Component<IBocoTableProps> {
 const mapStateToProps = (state: any) => {
   return {
     data: getTransformData(state),
-    formData:state.toJS()
+    formData: state.toJS()
   };
 };
 

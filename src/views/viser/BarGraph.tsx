@@ -22,7 +22,7 @@ interface Iprops extends WithStyles<typeof styles> {
   titleChart?: string;
 }
 
-class CostOfHospitalization extends React.Component<Iprops> {
+class BarGraph extends React.Component<Iprops> {
   public render() {
     const { classes } = this.props;
     const data = [
@@ -66,4 +66,4 @@ class CostOfHospitalization extends React.Component<Iprops> {
   }
 }
 
-export default withStyles(styles)(CostOfHospitalization);
+export default withStyles(styles)(BarGraph);
