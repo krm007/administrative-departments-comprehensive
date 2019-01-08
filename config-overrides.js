@@ -56,9 +56,7 @@ module.exports = function override(config, env) {
       "@menu-collapsed-width": "60px",
       "@menu-dark-bg": "rgba(37, 53, 85, 0.65)",
       "@menu-dark-submenu-bg": "#2b3d5b",
-      "@primary-color": "#3c8ed9",
-      "@table-header-bg": "#3c8ed9",
-      "@table-header-color": "#ffffff"
+      "@primary-color": "#3c8ed9"
     }
   })(config, env);
   return config;

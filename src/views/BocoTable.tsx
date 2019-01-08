@@ -1,26 +1,15 @@
 import { createStyles, Theme, withStyles } from "@material-ui/core/styles";
 import { WithStyles } from "@material-ui/core/styles/withStyles";
 import * as React from "react";
-import {
-  Button,
-  DatePicker,
-  Form,
-  Icon,
-  Select, Table,
-  Tooltip
-} from "antd";
-import { Bocotable, FilterData } from "../typings/CommonData";
-import { ReactNode } from "react";
-import { ColumnProps } from "antd/lib/table";
+import { Button, DatePicker, Form, Select, Table } from "antd";
 import { FormComponentProps } from "antd/lib/form";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getTableDataSource } from "../redux/action/ActionSaga";
-import { getTransformData } from "../redux/relesect/selectors";
-import infoIcon from "../images/info.png";
+import { getTransformData } from "../redux/reselect/selectors";
 import * as moment from "moment";
 import ReactHTMLTableToExcel from "../component/ReactHTMLTableToExcel";
-import * as ReactDOM from 'react-dom';
+import * as ReactDOM from "react-dom";
 
 const styles = (theme: Theme) =>
   createStyles<"root">({
@@ -32,14 +21,14 @@ const styles = (theme: Theme) =>
     }
   });
 
-interface Iprops extends WithStyles<typeof styles>, FormComponentProps {
+export interface IBocoTableProps extends WithStyles<typeof styles>, FormComponentProps {
   url: string;
   tableName?: string;
-  chart?: ReactNode;
   chartTitle?: string;
   title: string;
-  data: Bocotable[];
-  serchData: (param: FilterData) => void;
+  tableTitle:[];
+  data: [];
+  serchData: (param:any) => void;
 }
 /**
  * 描述：
@@ -47,66 +36,18 @@ interface Iprops extends WithStyles<typeof styles>, FormComponentProps {
  * @author 12859
  * @date 2018/12/6-15:20
  */
-class BocoTable extends React.Component<Iprops> {
-  private table: Array<ColumnProps<Bocotable>> = [
-    {
-      title: "指标",
-      align: "center",
-      dataIndex: "name",
-      key: "name",
-      render: (text, record, index) => {
-        return (
-          <span>
-            <span>{text}</span>
-            <Tooltip
-              style={{ backgroundColor: "yellow" }}
-              placement="leftBottom"
-              title={record.explain}
-            >
-              <img src={infoIcon} style={{ float: "right" }} alt="" />
-            </Tooltip>
-          </span>
-        );
-      }
-    },
-    {
-      title: "指标值",
-      align: "center",
-      dataIndex: "value",
-      key: "explain",
-      render: (text, record, index) => {
-        if (record.status) {
-          return (
-            <div>
-              {text}
-              {record.status === undefined ? (
-                ""
-              ) : (
-                <Icon type="arrow-up" style={{ color: "red" }} />
-              )}
-            </div>
-          );
-        } else {
-          return (
-            <div>
-              {text}
-              {record.status === undefined ? "" : <Icon type="arrow-down" />}
-            </div>
-          );
-        }
-      }
-    }
-  ];
+class BocoTable extends React.Component<IBocoTableProps> {
   private urlDO: string;
-  private tableRefs:any;
+  private tableRefs: any;
   public componentDidMount(): void {
     this.getData({});
 
     const tableCon = ReactDOM.findDOMNode(this.tableRefs);
-    if (tableCon) {
-      // @ts-ignore
+    if (tableCon instanceof Element) {
       const table = tableCon.querySelector("table");
-      table.setAttribute("id", "table-to-xls");
+      if (table) {
+        table.setAttribute("id", "table-to-xls");
+      }
     }
   }
 
@@ -165,8 +106,8 @@ class BocoTable extends React.Component<Iprops> {
           </Form.Item>
           <Form.Item>
             {getFieldDecorator("createTime", {
-              initialValue: moment()
-            })(<DatePicker.MonthPicker />)}
+              initialValue: [moment().subtract(1, "days"), moment()]
+            })(<DatePicker.RangePicker />)}
           </Form.Item>
           <Form.Item>
             <Button htmlType={"submit"} type={"primary"}>
@@ -174,29 +115,32 @@ class BocoTable extends React.Component<Iprops> {
             </Button>
           </Form.Item>
         </Form>
-        <ReactHTMLTableToExcel
+        <div style={{ textAlign: "end", marginBottom: "10px" }}>
+          <ReactHTMLTableToExcel
             id="test-table-xls-button"
             className="download-table-xls-button"
             table="table-to-xls"
             filename="tablexls"
             sheet="tablexls"
             buttonText="导出"
-        />
-          <Table
-            dataSource={this.props.data}
-            columns={this.table}
-            bordered={true}
-            title={this.tableTitle}
-            size={"middle"}
-            pagination={false}
           />
+        </div>
+        <Table
+          dataSource={this.props.data}
+          columns={this.props.tableTitle}
+          bordered={true}
+          title={this.tableTitle}
+          size={"small"}
+          pagination={false}
+        />
       </div>
     );
   }
 }
 const mapStateToProps = (state: any) => {
   return {
-    data: getTransformData(state)
+    data: getTransformData(state),
+    formData:state.toJS()
   };
 };
 
