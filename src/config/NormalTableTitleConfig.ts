@@ -1,5 +1,8 @@
 import { ColumnProps } from "antd/lib/table";
 
+/**
+ * 没有单元格合并的表
+ */
 const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   string,
   Array<ColumnProps<any>>
