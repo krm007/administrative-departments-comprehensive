@@ -100,28 +100,32 @@ class BocoTable extends React.Component<IBocoTableProps> {
    * 动态生成表单
    */
   public FormBuild = (): any => {
-    return this.props.formStructure.map((value, index) => {
-      return (
-        <Form.Item key={value.text}>
-          {this.props.form.getFieldDecorator(value.value)(
-            <Select placeholder={value.text} style={{ width: 174 }}>
-              {() => {
-                const selectList = this.props.formData.get(value.value);
-                if (selectList) {
-                  selectList.map((value1, index1) => {
-                    return (
-                      <Select.Option value={value1.value} key={value1.value}>
-                        {value1.text}
-                      </Select.Option>
-                    );
-                  });
-                }
-              }}
-            </Select>
-          )}
-        </Form.Item>
-      );
-    });
+    if (this.props.formStructure) {
+      return this.props.formStructure.map((value, index) => {
+        return (
+          <Form.Item key={value.text}>
+            {this.props.form.getFieldDecorator(value.value)(
+              <Select placeholder={value.text} style={{ width: 174 }}>
+                {() => {
+                  const selectList = this.props.formData.get(value.value);
+                  if (selectList) {
+                    selectList.map((value1, index1) => {
+                      return (
+                        <Select.Option value={value1.value} key={value1.value}>
+                          {value1.text}
+                        </Select.Option>
+                      );
+                    });
+                  }
+                }}
+              </Select>
+            )}
+          </Form.Item>
+        );
+      });
+    } else {
+      return;
+    }
   };
 
   /**
