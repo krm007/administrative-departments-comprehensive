@@ -14,31 +14,28 @@ interface Iprops extends WithStyles<typeof styles> {}
 
 /**
  * 描述：
- *  慢病统计查询
- * @author 12859
+ *  远程医疗统计查询
+ * @author sunshixiong
  * @date 2019/1/8-17:11
  */
 @(withStyles as any)(styles)
-class ChronicDiseaseTable extends React.Component<Iprops> {
+class TelemedicineSystemTable extends React.Component<Iprops> {
   public render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
         <Tabs defaultActiveKey="2">
-          <Tabs.TabPane tab={<span>慢性病月度汇总表</span>} key="1">
+          <Tabs.TabPane tab={<span>远程会诊统计</span>} key="1">
             <BocoTable
               title={"慢性病月度汇总表"}
               tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
             />
           </Tabs.TabPane>
-          <Tabs.TabPane tab={<span>慢性病季度汇总表</span>} key="2">
+          <Tabs.TabPane tab={<span>远程门诊统计</span>} key="2">
             <BocoTable
               title={"慢性病季度汇总表"}
               tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
             />
-          </Tabs.TabPane>
-          <Tabs.TabPane tab={<span>慢性病图表分析</span>} key="3">
-            慢性病图表分析
           </Tabs.TabPane>
         </Tabs>
       </div>
@@ -46,4 +43,4 @@ class ChronicDiseaseTable extends React.Component<Iprops> {
   }
 }
 
-export default ChronicDiseaseTable;
+export default TelemedicineSystemTable;

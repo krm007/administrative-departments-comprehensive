@@ -14,31 +14,39 @@ interface Iprops extends WithStyles<typeof styles> {}
 
 /**
  * 描述：
- *  慢病统计查询
- * @author 12859
- * @date 2019/1/8-17:11
+ *  检验查询
+ * @author sunshixiong
+ * @date 2019/1/8-20:31
  */
-@(withStyles as any)(styles)
-class ChronicDiseaseTable extends React.Component<Iprops> {
+class CheckQueryTable extends React.Component<Iprops> {
   public render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
         <Tabs defaultActiveKey="2">
-          <Tabs.TabPane tab={<span>慢性病月度汇总表</span>} key="1">
+          <Tabs.TabPane tab={<span>检验工作量统计查询</span>} key="1">
             <BocoTable
               title={"慢性病月度汇总表"}
               tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
             />
           </Tabs.TabPane>
-          <Tabs.TabPane tab={<span>慢性病季度汇总表</span>} key="2">
+          <Tabs.TabPane tab={<span>检验标本可接受性统计查询</span>} key="2">
             <BocoTable
               title={"慢性病季度汇总表"}
               tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
             />
           </Tabs.TabPane>
-          <Tabs.TabPane tab={<span>慢性病图表分析</span>} key="3">
-            慢性病图表分析
+          <Tabs.TabPane tab={<span>检验报告质量统计查询</span>} key="3">
+            <BocoTable
+              title={"慢性病季度汇总表"}
+              tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
+            />
+          </Tabs.TabPane>
+          <Tabs.TabPane tab={<span>检验周转时间统计查询</span>} key="4">
+            <BocoTable
+              title={"慢性病季度汇总表"}
+              tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
+            />
           </Tabs.TabPane>
         </Tabs>
       </div>
@@ -46,4 +54,4 @@ class ChronicDiseaseTable extends React.Component<Iprops> {
   }
 }
 
-export default ChronicDiseaseTable;
+export default withStyles(styles)(CheckQueryTable);

@@ -9,6 +9,34 @@ const ChronicDiseaseTable = loadable({
   loader: () => import("../views/ChronicDiseaseTable"),
   loading: Loading
 });
+const TelemedicineSystemTable = loadable({
+  loader: () => import("../views/TelemedicineSystemTable"),
+  loading: Loading
+});
+const RemoteImageQueryTable = loadable({
+  loader: () => import("../views/RemoteImageQueryTable"),
+  loading: Loading
+});
+const CheckQueryTable = loadable({
+  loader: () => import("../views/CheckQueryTable"),
+  loading: Loading
+});
+const RegisteredFashionableTable = loadable({
+  loader: () => import("../views/RegisteredFashionableTable"),
+  loading: Loading
+});
+const FinancialCollectingTable = loadable({
+  loader: () => import("../views/FinancialCollectingTable"),
+  loading: Loading
+});
+const InHospitalFashionableTable = loadable({
+  loader: () => import("../views/InHospitalFashionableTable"),
+  loading: Loading
+});
+const PharmacyPaymentsTable = loadable({
+  loader: () => import("../views/PharmacyPaymentsTable"),
+  loading: Loading
+});
 const RegulationConfigs: RouteConfig[] = [
   {
     path: "/administrativeDepartment/hospitalFinancial/outpatientBillingFee",
@@ -49,7 +77,7 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/administrativeDepartment/drugQuery/pharmacyPayments",
-    component: () => <BocoTable title={"药库收支月报"} />
+    component: PharmacyPaymentsTable
   },
   {
     path: "/administrativeDepartment/drugQuery/drugInventory",
@@ -148,15 +176,15 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/administrativeDepartment/telemedicine/query",
-    component: () => <BocoTable title={"远程医疗统计查询"} />
+    component: TelemedicineSystemTable
   },
   {
     path: "/administrativeDepartment/dualReferral/query",
-    component: () => <BocoTable title={"双向转诊统计查询"} />
+    component: () => <BocoTable title={"报表管理统计查询"} />
   },
   {
     path: "/administrativeDepartment/statementManagement/query",
-    component: () => <BocoTable title={"报表管理统计查询"} />
+    component: () => <BocoTable title={"双向转诊统计表"} />
   },
   /** ****************** */
   {
@@ -169,23 +197,23 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/decisionAnalysisReport/comprehensiveQuery/remoteImage",
-    component: () => <BocoTable title={"远程影像查询"} />
+    component: RemoteImageQueryTable
   },
   {
     path: "/decisionAnalysisReport/comprehensiveQuery/test",
-    component: () => <BocoTable title={"检验查询"} />
+    component: CheckQueryTable
   },
   {
     path: "/decisionAnalysisReport/sub-account/registration",
-    component: () => <BocoTable title={"挂号分账"} />
+    component: RegisteredFashionableTable
   },
   {
     path: "/decisionAnalysisReport/sub-account/finance",
-    component: () => <BocoTable title={"财务分账"} />
+    component: FinancialCollectingTable
   },
   {
     path: "/decisionAnalysisReport/sub-account/inHospital",
-    component: () => <BocoTable title={"住院分账"} />
+    component: InHospitalFashionableTable
   },
   {
     path: "/decisionAnalysisReport/dataMining/patients",
