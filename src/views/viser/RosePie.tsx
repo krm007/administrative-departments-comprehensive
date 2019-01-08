@@ -71,7 +71,7 @@ registerShape("interval", "sliceShape", {
   }
 });
 
-class DischargePatientDisease extends React.Component<Iprops> {
+class RosePie extends React.Component<Iprops> {
   public render() {
     const { classes } = this.props;
     return (
@@ -89,4 +89,4 @@ class DischargePatientDisease extends React.Component<Iprops> {
   }
 }
 
-export default withStyles(styles)(DischargePatientDisease);
+export default withStyles(styles)(RosePie);
