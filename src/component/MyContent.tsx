@@ -13,7 +13,6 @@ const styles = (theme: Theme) =>
       background: "#fff",
       margin: 14,
       minHeight: "79vh",
-      padding: 14,
       overflowY: "auto",
       borderRadius: 10
     }
