@@ -8,6 +8,12 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "MenZhenKaiDanFeiYong",
     [
       {
+        title: "编号",
+        align: "center",
+        key: "id",
+        render: (text: any, record: any, index: number) => index
+      },
+      {
         title: "医疗机构",
         align: "center",
         dataIndex: "yiLiaoJiGou",
