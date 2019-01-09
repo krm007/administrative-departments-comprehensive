@@ -4149,8 +4149,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
     ],[
         "ZhuYuanRiBao",
         [
-            //住院日报
-            //行转列
+
         ]
     ],[
         "LinChuangJianYan",
