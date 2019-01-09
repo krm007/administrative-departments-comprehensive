@@ -48,13 +48,6 @@ const RegulationConfigs: RouteConfig[] = [
       <BocoTable
         title={"门诊开单费用统计"}
         tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
-        formStructure={[
-          {
-            value: "name",
-            text: "选择库房",
-            url: ""
-          }
-        ]}
       />
     )
   },
