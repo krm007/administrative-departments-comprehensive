@@ -4,7 +4,7 @@
  * @param index
  * @param col
  */
-export const renderSumTitle = (value:any,index:any,col:any) => {
+export const renderSumTitle = (value:any,index:any,col?:any) => {
     if(col){
         return {
             children: value,
