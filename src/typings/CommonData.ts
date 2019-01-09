@@ -1142,6 +1142,8 @@ export interface MenZhenHuiZongYue{
  * 门诊开单费用统计查询
  */
 export interface MenZhenKaiDanFeiYong{
+  /** 编号 */
+  id?: string;
   /** 医疗机构 */
   yiLiaoJiGou?: string;
   /** 日期 */
