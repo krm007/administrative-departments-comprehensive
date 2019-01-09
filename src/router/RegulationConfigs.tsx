@@ -37,6 +37,10 @@ const PharmacyPaymentsTable = loadable({
   loader: () => import("../views/PharmacyPaymentsTable"),
   loading: Loading
 });
+const InfectiousDiseaseStatisticsTable = loadable({
+  loader: () => import("../views/InfectiousDiseaseStatisticsTable"),
+  loading: Loading
+});
 const RegulationConfigs: RouteConfig[] = [
   {
     path: "/administrativeDepartment/hospitalFinancial/outpatientBillingFee",
@@ -358,7 +362,7 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/administrativeDepartment/communicableDiseasesControl/query",
-    component: () => <BocoTable title={"传染病统计查询"} />
+    component:  InfectiousDiseaseStatisticsTable
   },
   {
     path: "/administrativeDepartment/slowDiseaseManagement/query",
