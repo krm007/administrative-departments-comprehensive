@@ -355,7 +355,7 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/administrativeDepartment/communicableDiseasesControl/query",
-    component:  InfectiousDiseaseStatisticsTable
+    component: InfectiousDiseaseStatisticsTable
   },
   {
     path: "/administrativeDepartment/slowDiseaseManagement/query",
@@ -386,7 +386,7 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/administrativeDepartment/statementManagement/query",
-    component: () => <BocoTable title={"报表管理统计查询"} />
+    component: () => <BocoTable title={"报表管理统计查询"} spin={true} />
   },
   /** ****************** */
   {
@@ -395,7 +395,6 @@ const RegulationConfigs: RouteConfig[] = [
       <BocoTable
         title={"门诊就诊病人查询"}
         tableTitle={NormalTableTitleConfig.get("MenZhenRiZhi")}
-
         formStructure={[
           {
             value: "name",
@@ -432,43 +431,43 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/decisionAnalysisReport/dataMining/patients",
-    component: () => <BocoTable title={"病人构成分析"} />
+    component: () => <BocoTable title={"病人构成分析"} spin={true} />
   },
   {
     path: "/decisionAnalysisReport/dataMining/patientsTime",
-    component: () => <BocoTable title={"病人就诊时间分析"} />
+    component: () => <BocoTable title={"病人就诊时间分析"} spin={true} />
   },
   {
     path: "/decisionAnalysisReport/dataMining/patientsAccount",
-    component: () => <BocoTable title={"病人费用构成分析"} />
+    component: () => <BocoTable title={"病人费用构成分析"} spin={true} />
   },
   {
     path: "/decisionAnalysisReport/dataMining/compareAccount",
-    component: () => <BocoTable title={"同期费用对比分析"} />
+    component: () => <BocoTable title={"同期费用对比分析"} spin={true} />
   },
   {
     path: "/decisionAnalysisReport/dataMining/singleDisease",
-    component: () => <BocoTable title={"单病种分析"} />
+    component: () => <BocoTable title={"单病种分析"} spin={true} />
   },
   {
     path: "/decisionAnalysisReport/aidDecisionMaking/hospitalPopulation",
-    component: () => <BocoTable title={"住院人口报表统计"} />
+    component: () => <BocoTable title={"住院人口报表统计"} spin={true} />
   },
   {
     path: "/decisionAnalysisReport/aidDecisionMaking/dischargePopulation",
-    component: () => <BocoTable title={"出院人口报表统计"} />
+    component: () => <BocoTable title={"出院人口报表统计"} spin={true} />
   },
   {
     path: "/decisionAnalysisReport/aidDecisionMaking/diseaseClass",
-    component: () => <BocoTable title={"病种分类统计"} />
+    component: () => <BocoTable title={"病种分类统计"} spin={true} />
   },
   {
     path: "/criticalValue/doctorWorkstation",
-    component: () => <BocoTable title={"医生工作站危急值"} />
+    component: () => <BocoTable title={"医生工作站危急值"} spin={true} />
   },
   {
     path: "/criticalValue/nurseWorkstation",
-    component: () => <BocoTable title={"护士工作站危急值"} />
+    component: () => <BocoTable title={"护士工作站危急值"} spin={true} />
   },
   {
     path: "/criticalValue/clinicalValidation",
