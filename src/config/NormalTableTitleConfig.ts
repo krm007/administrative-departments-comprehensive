@@ -3,520 +3,560 @@ import {renderContent } from "./renderRule"
 /**
  * 没有合并单元格table
  */
-const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<string,
-    Array<ColumnProps<any>>>([
+const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
+  string,
+  Array<ColumnProps<any>>
+>([
+  [
+    "MenZhenKaiDanFeiYong",
     [
-        "MenZhenKaiDanFeiYong",
-        [
-            {
-                title: "编号",
-                align: "center",
-                key: "id",
-                width: 60,
-                render: (text: any, record: any, index: number) => `${index + 1}`
-            },
-            {
-                title: "医疗机构",
-                align: "center",
-                dataIndex: "yiLiaoJiGou",
-                key: "yiLiaoJiGou"
-            },
-            {
-                title: "日期",
-                align: "center",
-                dataIndex: "riQi",
-                key: "riQi"
-            },
-            {
-                title: "科室",
-                align: "center",
-                dataIndex: "keShi",
-                key: "keShi"
-            },
-            {
-                title: "人次",
-                align: "center",
-                dataIndex: "renCi",
-                key: "renCi"
-            },
-            {
-                title: "西药费",
-                align: "center",
-                dataIndex: "xiYaoFei",
-                key: "xiYaoFei"
-            },
-            {
-                title: "成药费",
-                align: "center",
-                dataIndex: "chengYaoFei",
-                key: "chengYaoFei"
-            },
-            {
-                title: "草药费",
-                align: "center",
-                dataIndex: "caoYaoFei",
-                key: "caoYaoFei"
-            },
-            {
-                title: "检查费",
-                align: "center",
-                dataIndex: "jianChaFei",
-                key: "jianChaFei"
-            },
-            {
-                title: "治疗费",
-                align: "center",
-                dataIndex: "zhiLiaoFei",
-                key: "zhiLiaoFei"
-            },
-            {
-                title: "CT费",
-                align: "center",
-                dataIndex: "ctFei",
-                key: "ctFei"
-            },
-            {
-                title: "放射费",
-                align: "center",
-                dataIndex: "fangSheFei",
-                key: "fangSheFei"
-            },
-            {
-                title: "手术费",
-                align: "center",
-                dataIndex: "shouShuFei",
-                key: "shouShuFei"
-            },
-            {
-                title: "化验费",
-                align: "center",
-                dataIndex: "huaYanFei",
-                key: "huaYanFei"
-            },
-            {
-                title: "其他费",
-                align: "center",
-                dataIndex: "qiTaFei",
-                key: "qiTaFei"
-            },
-            {
-                title: "诊察费",
-                align: "center",
-                dataIndex: "zhenChaFei",
-                key: "zhenChaFei"
-            },
-            {
-                title: "护理费",
-                align: "center",
-                dataIndex: "huLiFei",
-                key: "huLiFei"
-            },
-            {
-                title: "材料费",
-                align: "center",
-                dataIndex: "caiLiaoFei",
-                key: "caiLiaoFei"
-            },
-            {
-                title: "麻醉费",
-                align: "center",
-                dataIndex: "maZuiFei",
-                key: "maZuiFei"
-            },
-            {
-                title: "合计",
-                align: "center",
-                dataIndex: "heJi",
-                key: "heJi"
-            }
-        ]
-    ],
+      {
+        title: "编号",
+        align: "center",
+        dataIndex: "id",
+        key: "id"
+      },
+      {
+        title: "医疗机构",
+        align: "center",
+        dataIndex: "yiLiaoJiGou",
+        key: "yiLiaoJiGou"
+      },
+      {
+        title: "日期",
+        align: "center",
+        dataIndex: "riQi",
+        key: "riQi"
+      },
+      {
+        title: "科室",
+        align: "center",
+        dataIndex: "keShi",
+        key: "keShi"
+      },
+      {
+        title: "人次",
+        align: "center",
+        dataIndex: "renCi",
+        key: "renCi"
+      },
+      {
+        title: "西药费",
+        align: "center",
+        dataIndex: "xiYaoFei",
+        key: "xiYaoFei"
+      },
+      {
+        title: "成药费",
+        align: "center",
+        dataIndex: "chengYaoFei",
+        key: "chengYaoFei"
+      },
+      {
+        title: "草药费",
+        align: "center",
+        dataIndex: "caoYaoFei",
+        key: "caoYaoFei"
+      },
+      {
+        title: "检查费",
+        align: "center",
+        dataIndex: "jianChaFei",
+        key: "jianChaFei"
+      },
+      {
+        title: "治疗费",
+        align: "center",
+        dataIndex: "zhiLiaoFei",
+        key: "zhiLiaoFei"
+      },
+      {
+        title: "CT费",
+        align: "center",
+        dataIndex: "ctFei",
+        key: "ctFei"
+      },
+      {
+        title: "放射费",
+        align: "center",
+        dataIndex: "fangSheFei",
+        key: "fangSheFei"
+      },
+      {
+        title: "手术费",
+        align: "center",
+        dataIndex: "shouShuFei",
+        key: "shouShuFei"
+      },
+      {
+        title: "化验费",
+        align: "center",
+        dataIndex: "huaYanFei",
+        key: "huaYanFei"
+      },
+      {
+        title: "其他费",
+        align: "center",
+        dataIndex: "qiTaFei",
+        key: "qiTaFei"
+      },
+      {
+        title: "诊察费",
+        align: "center",
+        dataIndex: "zhenChaFei",
+        key: "zhenChaFei"
+      },
+      {
+        title: "护理费",
+        align: "center",
+        dataIndex: "huLiFei",
+        key: "huLiFei"
+      },
+      {
+        title: "材料费",
+        align: "center",
+        dataIndex: "caiLiaoFei",
+        key: "caiLiaoFei"
+      },
+      {
+        title: "麻醉费",
+        align: "center",
+        dataIndex: "maZuiFei",
+        key: "maZuiFei"
+      },
+      {
+        title: "合计",
+        align: "center",
+        dataIndex: "heJi",
+        key: "heJi"
+      }
+    ]
+  ],
+  [
+    "MenZhenGuaZhangTongJi",
     [
-        "MenZhenGuaZhangTongJi",
-        [
-            {
-                title: "序号",
-                align: "center",
-                key: "id",
-                render: renderContent
-            },{
-                title: "医疗机构",
-                align: "center",
-                dataIndex: "yiLiaoJiGou",
-                key: "yiLiaoJiGou",
-            }, {
-            title: "监狱",
-            align: "center",
-            dataIndex: "jianYu",
-            key: "jianYu",
-        }, {
-            title: "监区",
-            align: "center",
-            dataIndex: "jianQu",
-            key: "jianQu",
-        }, {
-            title: "姓名",
-            align: "center",
-            dataIndex: "xingMing",
-            key: "xingMing",
-        }, {
-            title: "编号",
-            align: "center",
-            dataIndex: "bianHao",
-            key: "bianHao",
-        }, {
-            title: "挂账时间",
-            align: "center",
-            dataIndex: "guaZhangShiJian",
-            key: "guaZhangShiJian",
-        }, {
-            title: "挂账金额",
-            align: "center",
-            dataIndex: "guaZhangJinE",
-            key: "guaZhangJinE",
-        }, {
-            title: "制表人",
-            align: "center",
-            dataIndex: "zhiBiaoRen",
-            key: "zhiBiaoRen",
-        }]
-    ],
+      {
+        title: "医疗机构",
+        align: "center",
+        dataIndex: "yiLiaoJiGou",
+        key: "yiLiaoJiGou"
+      },
+      {
+        title: "监狱",
+        align: "center",
+        dataIndex: "jianYu",
+        key: "jianYu"
+      },
+      {
+        title: "监区",
+        align: "center",
+        dataIndex: "jianQu",
+        key: "jianQu"
+      },
+      {
+        title: "姓名",
+        align: "center",
+        dataIndex: "xingMing",
+        key: "xingMing"
+      },
+      {
+        title: "编号",
+        align: "center",
+        dataIndex: "bianHao",
+        key: "bianHao"
+      },
+      {
+        title: "挂账时间",
+        align: "center",
+        dataIndex: "guaZhangShiJian",
+        key: "guaZhangShiJian"
+      },
+      {
+        title: "挂账金额",
+        align: "center",
+        dataIndex: "guaZhangJinE",
+        key: "guaZhangJinE"
+      },
+      {
+        title: "制表人",
+        align: "center",
+        dataIndex: "zhiBiaoRen",
+        key: "zhiBiaoRen"
+      }
+    ]
+  ],
+  [
+    "YuJiaoKuanBingRenMingXi",
     [
-        "YuJiaoKuanBingRenMingXi",
-        [
-            {
-                title: "医疗机构",
-                align: "center",
-                dataIndex: "yiLiaoJiGou",
-                key: "yiLiaoJiGou",
-            }, {
-            title: "日期",
-            align: "center",
-            dataIndex: "riQi",
-            key: "riQi",
-        }, {
-            title: "交款方式",
-            align: "center",
-            dataIndex: "jiaoKuanFangShi",
-            key: "jiaoKuanFangShi",
-        }, {
-            title: "姓名",
-            align: "center",
-            dataIndex: "xingMing",
-            key: "xingMing",
-        }, {
-            title: "住院号",
-            align: "center",
-            dataIndex: "zhuYuanHao",
-            key: "zhuYuanHao",
-        }, {
-            title: "金额",
-            align: "center",
-            dataIndex: "jinE",
-            key: "jinE",
-        }
-        ]
-    ],
+      {
+        title: "医疗机构",
+        align: "center",
+        dataIndex: "yiLiaoJiGou",
+        key: "yiLiaoJiGou"
+      },
+      {
+        title: "日期",
+        align: "center",
+        dataIndex: "riQi",
+        key: "riQi"
+      },
+      {
+        title: "交款方式",
+        align: "center",
+        dataIndex: "jiaoKuanFangShi",
+        key: "jiaoKuanFangShi"
+      },
+      {
+        title: "姓名",
+        align: "center",
+        dataIndex: "xingMing",
+        key: "xingMing"
+      },
+      {
+        title: "住院号",
+        align: "center",
+        dataIndex: "zhuYuanHao",
+        key: "zhuYuanHao"
+      },
+      {
+        title: "金额",
+        align: "center",
+        dataIndex: "jinE",
+        key: "jinE"
+      }
+    ]
+  ],
+  [
+    "ChuYuanBingRenBingQu",
     [
-        "ChuYuanBingRenBingQu",
-        [
-            {
-                title: "医疗机构",
-                align: "center",
-                dataIndex: "yiLiaoJiGou",
-                key: "yiLiaoJiGou",
-            }, {
-            title: "日期",
-            align: "center",
-            dataIndex: "riQi",
-            key: "riQi",
-        }, {
-            title: "病区",
-            align: "center",
-            dataIndex: "bingQu",
-            key: "bingQu",
-        }, {
-            title: "科室",
-            align: "center",
-            dataIndex: "keShi",
-            key: "keShi",
-        }, {
-            title: "人次",
-            align: "center",
-            dataIndex: "renCi",
-            key: "renCi",
-        }, {
-            title: "西药费",
-            align: "center",
-            dataIndex: "xiYaoFei",
-            key: "xiYaoFei",
-        }, {
-            title: "成药费",
-            align: "center",
-            dataIndex: "chengYaoFei",
-            key: "chengYaoFei",
-        }, {
-            title: "检查费",
-            align: "center",
-            dataIndex: "jianChaFei",
-            key: "jianChaFei",
-        }, {
-            title: "治疗费",
-            align: "center",
-            dataIndex: "zhiLiaoFei",
-            key: "zhiLiaoFei",
-        }, {
-            title: "CT费",
-            align: "center",
-            dataIndex: "ctFei",
-            key: "ctFei",
-        }, {
-            title: "放射费",
-            align: "center",
-            dataIndex: "fangSheFei",
-            key: "fangSheFei",
-        }, {
-            title: "手术费",
-            align: "center",
-            dataIndex: "shouShuFei",
-            key: "shouShuFei",
-        }, {
-            title: "化验费",
-            align: "center",
-            dataIndex: "huaYanFei",
-            key: "huaYanFei",
-        }, {
-            title: "其他费",
-            align: "center",
-            dataIndex: "qiTaFei",
-            key: "qiTaFei",
-        }, {
-            title: "输氧费",
-            align: "center",
-            dataIndex: "shuYangFei",
-            key: "shuYangFei",
-        }, {
-            title: "诊察费",
-            align: "center",
-            dataIndex: "zhenChaFei",
-            key: "zhenChaFei",
-        }, {
-            title: "卫生组套费",
-            align: "center",
-            dataIndex: "weiShengZuTaoFei",
-            key: "weiShengZuTaoFei",
-        }, {
-            title: "床位费",
-            align: "center",
-            dataIndex: "chuangWeiFei",
-            key: "chuangWeiFei",
-        }, {
-            title: "伙食费",
-            align: "center",
-            dataIndex: "huoShiFei",
-            key: "huoShiFei",
-        }, {
-            title: "护理费",
-            align: "center",
-            dataIndex: "huLiFei",
-            key: "huLiFei",
-        }, {
-            title: "材料费",
-            align: "center",
-            dataIndex: "caiLiaoFei",
-            key: "caiLiaoFei",
-        }, {
-            title: "麻醉费",
-            align: "center",
-            dataIndex: "maZuiFei",
-            key: "maZuiFei",
-        }, {
-            title: "合计",
-            align: "center",
-            dataIndex: "heJi",
-            key: "heJi",
-        }]
-    ],
+      {
+        title: "医疗机构",
+        align: "center",
+        dataIndex: "yiLiaoJiGou",
+        key: "yiLiaoJiGou"
+      },
+      {
+        title: "日期",
+        align: "center",
+        dataIndex: "riQi",
+        key: "riQi"
+      },
+      {
+        title: "病区",
+        align: "center",
+        dataIndex: "bingQu",
+        key: "bingQu"
+      },
+      {
+        title: "科室",
+        align: "center",
+        dataIndex: "keShi",
+        key: "keShi"
+      },
+      {
+        title: "人次",
+        align: "center",
+        dataIndex: "renCi",
+        key: "renCi"
+      },
+      {
+        title: "西药费",
+        align: "center",
+        dataIndex: "xiYaoFei",
+        key: "xiYaoFei"
+      },
+      {
+        title: "成药费",
+        align: "center",
+        dataIndex: "chengYaoFei",
+        key: "chengYaoFei"
+      },
+      {
+        title: "检查费",
+        align: "center",
+        dataIndex: "jianChaFei",
+        key: "jianChaFei"
+      },
+      {
+        title: "治疗费",
+        align: "center",
+        dataIndex: "zhiLiaoFei",
+        key: "zhiLiaoFei"
+      },
+      {
+        title: "CT费",
+        align: "center",
+        dataIndex: "ctFei",
+        key: "ctFei"
+      },
+      {
+        title: "放射费",
+        align: "center",
+        dataIndex: "fangSheFei",
+        key: "fangSheFei"
+      },
+      {
+        title: "手术费",
+        align: "center",
+        dataIndex: "shouShuFei",
+        key: "shouShuFei"
+      },
+      {
+        title: "化验费",
+        align: "center",
+        dataIndex: "huaYanFei",
+        key: "huaYanFei"
+      },
+      {
+        title: "其他费",
+        align: "center",
+        dataIndex: "qiTaFei",
+        key: "qiTaFei"
+      },
+      {
+        title: "输氧费",
+        align: "center",
+        dataIndex: "shuYangFei",
+        key: "shuYangFei"
+      },
+      {
+        title: "诊察费",
+        align: "center",
+        dataIndex: "zhenChaFei",
+        key: "zhenChaFei"
+      },
+      {
+        title: "卫生组套费",
+        align: "center",
+        dataIndex: "weiShengZuTaoFei",
+        key: "weiShengZuTaoFei"
+      },
+      {
+        title: "床位费",
+        align: "center",
+        dataIndex: "chuangWeiFei",
+        key: "chuangWeiFei"
+      },
+      {
+        title: "伙食费",
+        align: "center",
+        dataIndex: "huoShiFei",
+        key: "huoShiFei"
+      },
+      {
+        title: "护理费",
+        align: "center",
+        dataIndex: "huLiFei",
+        key: "huLiFei"
+      },
+      {
+        title: "材料费",
+        align: "center",
+        dataIndex: "caiLiaoFei",
+        key: "caiLiaoFei"
+      },
+      {
+        title: "麻醉费",
+        align: "center",
+        dataIndex: "maZuiFei",
+        key: "maZuiFei"
+      },
+      {
+        title: "合计",
+        align: "center",
+        dataIndex: "heJi",
+        key: "heJi"
+      }
+    ]
+  ],
+  [
+    "ZaiYuanBingRenZongZhang",
     [
-        "ZaiYuanBingRenZongZhang",
-        [
-            {
-                title: "医疗机构",
-                align: "center",
-                dataIndex: "yiLiaoJiGou",
-                key: "yiLiaoJiGou",
-            }, {
-            title: "日期",
-            align: "center",
-            dataIndex: "riQi",
-            key: "riQi",
-        }, {
-            title: "病区",
-            align: "center",
-            dataIndex: "bingQu",
-            key: "bingQu",
-        }, {
-            title: "科室",
-            align: "center",
-            dataIndex: "keShi",
-            key: "keShi",
-        }, {
-            title: "合计",
-            align: "center",
-            dataIndex: "heJi",
-            key: "heJi",
-        }, {
-            title: "预交款",
-            align: "center",
-            dataIndex: "yuJiaoKuan",
-            key: "yuJiaoKuan",
-        }, {
-            title: "西药费",
-            align: "center",
-            dataIndex: "xiYaoFei",
-            key: "xiYaoFei",
-        }, {
-            title: "成药费",
-            align: "center",
-            dataIndex: "chengYaoFei",
-            key: "chengYaoFei",
-        }, {
-            title: "检查费",
-            align: "center",
-            dataIndex: "jianChaFei",
-            key: "jianChaFei",
-        }, {
-            title: "治疗费",
-            align: "center",
-            dataIndex: "zhiLiaoFei",
-            key: "zhiLiaoFei",
-        }, {
-            title: "CT费",
-            align: "center",
-            dataIndex: "ctFei",
-            key: "ctFei",
-        }, {
-            title: "放射费",
-            align: "center",
-            dataIndex: "fangSheFei",
-            key: "fangSheFei",
-        }, {
-            title: "手术费",
-            align: "center",
-            dataIndex: "shouShuFei",
-            key: "shouShuFei",
-        }, {
-            title: "化验费",
-            align: "center",
-            dataIndex: "huaYanFei",
-            key: "huaYanFei",
-        }, {
-            title: "其他费",
-            align: "center",
-            dataIndex: "qiTaFei",
-            key: "qiTaFei",
-        }, {
-            title: "输氧费",
-            align: "center",
-            dataIndex: "shuYangFei",
-            key: "shuYangFei",
-        }, {
-            title: "诊察费",
-            align: "center",
-            dataIndex: "zhenChaFei",
-            key: "zhenChaFei",
-        }, {
-            title: "卫生组套费",
-            align: "center",
-            dataIndex: "weiShengZuTaoFei",
-            key: "weiShengZuTaoFei",
-        }, {
-            title: "床位费",
-            align: "center",
-            dataIndex: "chuangWeiFei",
-            key: "chuangWeiFei",
-        }, {
-            title: "伙食费",
-            align: "center",
-            dataIndex: "huoShiFei",
-            key: "huoShiFei",
-        }, {
-            title: "护理费",
-            align: "center",
-            dataIndex: "huLiFei",
-            key: "huLiFei",
-        }, {
-            title: "材料费",
-            align: "center",
-            dataIndex: "caiLiaoFei",
-            key: "caiLiaoFei",
-        }, {
-            title: "麻醉费",
-            align: "center",
-            dataIndex: "maZuiFei",
-            key: "maZuiFei",
-        }, {
-            title: "外院检查",
-            align: "center",
-            dataIndex: "waiYuanJianCha",
-            key: "waiYuanJianCha",
-        }, {
-            title: "会诊费",
-            align: "center",
-            dataIndex: "huiZhenFei",
-            key: "huiZhenFei",
-        }, {
-            title: "其他",
-            align: "center",
-            dataIndex: "qiTa",
-            key: "qiTa",
-        }]
-    ],
+      {
+        title: "医疗机构",
+        align: "center",
+        dataIndex: "yiLiaoJiGou",
+        key: "yiLiaoJiGou"
+      },
+      {
+        title: "日期",
+        align: "center",
+        dataIndex: "riQi",
+        key: "riQi"
+      },
+      {
+        title: "病区",
+        align: "center",
+        dataIndex: "bingQu",
+        key: "bingQu"
+      },
+      {
+        title: "科室",
+        align: "center",
+        dataIndex: "keShi",
+        key: "keShi"
+      },
+      {
+        title: "合计",
+        align: "center",
+        dataIndex: "heJi",
+        key: "heJi"
+      },
+      {
+        title: "预交款",
+        align: "center",
+        dataIndex: "yuJiaoKuan",
+        key: "yuJiaoKuan"
+      },
+      {
+        title: "西药费",
+        align: "center",
+        dataIndex: "xiYaoFei",
+        key: "xiYaoFei"
+      },
+      {
+        title: "成药费",
+        align: "center",
+        dataIndex: "chengYaoFei",
+        key: "chengYaoFei"
+      },
+      {
+        title: "检查费",
+        align: "center",
+        dataIndex: "jianChaFei",
+        key: "jianChaFei"
+      },
+      {
+        title: "治疗费",
+        align: "center",
+        dataIndex: "zhiLiaoFei",
+        key: "zhiLiaoFei"
+      },
+      {
+        title: "CT费",
+        align: "center",
+        dataIndex: "ctFei",
+        key: "ctFei"
+      },
+      {
+        title: "放射费",
+        align: "center",
+        dataIndex: "fangSheFei",
+        key: "fangSheFei"
+      },
+      {
+        title: "手术费",
+        align: "center",
+        dataIndex: "shouShuFei",
+        key: "shouShuFei"
+      },
+      {
+        title: "化验费",
+        align: "center",
+        dataIndex: "huaYanFei",
+        key: "huaYanFei"
+      },
+      {
+        title: "其他费",
+        align: "center",
+        dataIndex: "qiTaFei",
+        key: "qiTaFei"
+      },
+      {
+        title: "输氧费",
+        align: "center",
+        dataIndex: "shuYangFei",
+        key: "shuYangFei"
+      },
+      {
+        title: "诊察费",
+        align: "center",
+        dataIndex: "zhenChaFei",
+        key: "zhenChaFei"
+      },
+      {
+        title: "卫生组套费",
+        align: "center",
+        dataIndex: "weiShengZuTaoFei",
+        key: "weiShengZuTaoFei"
+      },
+      {
+        title: "床位费",
+        align: "center",
+        dataIndex: "chuangWeiFei",
+        key: "chuangWeiFei"
+      },
+      {
+        title: "伙食费",
+        align: "center",
+        dataIndex: "huoShiFei",
+        key: "huoShiFei"
+      },
+      {
+        title: "护理费",
+        align: "center",
+        dataIndex: "huLiFei",
+        key: "huLiFei"
+      },
+      {
+        title: "材料费",
+        align: "center",
+        dataIndex: "caiLiaoFei",
+        key: "caiLiaoFei"
+      },
+      {
+        title: "麻醉费",
+        align: "center",
+        dataIndex: "maZuiFei",
+        key: "maZuiFei"
+      },
+      {
+        title: "外院检查",
+        align: "center",
+        dataIndex: "waiYuanJianCha",
+        key: "waiYuanJianCha"
+      },
+      {
+        title: "会诊费",
+        align: "center",
+        dataIndex: "huiZhenFei",
+        key: "huiZhenFei"
+      },
+      {
+        title: "其他",
+        align: "center",
+        dataIndex: "qiTa",
+        key: "qiTa"
+      }
+    ]
+  ],
+  [
+    "YaoPinShouFaCunBiao",
     [
-        "YaoPinShouFaCunBiao",
-        [
-            {
-                title: "医疗机构",
-                align: "center",
-                dataIndex: "yiLiaoJiGou",
-                key: "yiLiaoJiGou",
-            }, {
-            title: "日期:按月",
-            align: "center",
-            dataIndex: "riQi",
-            key: "riQi",
-        }, {
-            title: "库房",
-            align: "center",
-            dataIndex: "kuFang",
-            key: "kuFang",
-        }, {
-            title: "药品类型",
-            align: "center",
-            dataIndex: "yaoPinLeiXing",
-            key: "yaoPinLeiXing",
-        }, {
-            title: "毒理分类",
-            align: "center",
-            dataIndex: "duLiFeiLei",
-            key: "duLiFeiLei",
-        }, {
-            title: "药品名称",
-            align: "center",
-            dataIndex: "yaoPinMingCheng",
-            key: "yaoPinMingCheng",
-        }, {
-            title: "药品规格",
-            align: "center",
-            dataIndex: "yaoPinGuiGe",
-            key: "yaoPinGuiGe",
-        }, {
-            title: "产地名称",
-            align: "center",
-            dataIndex: "chanDiMingCheng",
-            key: "chanDiMingCheng",
-        }, {
-            title: "期初结转期初数量",
+      {
+        title: "药品名称",
+        align: "center",
+        dataIndex: "yaoPinMingCheng",
+        key: "yaoPinMingCheng"
+      },
+      {
+        title: "药品规格",
+        align: "center",
+        dataIndex: "yaoPinGuiGe",
+        key: "yaoPinGuiGe"
+      },
+      {
+        title: "产地名称",
+        align: "center",
+        dataIndex: "chanDiMingCheng",
+        key: "chanDiMingCheng"
+      },
+      {
+        title: "期初结转",
+        align: "center",
+        children: [
+          {
+            title: "期初数量",
             align: "center",
             dataIndex: "qcjzQiChuShuLiang",
             key: "qcjzQiChuShuLiang",
@@ -591,11 +631,11 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
         "YaoPinKuCunChaXun",
         [
             {
-                title: "医疗机构",
-                align: "center",
-                dataIndex: "yiLiaoJiGou",
-                key: "yiLiaoJiGou",
-            }, {
+            title: "医疗机构",
+            align: "center",
+            dataIndex: "yiLiaoJiGou",
+            key: "yiLiaoJiGou",
+        }, {
             title: "日期",
             align: "center",
             dataIndex: "riQi",
@@ -681,11 +721,11 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
         "RenShiTongJiChaXun",
         [
             {
-                title: "医疗机构",
-                align: "center",
-                dataIndex: "yiLiaoJiGou",
-                key: "yiLiaoJiGou",
-            }, {
+            title: "医疗机构",
+            align: "center",
+            dataIndex: "yiLiaoJiGou",
+            key: "yiLiaoJiGou",
+        }, {
             title: "日期",
             align: "center",
             dataIndex: "riQi",
@@ -751,11 +791,11 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
         "GuaHaoJiLu",
         [
             {
-                title: "医疗机构",
-                align: "center",
-                dataIndex: "yiLiaoJiGou",
-                key: "yiLiaoJiGou",
-            }, {
+            title: "医疗机构",
+            align: "center",
+            dataIndex: "yiLiaoJiGou",
+            key: "yiLiaoJiGou",
+        }, {
             title: "就诊科室",
             align: "center",
             dataIndex: "jiuZhenKeShi",
@@ -814,8 +854,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
     ],
     [
         "YiShiGongZuoLiangTongJi",
-        [
-            {
+        [{
             title: "医疗机构",
             align: "center",
             dataIndex: "yiLiaoJiGou",
@@ -1042,7 +1081,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "caoYaoJunTieFeiYong",
         }
         ]
-    ], [
+    ],[
         "MenJiZhenZhenDuan",
         [{
             title: "医疗机构",
@@ -1076,7 +1115,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "renCi",
         }
         ]
-    ], [
+    ],[
         "YiJiKeShiGongZuoLiang",
         [
             {
@@ -1126,7 +1165,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "jinE",
         }
         ]
-    ], [
+    ],[
         "ShouShuKeShiGongZuoLiang",
         [
             {
@@ -1151,7 +1190,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "heJi",
         }
         ]
-    ], [
+    ],[
         "ZaiYuanBingRenFenBu",
         [{
             title: "医疗机构",
@@ -1180,7 +1219,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "zaiYuanRenShu",
         }
         ]
-    ], [
+    ],[
         "ZaiYuanJiBingFenBu",
         [
             {
@@ -1215,9 +1254,9 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "renCi",
         }
         ]
-    ], [
+    ],[
         "ZaiYuanWeiJiBingRen",
-        [{
+        [ {
             title: "医疗机构",
             align: "center",
             dataIndex: "yiLiaoJiGou",
@@ -1354,9 +1393,9 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "kaiDanYiSheng",
         }
         ]
-    ], [
+    ],[
         "ChuYuanSiWangBingRen",
-        [{
+        [ {
             title: "医疗机构",
             align: "center",
             dataIndex: "yiLiaoJiGou",
@@ -1403,9 +1442,9 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "siWangRiQi",
         }
         ]
-    ], [
+    ],[
         "ChuangWeiShiYong",
-        [{
+        [ {
             title: "医疗机构",
             align: "center",
             dataIndex: "yiLiaoJiGou",
@@ -1477,7 +1516,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "daiRuKe",
         }
         ]
-    ], [
+    ],[
         "ZhuYuanBingRenZiLiao",
         [
             {
@@ -1577,7 +1616,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "caoZuoYuan",
         }
         ]
-    ], [
+    ],[
         "FaDingChuanRanTongJi",
         [
             {
@@ -1622,7 +1661,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "benJiSiWangShu",
         }
         ]
-    ], [
+    ],[
         "FaDingChuanRanFaBing",
         [
             {
@@ -1667,7 +1706,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "tongBi",
         }
         ]
-    ], [
+    ],[
         "FaDingChuanRanFenBu",
         [
             {
@@ -1697,7 +1736,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "huanBingRenShu",
         }
         ]
-    ], [
+    ],[
         "ManXingBingJiDuHuiZong",
         [
             {
@@ -2207,7 +2246,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "dwxjJiMoHuanBingZongShu",
         }
         ]
-    ], [
+    ],[
         "HisZhongDianManXingBing",
         [
             {
@@ -2307,7 +2346,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "jsbYueMoHuanBingShu",
         }
         ]
-    ], [
+    ],[
         "YuanChengHuiZhen",
         [
             {
@@ -2357,7 +2396,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "huiZhenChaoShiShuLiang",
         }
         ]
-    ], [
+    ],[
         "YuanChengMenZhen",
         [
             {
@@ -2402,7 +2441,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "pingJunPaiDuiHaoShi",
         }
         ]
-    ], [
+    ],[
         "ShuangXiangZhuanZhen",
         [
             {
@@ -2437,7 +2476,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "byShangZhuanHuanZheShu",
         }
         ]
-    ], [
+    ],[
         "ZhuYuanBingRenZiLiao",
         [
             {
@@ -2537,7 +2576,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "caoZuoYuan",
         }
         ]
-    ], [
+    ],[
         "QuYuYingXiangTongJi",
         [
             {
@@ -2587,7 +2626,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "quYuYangXingLvBiLi",
         }
         ]
-    ], [
+    ],[
         "QuYuYiShengGongZuo",
         [
             {
@@ -2617,7 +2656,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "baoGaoShuLiang",
         }
         ]
-    ], [
+    ],[
         "QuYuSheBeiTongJi",
         [
             {
@@ -2647,7 +2686,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "paiPianShuLiang",
         }
         ]
-    ], [
+    ],[
         "QuYuYiShengGongZuo",
         [
             {
@@ -2677,7 +2716,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "baoGaoShuLiang",
         }
         ]
-    ], [
+    ],[
         "QuYuKuaYuanBaoGao",
         [
             {
@@ -2717,7 +2756,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "baoGaoRiQiShiJian",
         }
         ]
-    ], [
+    ],[
         "JianYanBiaoBenTongJi",
         [
             {
@@ -2792,7 +2831,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "zongJi",
         }
         ]
-    ], [
+    ],[
         "MenZhenGuaZhangHuiZong",
         [
             {
@@ -2817,7 +2856,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "guaZhangJinE",
         }
         ]
-    ], [
+    ],[
         "MenZhenGuaZhangTongJi",
         [
             {
@@ -2862,7 +2901,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "zhiBiaoRen",
         }
         ]
-    ], [
+    ],[
         "MenZhenHuiZongGeRen",
         [
             {
@@ -2917,7 +2956,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "huiZongGongHao",
         }
         ]
-    ], [
+    ],[
         "MenZhenHuiZongQingDan",
         [
             {
@@ -2972,7 +3011,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "xianJin",
         }
         ]
-    ], [
+    ],[
         "MenZhenHuiZongYue",
         [
             {
@@ -3057,7 +3096,107 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "heJi",
         }
         ]
-    ], [
+    ],[
+        "MenZhenKaiDanFeiYong",
+        [
+            {
+                title: "医疗机构",
+                align: "center",
+                dataIndex: "yiLiaoJiGou",
+                key: "yiLiaoJiGou",
+            }, {
+            title: "日期",
+            align: "center",
+            dataIndex: "riQi",
+            key: "riQi",
+        }, {
+            title: "科室",
+            align: "center",
+            dataIndex: "keShi",
+            key: "keShi",
+        }, {
+            title: "人次",
+            align: "center",
+            dataIndex: "renCi",
+            key: "renCi",
+        }, {
+            title: "西药费",
+            align: "center",
+            dataIndex: "xiYaoFei",
+            key: "xiYaoFei",
+        }, {
+            title: "成药费",
+            align: "center",
+            dataIndex: "chengYaoFei",
+            key: "chengYaoFei",
+        }, {
+            title: "草药费",
+            align: "center",
+            dataIndex: "caoYaoFei",
+            key: "caoYaoFei",
+        }, {
+            title: "检查费",
+            align: "center",
+            dataIndex: "jianChaFei",
+            key: "jianChaFei",
+        }, {
+            title: "治疗费",
+            align: "center",
+            dataIndex: "zhiLiaoFei",
+            key: "zhiLiaoFei",
+        }, {
+            title: "CT费",
+            align: "center",
+            dataIndex: "ctFei",
+            key: "ctFei",
+        }, {
+            title: "放射费",
+            align: "center",
+            dataIndex: "fangSheFei",
+            key: "fangSheFei",
+        }, {
+            title: "手术费",
+            align: "center",
+            dataIndex: "shouShuFei",
+            key: "shouShuFei",
+        }, {
+            title: "化验费",
+            align: "center",
+            dataIndex: "huaYanFei",
+            key: "huaYanFei",
+        }, {
+            title: "其他费",
+            align: "center",
+            dataIndex: "qiTaFei",
+            key: "qiTaFei",
+        }, {
+            title: "诊察费",
+            align: "center",
+            dataIndex: "zhenChaFei",
+            key: "zhenChaFei",
+        }, {
+            title: "护理费",
+            align: "center",
+            dataIndex: "huLiFei",
+            key: "huLiFei",
+        }, {
+            title: "材料费",
+            align: "center",
+            dataIndex: "caiLiaoFei",
+            key: "caiLiaoFei",
+        }, {
+            title: "麻醉费",
+            align: "center",
+            dataIndex: "maZuiFei",
+            key: "maZuiFei",
+        }, {
+            title: "合计",
+            align: "center",
+            dataIndex: "heJi",
+            key: "heJi",
+        }
+        ]
+    ],[
         "MenZhenKaiDanKeShiFei",
         [
             {
@@ -3157,7 +3296,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "maZuiFei",
         }
         ]
-    ], [
+    ],[
         "MenZhenKeShiFeiYong",
         [
             {
@@ -3332,7 +3471,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "qiTa",
         }
         ]
-    ], [
+    ],[
         "MenZhenRiZhi",
         [
             {
@@ -3417,7 +3556,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "shenFenZheng",
         }
         ]
-    ], [
+    ],[
         "MenZhenYeWuShouRu",
         [
             {
@@ -3507,7 +3646,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "xiangMuDaLei",
         }
         ]
-    ], [
+    ],[
         "QianFeiKongZhiChaXun",
         [
             {
@@ -3562,7 +3701,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "yuJiaoHeJi",
         }
         ]
-    ], [
+    ],[
         "ChuYuanBingRenFeiYong",
         [
             {
@@ -3667,7 +3806,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "heJi",
         }
         ]
-    ], [
+    ],[
         "ChuYuanBingRenJieZhang",
         [
             {
@@ -3727,7 +3866,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "qiTaJinE",
         }
         ]
-    ], [
+    ],[
         "ChuYuanBingRenShouRu",
         [
             {
@@ -3932,7 +4071,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "menZhenZhuYuan",
         }
         ]
-    ], [
+    ],[
         "DingDianShenQingHeDui",
         [
             {
@@ -3982,7 +4121,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "shenQingBoFu",
         }
         ]
-    ], [
+    ],[
         "ZhuYuanQingDan",
         [
             {
@@ -4052,10 +4191,13 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             key: "jinHangKaHeJi",
         }
         ]
-    ], [
+    ],[
         "ZhuYuanRiBao",
-        []
-    ], [
+        [
+            //住院日报
+            //行转列
+        ]
+    ],[
         "LinChuangJianYan",
         [
             {
@@ -4088,51 +4230,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<str
             align: "center",
             dataIndex: "queRenHaoShi",
             key: "queRenHaoShi",
-        }
-        ]
-    ],[
-        "ZhuYuanHuoShiFeiGuaZhang",
-        [
-            {
-                title: "医疗机构",
-                align: "center",
-                dataIndex: "yiLiaoJiGou",
-                key: "yiLiaoJiGou",
-            }, {
-            title: "日期",
-            align: "center",
-            dataIndex: "riQi",
-            key: "riQi",
-        }, {
-            title: "病区",
-            align: "center",
-            dataIndex: "bingQu",
-            key: "bingQu",
-        }, {
-            title: "科室",
-            align: "center",
-            dataIndex: "keShi",
-            key: "keShi",
-        }, {
-            title: "监管费",
-            align: "center",
-            dataIndex: "jianGuanFei",
-            key: "jianGuanFei",
-        }, {
-            title: "卫生费",
-            align: "center",
-            dataIndex: "weiShengFei",
-            key: "weiShengFei",
-        }, {
-            title: "伙食费",
-            align: "center",
-            dataIndex: "huoShiFei",
-            key: "huoShiFei",
-        }, {
-            title: "合  计",
-            align: "center",
-            dataIndex: "heJi",
-            key: "heJi",
         }
         ]
     ]

@@ -6,7 +6,6 @@ import { FormComponentProps } from "antd/lib/form";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getTableDataSource } from "../redux/action/ActionSaga";
-import { getTransformData } from "../redux/reselect/selectors";
 import * as moment from "moment";
 import ReactHTMLTableToExcel from "../component/ReactHTMLTableToExcel";
 import * as ReactDOM from "react-dom";
@@ -209,7 +208,7 @@ class BocoTable extends React.Component<IProps> {
 }
 const mapStateToProps = (state: any) => {
   return {
-    data: getTransformData(state),
+    data: state.data,
     formData: state.toJS()
   };
 };

@@ -37,6 +37,10 @@ const PharmacyPaymentsTable = loadable({
   loader: () => import("../views/PharmacyPaymentsTable"),
   loading: Loading
 });
+const InfectiousDiseaseStatisticsTable = loadable({
+  loader: () => import("../views/InfectiousDiseaseStatisticsTable"),
+  loading: Loading
+});
 const RegulationConfigs: RouteConfig[] = [
   {
     path: "/administrativeDepartment/hospitalFinancial/outpatientBillingFee",
@@ -44,19 +48,17 @@ const RegulationConfigs: RouteConfig[] = [
       <BocoTable
         title={"门诊开单费用统计"}
         tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
-        formStructure={[
-          {
-            value: "name",
-            text: "选择库房",
-            url: ""
-          }
-        ]}
       />
     )
   },
   {
     path: "/administrativeDepartment/hospitalFinancial/paymentOfOutpatient",
-    component: () => <BocoTable title={"门诊挂账统计"} />
+    component: () => (
+      <BocoTable
+        title={"门诊挂账统计"}
+        tableTitle={NormalTableTitleConfig.get("MenZhenGuaZhangTongJi")}
+      />
+    )
   },
   {
     path: "/administrativeDepartment/hospitalFinancial/advancePaymentPatient",
@@ -77,18 +79,28 @@ const RegulationConfigs: RouteConfig[] = [
   {
     path:
       "/administrativeDepartment/hospitalFinancial/dischargePatientDepartment",
-    component: () => <BocoTable title={"出院病人病区科室汇总"} />
+    component: () => (
+      <BocoTable
+        title={"出院病人病区科室汇总"}
+        tableTitle={NormalTableTitleConfig.get("ChuYuanBingRenBingQu")}
+      />
+    )
   },
   {
     path: "/administrativeDepartment/hospitalFinancial/hospitalPatientLedger",
-    component: () => <BocoTable title={"在院病人总账报表"} />
+    component: () => (
+      <BocoTable
+        title={"在院病人总账报表"}
+        tableTitle={NormalTableTitleConfig.get("ZaiYuanBingRenZongZhang")}
+      />
+    )
   },
   {
     path: "/administrativeDepartment/drugQuery/dugDeliveryAndStorage",
     component: () => (
       <BocoTable
         title={"药品收发存表"}
-        tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
+        tableTitle={NormalTableTitleConfig.get("YaoPinShouFaCunBiao")}
         formStructure={[
           {
             value: "name",
@@ -118,7 +130,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"药品库存查询"}
-        tableTitle={NormalTableTitleConfig.get("YuJiaoKuanBingRenMingXi")}
+        tableTitle={NormalTableTitleConfig.get("YaoPinKuCunChaXun")}
         formStructure={[
           {
             value: "name",
@@ -134,7 +146,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"人事统计查询"}
-        tableTitle={NormalTableTitleConfig.get("YuJiaoKuanBingRenMingXi")}
+        tableTitle={NormalTableTitleConfig.get("RenShiTongJiChaXun")}
         formStructure={[
           {
             value: "name",
@@ -164,7 +176,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"门急诊流量分析"}
-        tableTitle={NormalTableTitleConfig.get("YuJiaoKuanBingRenMingXi")}
+        tableTitle={NormalTableTitleConfig.get("MenZhenRiZhi")}
         formStructure={[
           {
             value: "name",
@@ -185,7 +197,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"门急诊挂号分析"}
-        tableTitle={NormalTableTitleConfig.get("YuJiaoKuanBingRenMingXi")}
+        tableTitle={NormalTableTitleConfig.get("GuaHaoJiLu")}
         formStructure={[
           {
             value: "name",
@@ -199,7 +211,12 @@ const RegulationConfigs: RouteConfig[] = [
   {
     path:
       "/administrativeDepartment/medicalBusiness/outpatientEmergencyPhysician",
-    component: () => <BocoTable title={"门急诊医师工作量统计"} />
+    component: () => (
+      <BocoTable
+        title={"门急诊医师工作量统计"}
+        tableTitle={NormalTableTitleConfig.get("YiShiGongZuoLiangTongJi")}
+      />
+    )
   },
   {
     path:
@@ -207,7 +224,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"医保数据统计"}
-        tableTitle={NormalTableTitleConfig.get("YuJiaoKuanBingRenMingXi")}
+        tableTitle={NormalTableTitleConfig.get("YiBaoShuJuTongJi")}
         formStructure={[
           {
             value: "name",
@@ -221,14 +238,19 @@ const RegulationConfigs: RouteConfig[] = [
   {
     path:
       "/administrativeDepartment/medicalBusiness/outpatientEmergencyIllness",
-    component: () => <BocoTable title={"门急诊疾病统计分析"} />
+    component: () => (
+      <BocoTable
+        title={"门急诊疾病统计分析"}
+        tableTitle={NormalTableTitleConfig.get("MenJiZhenZhenDuan")}
+      />
+    )
   },
   {
     path: "/administrativeDepartment/medicalBusiness/medicalLaboratory",
     component: () => (
       <BocoTable
         title={"医技科室工作量统计"}
-        tableTitle={NormalTableTitleConfig.get("YuJiaoKuanBingRenMingXi")}
+        tableTitle={NormalTableTitleConfig.get("YiJiKeShiGongZuoLiang")}
         formStructure={[
           {
             value: "name",
@@ -247,18 +269,28 @@ const RegulationConfigs: RouteConfig[] = [
   {
     path:
       "/administrativeDepartment/medicalBusiness/surgicalDepartmentWorkload",
-    component: () => <BocoTable title={"手术科室工作量统计"} />
+    component: () => (
+      <BocoTable
+        title={"手术科室工作量统计"}
+        tableTitle={NormalTableTitleConfig.get("ShouShuKeShiGongZuoLiang")}
+      />
+    )
   },
   {
     path: "/administrativeDepartment/medicalBusiness/distributionPatients",
-    component: () => <BocoTable title={"在院病人分布状况"} />
+    component: () => (
+      <BocoTable
+        title={"在院病人分布状况"}
+        tableTitle={NormalTableTitleConfig.get("ZaiYuanBingRenFenBu")}
+      />
+    )
   },
   {
     path: "/administrativeDepartment/medicalBusiness/distributionDisease",
     component: () => (
       <BocoTable
         title={"在院疾病分布情况"}
-        tableTitle={NormalTableTitleConfig.get("YuJiaoKuanBingRenMingXi")}
+        tableTitle={NormalTableTitleConfig.get("ZaiYuanJiBingFenBu")}
         formStructure={[
           {
             value: "name",
@@ -271,18 +303,27 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/administrativeDepartment/medicalBusiness/criticalPatients",
-    component: () => <BocoTable title={"在院危急病人清单"} />
+    component: () => (
+      <BocoTable
+        title={"在院危急病人清单"}
+        tableTitle={NormalTableTitleConfig.get("ZaiYuanWeiJiBingRen")}
+      />
+    )
   },
   {
     path: "/administrativeDepartment/medicalBusiness/dischargeDeath",
-    component: () => <BocoTable title={"出院死亡病人清单"} />
+    component: () => (
+      <BocoTable
+        title={"出院死亡病人清单"}
+        tableTitle={NormalTableTitleConfig.get("ChuYuanSiWangBingRen")}
+      />
+    )
   },
   {
     path: "/administrativeDepartment/medicalBusiness/diseaseHospital",
     component: () => (
       <BocoTable
         title={"出院疾病统计分析"}
-        tableTitle={NormalTableTitleConfig.get("YuJiaoKuanBingRenMingXi")}
         formStructure={[
           {
             value: "name",
@@ -295,16 +336,26 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/administrativeDepartment/medicalBusiness/bedUsing",
-    component: () => <BocoTable title={"床位使用状况分析"} />
+    component: () => (
+      <BocoTable
+        title={"床位使用状况分析"}
+        tableTitle={NormalTableTitleConfig.get("ChuangWeiShiYong")}
+      />
+    )
   },
   {
     path:
       "/administrativeDepartment/patientManagement/checkInpatientInformation",
-    component: () => <BocoTable title={"查询住院病人资料"} />
+    component: () => (
+      <BocoTable
+        title={"查询住院病人资料"}
+        tableTitle={NormalTableTitleConfig.get("ZhuYuanBingRenZiLiao")}
+      />
+    )
   },
   {
     path: "/administrativeDepartment/communicableDiseasesControl/query",
-    component: () => <BocoTable title={"传染病统计查询"} />
+    component:  InfectiousDiseaseStatisticsTable
   },
   {
     path: "/administrativeDepartment/slowDiseaseManagement/query",
@@ -312,7 +363,12 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/administrativeDepartment/criticalPatients/query",
-    component: () => <BocoTable title={"危重病人统计查询"} />
+    component: () => (
+      <BocoTable
+        title={"危重病人统计查询"}
+        tableTitle={NormalTableTitleConfig.get("ZaiYuanWeiJiBingRen")}
+      />
+    )
   },
   {
     path: "/administrativeDepartment/telemedicine/query",
@@ -320,11 +376,17 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/administrativeDepartment/dualReferral/query",
-    component: () => <BocoTable title={"报表管理统计查询"} />
+
+    component: () => (
+      <BocoTable
+        title={"双向转诊统计表"}
+        tableTitle={NormalTableTitleConfig.get("ShuangXiangZhuanZhen")}
+      />
+    )
   },
   {
     path: "/administrativeDepartment/statementManagement/query",
-    component: () => <BocoTable title={"双向转诊统计表"} />
+    component: () => <BocoTable title={"报表管理统计查询"} />
   },
   /** ****************** */
   {
@@ -332,7 +394,8 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"门诊就诊病人查询"}
-        tableTitle={NormalTableTitleConfig.get("YuJiaoKuanBingRenMingXi")}
+        tableTitle={NormalTableTitleConfig.get("MenZhenRiZhi")}
+
         formStructure={[
           {
             value: "name",
@@ -409,7 +472,12 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/criticalValue/clinicalValidation",
-    component: () => <BocoTable title={"临床检验实验室危急值"} />
+    component: () => (
+      <BocoTable
+        title={"临床检验实验室危急值"}
+        tableTitle={NormalTableTitleConfig.get("LinChuangJianYan")}
+      />
+    )
   }
 ];
 
