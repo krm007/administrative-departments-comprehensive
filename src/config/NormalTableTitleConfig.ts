@@ -1088,16 +1088,22 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         key: "chuangWeiShiYongLv"
       },
       {
-        title: "ICU住院床日",
+        title: "ICU",
         align: "center",
-        dataIndex: "icuZhuYuanChuangRi",
-        key: "icuZhuYuanChuangRi"
-      },
-      {
-        title: "ICU住院人次",
-        align: "center",
-        dataIndex: "icuZhuYuanRenCi",
-        key: "icuZhuYuanRenCi"
+        children: [
+          {
+            title: "ICU住院床日",
+            align: "center",
+            dataIndex: "icuZhuYuanChuangRi",
+            key: "icuZhuYuanChuangRi"
+          },
+          {
+            title: "ICU住院人次",
+            align: "center",
+            dataIndex: "icuZhuYuanRenCi",
+            key: "icuZhuYuanRenCi"
+          }
+        ]
       },
       {
         title: "手术人次",

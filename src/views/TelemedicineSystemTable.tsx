@@ -2,8 +2,8 @@ import { createStyles, Theme, withStyles } from "@material-ui/core/styles";
 import { WithStyles } from "@material-ui/core/styles/withStyles";
 import * as React from "react";
 import { Tabs } from "antd";
-import NormalTableTitleConfig from "../config/NormalTableTitleConfig";
 import BocoTable from "./BocoTable";
+import MoreTableTitleConfig from "../config/MoreTableTitleConfig";
 
 const styles = (theme: Theme) =>
   createStyles<"root">({
@@ -27,14 +27,14 @@ class TelemedicineSystemTable extends React.Component<Iprops> {
         <Tabs defaultActiveKey="2">
           <Tabs.TabPane tab={<span>远程会诊统计</span>} key="1">
             <BocoTable
-              title={"慢性病月度汇总表"}
-              tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
+              title={"远程会诊统计"}
+              tableTitle={MoreTableTitleConfig.get("YuanChengHuiZhen")}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>远程门诊统计</span>} key="2">
             <BocoTable
-              title={"慢性病季度汇总表"}
-              tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
+              title={"远程门诊统计"}
+              tableTitle={MoreTableTitleConfig.get("YuanChengMenZhen")}
             />
           </Tabs.TabPane>
         </Tabs>

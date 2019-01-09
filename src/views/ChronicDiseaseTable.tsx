@@ -2,8 +2,8 @@ import { createStyles, Theme, withStyles } from "@material-ui/core/styles";
 import { WithStyles } from "@material-ui/core/styles/withStyles";
 import * as React from "react";
 import { Tabs } from "antd";
-import NormalTableTitleConfig from "../config/NormalTableTitleConfig";
 import BocoTable from "./BocoTable";
+import MoreTableTitleConfig from "../config/MoreTableTitleConfig";
 
 const styles = (theme: Theme) =>
   createStyles<"root">({
@@ -28,13 +28,13 @@ class ChronicDiseaseTable extends React.Component<Iprops> {
           <Tabs.TabPane tab={<span>慢性病月度汇总表</span>} key="1">
             <BocoTable
               title={"慢性病月度汇总表"}
-              tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
+              tableTitle={MoreTableTitleConfig.get("HisZhongDianManXingBing")}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>慢性病季度汇总表</span>} key="2">
             <BocoTable
               title={"慢性病季度汇总表"}
-              tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
+              tableTitle={MoreTableTitleConfig.get("ZhongDianManXingBing")}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>慢性病图表分析</span>} key="3">
