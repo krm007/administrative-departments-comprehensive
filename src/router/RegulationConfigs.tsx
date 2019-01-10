@@ -161,16 +161,16 @@ const RegulationConfigs: RouteConfig[] = [
   {
     path:
       "/administrativeDepartment/generalAffairsManagement/departmentOfRecipients",
-    component: () => <BocoTable title={"科室领用分析"} />
+    component: () => <BocoTable title={"科室领用分析"} spin={true}/>
   },
   {
     path:
       "/administrativeDepartment/generalAffairsManagement/warehouseInventory",
-    component: () => <BocoTable title={"库房库存分析"} />
+    component: () => <BocoTable title={"库房库存分析"} spin={true}/>
   },
   {
     path: "/administrativeDepartment/generalAffairsManagement/equipmentList",
-    component: () => <BocoTable title={"在用设备清单"} />
+    component: () => <BocoTable title={"在用设备清单"} spin={true}/>
   },
   {
     path: "/administrativeDepartment/medicalBusiness/outpatientEmergencyFlow",
@@ -393,6 +393,10 @@ const RegulationConfigs: RouteConfig[] = [
   /** ****************** */
   /** 全面质量管理（未做） */
   {
+    path:"/totalQualityManage",
+    component: () => <BocoTable title={"全面质量管理"} spin={true} />
+  },
+  {
     path: "/decisionAnalysisReport/comprehensiveQuery/outpatient",
     component: () => (
       <BocoTable
@@ -470,6 +474,10 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => <BocoTable title={"病种分类统计"} spin={true} />
   },
   /** 质量控制管理（未做） */
+  {
+    path:"/qualityControlManage",
+    component: () => <BocoTable title={"质量控制管理"} spin={true} />
+  },
   {
     path: "/criticalValue/doctorWorkstation",
     component: () => <BocoTable title={"医生工作站危急值"} spin={true} />
