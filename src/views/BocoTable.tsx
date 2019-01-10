@@ -54,8 +54,7 @@ class BocoTable extends React.Component<IProps> {
   }
 
   public componentDidMount(): void {
-    this.getData({ limit: 200000 });
-
+    this.getData({});
     const tableCon = ReactDOM.findDOMNode(this.tableRefs);
     if (tableCon instanceof Element) {
       const table = tableCon.querySelector("table");
@@ -110,6 +109,7 @@ class BocoTable extends React.Component<IProps> {
    * 动态生成表单
    */
   public FormBuild = (): any => {
+    alert(JSON.stringify(this.props.formStructure));
     if (this.props.formStructure) {
       return this.props.formStructure.map((value, index) => {
         return (
@@ -117,8 +117,10 @@ class BocoTable extends React.Component<IProps> {
             {this.props.form.getFieldDecorator(value.value)(
               <Select placeholder={value.text} style={{ width: 174 }}>
                 {() => {
+                  alert(JSON.stringify(this.props.formData));
                   if (this.props.formData) {
                     const selectList = this.props.formData[value.value];
+                    alert(JSON.stringify(selectList));
                     if (selectList) {
                       return selectList.map((value1: any) => {
                         return (
@@ -184,10 +186,7 @@ class BocoTable extends React.Component<IProps> {
             ) : (
               <Form.Item>
                 {getFieldDecorator("timeOrder", {
-                  initialValue: [
-                    moment().subtract(1, "days"),
-                    moment().add(1, "days")
-                  ]
+                  initialValue: [moment().subtract(1, "days"), moment()]
                 })(<DatePicker.RangePicker />)}
               </Form.Item>
             )}
@@ -207,15 +206,18 @@ class BocoTable extends React.Component<IProps> {
             title={this.tableTitle}
             size={"small"}
             pagination={{
-              /*pageSize: dataSoruce.pageSize,
-              current: dataSoruce.startRow - 1,
-              total: dataSoruce.total,*/
+              pageSize: dataSoruce.pageSize,
+              current: dataSoruce.pageNum,
+              total: dataSoruce.total,
               showSizeChanger: true,
               showQuickJumper: true,
-              pageSizeOptions: ["10", "20", "30", "40", "1000000"],
-              /*onChange: (page, pageSize) => {
+              pageSizeOptions: ["10", "20", "30", "40", "10000000"],
+              onShowSizeChange: (current: number, size: number) => {
+                this.handleTableChange(current, size);
+              },
+              onChange: (page, pageSize) => {
                 this.handleTableChange(page, pageSize);
-              },*/
+              },
               showTotal: total => `共 ${total} 条数据`
             }}
           />

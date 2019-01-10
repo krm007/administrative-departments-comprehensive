@@ -211,8 +211,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
       {
         title: "编号",
         align: "center",
-        dataIndex: "id",
-        key: "id",
+        key: "text",
         render: (text: any, record: any, index: number) => {
           return index;
         }

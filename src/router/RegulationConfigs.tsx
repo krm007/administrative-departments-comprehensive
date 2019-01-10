@@ -47,6 +47,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"门诊开单费用统计"}
+        url={"/menZhenKaiDanFeiYong/page"}
         tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
       />
     )
