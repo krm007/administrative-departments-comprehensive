@@ -116,15 +116,23 @@ class BocoTable extends React.Component<IProps> {
           <Form.Item key={value.text}>
             {this.props.form.getFieldDecorator(value.value)(
               <Select placeholder={value.text} style={{ width: 174 }}>
-                {this.props.formData[value.value]
-                  ? this.props.formData[value.value].map((value1: any) => {
-                      return (
-                        <Select.Option value={value1.value} key={value1.value}>
-                          {value1.text}
-                        </Select.Option>
-                      );
-                    })
-                  : null}
+                {() => {
+                  if (this.props.formData) {
+                    const selectList = this.props.formData[value.value];
+                    if (selectList) {
+                      return selectList.map((value1: any) => {
+                        return (
+                          <Select.Option
+                            value={value1.value}
+                            key={value1.value}
+                          >
+                            {value1.text}
+                          </Select.Option>
+                        );
+                      });
+                    }
+                  }
+                }}
               </Select>
             )}
           </Form.Item>
@@ -200,7 +208,7 @@ class BocoTable extends React.Component<IProps> {
             size={"small"}
             pagination={{
               pageSize: dataSoruce.pageSize,
-              current: dataSoruce.pageNum,
+              current: dataSoruce.startRow - 1,
               total: dataSoruce.total,
               showSizeChanger: true,
               showQuickJumper: true,

@@ -8,9 +8,9 @@ const getTableData = (state: any) =>
 export const getTransformTableData = createSelector(
   [getTableData],
   data => {
-    const dataTable = data.get("data");
+    const dataTable = data.toJS();
     if (dataTable) {
-      return dataTable.toJS();
+      return dataTable.data;
     } else {
       return null;
     }
@@ -22,9 +22,9 @@ export const getTransformTableData = createSelector(
 export const getTransformFormData = createSelector(
   [getTableData],
   data => {
-    const dataForm = data.get("formData");
+    const dataForm = data.toJS();
     if (dataForm) {
-      return dataForm.toJS();
+      return dataForm.dataForm;
     } else {
       return {};
     }
