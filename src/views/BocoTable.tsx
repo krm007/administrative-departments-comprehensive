@@ -109,7 +109,6 @@ class BocoTable extends React.Component<IProps> {
    * 动态生成表单
    */
   public FormBuild = (): any => {
-    alert(JSON.stringify(this.props.formStructure));
     if (this.props.formStructure) {
       return this.props.formStructure.map((value, index) => {
         return (
@@ -117,10 +116,8 @@ class BocoTable extends React.Component<IProps> {
             {this.props.form.getFieldDecorator(value.value)(
               <Select placeholder={value.text} style={{ width: 174 }}>
                 {() => {
-                  alert(JSON.stringify(this.props.formData));
                   if (this.props.formData) {
                     const selectList = this.props.formData[value.value];
-                    alert(JSON.stringify(selectList));
                     if (selectList) {
                       return selectList.map((value1: any) => {
                         return (
