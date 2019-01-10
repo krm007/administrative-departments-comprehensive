@@ -48,14 +48,12 @@ interface IProps extends WithStyles<typeof styles>, FormComponentProps {
  */
 class BocoTable extends React.Component<IProps> {
   private tableRefs: any;
-  private formData: object;
   constructor(props: IProps) {
     super(props);
   }
 
   public componentDidMount(): void {
-    this.getData({ limit: 200000 });
-
+    this.getData(this.getFormDataValue());
     const tableCon = ReactDOM.findDOMNode(this.tableRefs);
     if (tableCon instanceof Element) {
       const table = tableCon.querySelector("table");
@@ -76,7 +74,8 @@ class BocoTable extends React.Component<IProps> {
    * 分页、排序、筛选变化时触发
    */
   public handleTableChange = (page: number, size?: number) => {
-    this.getData({ offset: page, limit: size, ...this.formData });
+    const formData = this.getFormDataValue();
+    this.getData({ offset: page, limit: size, ...formData });
   };
   /**
    * 表格的title
@@ -112,12 +111,12 @@ class BocoTable extends React.Component<IProps> {
   public FormBuild = (): any => {
     if (this.props.formStructure) {
       return this.props.formStructure.map((value, index) => {
-        return (
-          <Form.Item key={value.text}>
-            {this.props.form.getFieldDecorator(value.value)(
-              <Select placeholder={value.text} style={{ width: 174 }}>
-                {() => {
-                  if (this.props.formData) {
+        if (this.props.formData) {
+          return (
+            <Form.Item key={value.text}>
+              {this.props.form.getFieldDecorator(value.value)(
+                <Select placeholder={value.text} style={{ width: 174 }}>
+                  {(() => {
                     const selectList = this.props.formData[value.value];
                     if (selectList) {
                       return selectList.map((value1: any) => {
@@ -126,17 +125,19 @@ class BocoTable extends React.Component<IProps> {
                             value={value1.value}
                             key={value1.value}
                           >
-                            {value1.text}
+                            {value1.key}
                           </Select.Option>
                         );
                       });
                     }
-                  }
-                }}
-              </Select>
-            )}
-          </Form.Item>
-        );
+                  })()}
+                </Select>
+              )}
+            </Form.Item>
+          );
+        } else {
+          return null;
+        }
       });
     } else {
       return;
@@ -144,16 +145,36 @@ class BocoTable extends React.Component<IProps> {
   };
 
   /**
+   * 获取表单数据
+   */
+  public getFormDataValue() {
+    const timeNow = this.props.form.getFieldValue("timeOrder");
+
+    let timeOrder: any;
+    if (timeNow !== null && timeNow !== "" && timeNow.length !== 0) {
+      if (this.props.month) {
+        timeOrder = {
+          month: moment(timeNow).format("YYYY-MM"),
+          timeOrder: null
+        };
+      } else {
+        timeOrder = {
+          startTime: moment(timeNow[0]).format("YYYY-MM-DD"),
+          endTime: moment(timeNow[1]).format("YYYY-MM-DD"),
+          timeOrder: null
+        };
+      }
+    }
+    const formDataPre = this.props.form.getFieldsValue();
+    return Object.assign(formDataPre, timeOrder);
+  }
+
+  /**
    * 按查询数据展示
    */
   public onSubmit = (event: React.FormEvent<any>) => {
     event.preventDefault();
-    const timeNow = moment(this.props.form.getFieldValue("timeOrder"));
-    this.formData = {
-      yljgdm: this.props.form.getFieldValue("yljgdm"),
-      createTime: timeNow.format("YYYY-MM")
-    };
-    this.getData(this.formData);
+    this.getData(this.getFormDataValue());
   };
   public render() {
     const { classes } = this.props;
@@ -184,10 +205,7 @@ class BocoTable extends React.Component<IProps> {
             ) : (
               <Form.Item>
                 {getFieldDecorator("timeOrder", {
-                  initialValue: [
-                    moment().subtract(1, "days"),
-                    moment().add(1, "days")
-                  ]
+                  initialValue: [moment().subtract(1, "days"), moment()]
                 })(<DatePicker.RangePicker />)}
               </Form.Item>
             )}
@@ -207,15 +225,18 @@ class BocoTable extends React.Component<IProps> {
             title={this.tableTitle}
             size={"small"}
             pagination={{
-              /*pageSize: dataSoruce.pageSize,
-              current: dataSoruce.startRow - 1,
-              total: dataSoruce.total,*/
+              pageSize: dataSoruce.pageSize,
+              current: dataSoruce.pageNum,
+              total: dataSoruce.total,
               showSizeChanger: true,
               showQuickJumper: true,
-              pageSizeOptions: ["10", "20", "30", "40", "1000000"],
-              /*onChange: (page, pageSize) => {
+              pageSizeOptions: ["10", "20", "30", "40", "10000000"],
+              onShowSizeChange: (current: number, size: number) => {
+                this.handleTableChange(current, size);
+              },
+              onChange: (page, pageSize) => {
                 this.handleTableChange(page, pageSize);
-              },*/
+              },
               showTotal: total => `共 ${total} 条数据`
             }}
           />

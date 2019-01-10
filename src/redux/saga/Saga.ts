@@ -27,9 +27,11 @@ function* getTableDataSaga(
       }
     );
     const structures = action.payload.formStructure;
-    for (const structure of structures) {
-      const response = yield call(service.post, structure.url);
-      formData[structure.value] = response.data;
+    if (structures) {
+      for (const structure of structures) {
+        const response = yield call(service.post, structure.url);
+        formData[structure.value] = response.data;
+      }
     }
     yield put(tableDataSource({ data: res.data, formData }));
   } catch (e) {
