@@ -1,4 +1,4 @@
-import { Modal } from "antd";
+import { message, Modal } from "antd";
 import Axios from "axios";
 import createHashHistory from "history/createHashHistory";
 
@@ -34,14 +34,14 @@ service.interceptors.response.use(
     if (error.response) {
       if (error.response.status === 500) {
         if (error.response.data.message) {
-          Modal.error({ content: error.response.data.message });
+          message.error(error.response.data.message );
         } else {
-          Modal.error({ content: "服务器错误" });
+          message.error( "服务器错误");
           console.log(error.response.data);
         }
       }
       if (error.response.status === 504 || error.response.status === 404) {
-        Modal.error({ content: "找不到服务器" });
+        message.error("找不到服务器" );
       }
       if (error.response.status === 401) {
         const historyApp = createHashHistory();

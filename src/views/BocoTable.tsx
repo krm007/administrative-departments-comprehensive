@@ -53,9 +53,7 @@ class BocoTable extends React.Component<IProps> {
   }
 
   public componentDidMount(): void {
-
     this.getData(this.getFormDataValue());
-    alert(JSON.stringify(this.getFormDataValue()));
     const tableCon = ReactDOM.findDOMNode(this.tableRefs);
     if (tableCon instanceof Element) {
       const table = tableCon.querySelector("table");
@@ -114,15 +112,9 @@ class BocoTable extends React.Component<IProps> {
     if (this.props.formStructure) {
       return this.props.formStructure.map((value, index) => {
         if (this.props.formData) {
-          let initValue;
-          if (value.initialValue) {
-            initValue = {
-              initialValue: this.props.formData[value.value][0].value
-            };
-          }
           return (
             <Form.Item key={value.text}>
-              {this.props.form.getFieldDecorator(value.value, initValue)(
+              {this.props.form.getFieldDecorator(value.value)(
                 <Select placeholder={value.text} style={{ width: 174 }}>
                   {(() => {
                     const selectList = this.props.formData[value.value];
