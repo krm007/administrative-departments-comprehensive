@@ -1,5 +1,5 @@
 import {ColumnProps} from "antd/lib/table";
-
+import { renderRowConbine} from "./renderRule";
 /**
  * 有合并单元格table
  */
@@ -27,6 +27,7 @@ const RowCombinTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
             align: "center",
             dataIndex: "feiLeiMingCheng",
             key: "feiLeiMingCheng",
+            render:renderRowConbine
         }, {
             title: "方式名称",
             align: "center",
@@ -78,6 +79,7 @@ const RowCombinTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
             align: "center",
             dataIndex: "fenLeiMingCheng",
             key: "fenLeiMingCheng",
+            render:renderRowConbine
         }, {
             title: "方式名称",
             align: "center",

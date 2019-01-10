@@ -325,6 +325,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"出院疾病统计分析"}
+        tableTitle={NormalTableTitleConfig.get("ZaiYuanJiBingFenBu")}
         formStructure={[
           {
             value: "name",
@@ -408,7 +409,12 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/decisionAnalysisReport/comprehensiveQuery/inpatient",
-    component: () => <BocoTable title={"在院病人查询"} />
+    component: () => (
+      <BocoTable
+        title={"在院病人查询"}
+        tableTitle={NormalTableTitleConfig.get("ZhuYuanBingRenZiLiao")}
+      />
+    )
   },
   {
     path: "/decisionAnalysisReport/comprehensiveQuery/remoteImage",
