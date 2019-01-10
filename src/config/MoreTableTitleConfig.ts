@@ -142,7 +142,7 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         key: "yiLiaoJiGou"
       },
       {
-        title: "日期:格式：年份+季度 2018Q1",
+        title: "日期",
         align: "center",
         dataIndex: "riQi",
         key: "riQi"
@@ -172,7 +172,7 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         key: "jiMoHuanBingShu"
       },
       {
-        title: "本年累计数:对方取不出来，后台取",
+        title: "本年累计数",
         align: "center",
         dataIndex: "benNianLeiJiShu",
         key: "benNianLeiJiShu"
@@ -195,7 +195,7 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         key: "yiLiaoJiGou"
       },
       {
-        title: "日期:格式：年份+季度 2018Q1",
+        title: "日期",
         align: "center",
         dataIndex: "riQi",
         key: "riQi"
@@ -225,7 +225,7 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         key: "huanBi"
       },
       {
-        title: "去年同季报告数:对方取不出来，后台取",
+        title: "去年同季报告数",
         align: "center",
         dataIndex: "quNianTongJiBaoGaoShu",
         key: "quNianTongJiBaoGaoShu"
@@ -254,7 +254,7 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         key: "riQi"
       },
       {
-        title: "地区:包括：杭州，宁波，湖州，金华，衢州，台州，丽水",
+        title: "地区",
         align: "center",
         dataIndex: "diQu",
         key: "diQu"
