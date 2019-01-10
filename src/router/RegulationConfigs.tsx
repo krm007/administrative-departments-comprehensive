@@ -391,6 +391,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => <BocoTable title={"报表管理统计查询"} spin={true} />
   },
   /** ****************** */
+  /** 全面质量管理（未做） */
   {
     path: "/decisionAnalysisReport/comprehensiveQuery/outpatient",
     component: () => (
@@ -468,6 +469,7 @@ const RegulationConfigs: RouteConfig[] = [
     path: "/decisionAnalysisReport/aidDecisionMaking/diseaseClass",
     component: () => <BocoTable title={"病种分类统计"} spin={true} />
   },
+  /** 质量控制管理（未做） */
   {
     path: "/criticalValue/doctorWorkstation",
     component: () => <BocoTable title={"医生工作站危急值"} spin={true} />
