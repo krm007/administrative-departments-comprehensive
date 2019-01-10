@@ -73,7 +73,8 @@ const RegulationConfigs: RouteConfig[] = [
           {
             value: "jiaoKuanFangShi",
             text: "交款方式",
-            url: "/yuJiaoKuanBingRenMingXi/getSelect"
+            url: "/yuJiaoKuanBingRenMingXi/getSelect",
+            initialValue: true
           }
         ]}
       />
@@ -168,16 +169,16 @@ const RegulationConfigs: RouteConfig[] = [
   {
     path:
       "/administrativeDepartment/generalAffairsManagement/departmentOfRecipients",
-    component: () => <BocoTable title={"科室领用分析"} spin={true}/>
+    component: () => <BocoTable title={"科室领用分析"} spin={true} />
   },
   {
     path:
       "/administrativeDepartment/generalAffairsManagement/warehouseInventory",
-    component: () => <BocoTable title={"库房库存分析"} spin={true}/>
+    component: () => <BocoTable title={"库房库存分析"} spin={true} />
   },
   {
     path: "/administrativeDepartment/generalAffairsManagement/equipmentList",
-    component: () => <BocoTable title={"在用设备清单"} spin={true}/>
+    component: () => <BocoTable title={"在用设备清单"} spin={true} />
   },
   {
     path: "/administrativeDepartment/medicalBusiness/outpatientEmergencyFlow",
@@ -416,7 +417,7 @@ const RegulationConfigs: RouteConfig[] = [
   /** ****************** */
   /** 全面质量管理（未做） */
   {
-    path:"/totalQualityManage",
+    path: "/totalQualityManage",
     component: () => <BocoTable title={"全面质量管理"} spin={true} />
   },
   {
@@ -500,7 +501,7 @@ const RegulationConfigs: RouteConfig[] = [
   },
   /** 质量控制管理（未做） */
   {
-    path:"/qualityControlManage",
+    path: "/qualityControlManage",
     component: () => <BocoTable title={"质量控制管理"} spin={true} />
   },
   {

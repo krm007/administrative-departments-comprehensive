@@ -24,7 +24,7 @@ export const getTransformFormData = createSelector(
   data => {
     const dataForm = data.toJS();
     if (dataForm) {
-      return dataForm.dataForm;
+      return dataForm.formData;
     } else {
       return {};
     }
