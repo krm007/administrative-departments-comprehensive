@@ -9,9 +9,11 @@ import { getTableDataSource } from "../redux/action/ActionSaga";
 import * as moment from "moment";
 import ReactHTMLTableToExcel from "../component/ReactHTMLTableToExcel";
 import * as ReactDOM from "react-dom";
-import { PaginationConfig } from "antd/lib/pagination";
-import { SorterResult } from "antd/lib/table";
-import { FormSelectData, FormStructure } from "../typings/tablePropsData";
+import {
+  BocoPage,
+  FormStructure
+} from "../typings/tablePropsData";
+import { getTransformData } from "../redux/reselect/selectors";
 
 const styles = (theme: Theme) =>
   createStyles<"root">({
@@ -19,6 +21,9 @@ const styles = (theme: Theme) =>
       padding: 20,
       "& .ant-table-middle > .ant-table-title": {
         padding: "20px 8px"
+      },
+      "& form": {
+        marginBottom: 20
       }
     }
   });
@@ -29,8 +34,8 @@ interface IProps extends WithStyles<typeof styles>, FormComponentProps {
   title?: string;
   formStructure?: FormStructure[];
   tableTitle?: [];
-  data?: [];
-  formData?: Map<string, FormSelectData[]>;
+  data?: BocoPage<any>;
+  formData?: any;
   serchData: (param: any) => void;
   month?: boolean;
   spin?: boolean;
@@ -42,9 +47,8 @@ interface IProps extends WithStyles<typeof styles>, FormComponentProps {
  * @date 2018/12/6-15:20
  */
 class BocoTable extends React.Component<IProps> {
-  private urlDO?: string;
   private tableRefs: any;
-
+  private formData: object;
   constructor(props: IProps) {
     super(props);
   }
@@ -61,28 +65,21 @@ class BocoTable extends React.Component<IProps> {
     }
   }
 
-  public getData(params: any, timeLast?: any) {
-    this.urlDO = this.props.url;
-    if (this.props.tableName) {
-      this.urlDO = this.props.tableName;
-    }
+  public getData(params: any) {
     this.props.serchData({
-      type: this.urlDO,
-      timeLast,
-      url: `/business/${this.props.url}/sums`,
+      url: this.props.url,
       params
     });
   }
   /**
    * 分页、排序、筛选变化时触发
    */
-  public handleTableChange = (
-    pagination: PaginationConfig,
-    filters: Record<keyof any, string[]>,
-    sorter: SorterResult<any>
-  ) => {
-    this.props.serchData(pagination);
+  public handleTableChange = (page: number, size?: number) => {
+    this.getData({ offset: page, limit: size, ...this.formData });
   };
+  /**
+   * 表格的title
+   */
   public tableTitle = (currentPageData: any[]) => (
     <span style={{ padding: "10px" }}>
       <img
@@ -95,7 +92,16 @@ class BocoTable extends React.Component<IProps> {
         }}
       />
       {this.props.title}
-      <br />
+      <span style={{ float: "right" }}>
+        <ReactHTMLTableToExcel
+          id="test-table-xls-button"
+          className="download-table-xls-button"
+          table="table-to-xls"
+          filename="tablexls"
+          sheet="tablexls"
+          buttonText="导出"
+        />
+      </span>
     </span>
   );
 
@@ -111,9 +117,9 @@ class BocoTable extends React.Component<IProps> {
               <Select placeholder={value.text} style={{ width: 174 }}>
                 {() => {
                   if (this.props.formData) {
-                    const selectList = this.props.formData.get(value.value);
+                    const selectList = this.props.formData[value.value];
                     if (selectList) {
-                      selectList.map((value1, index1) => {
+                      selectList.map((value1: any) => {
                         return (
                           <Select.Option
                             value={value1.value}
@@ -141,18 +147,17 @@ class BocoTable extends React.Component<IProps> {
    */
   public onSubmit = (event: React.FormEvent<any>) => {
     event.preventDefault();
-    const timeNow = moment(this.props.form.getFieldValue("createTime"));
-    this.getData(
-      {
-        yljgdm: this.props.form.getFieldValue("yljgdm"),
-        createTime: timeNow.format("YYYY-MM")
-      },
-      timeNow.subtract(1, "M").format("YYYY-MM")
-    );
+    const timeNow = moment(this.props.form.getFieldValue("timeOrder"));
+    this.formData = {
+      yljgdm: this.props.form.getFieldValue("yljgdm"),
+      createTime: timeNow.format("YYYY-MM")
+    };
+    this.getData(this.formData);
   };
   public render() {
     const { classes } = this.props;
     const { getFieldDecorator } = this.props.form;
+    const dataSoruce: any = this.props.data ? this.props.data : {};
     return (
       <div className={classes.root}>
         <Spin
@@ -161,7 +166,7 @@ class BocoTable extends React.Component<IProps> {
         >
           <Form layout={"inline"} onSubmit={this.onSubmit}>
             <Form.Item>
-              {getFieldDecorator("yljgdm")(
+              {getFieldDecorator("orgId")(
                 <Select placeholder={"机构选择"} style={{ width: 174 }}>
                   <Select.Option value={1}>人民医院</Select.Option>
                   <Select.Option value={2}>二人民医院</Select.Option>
@@ -171,14 +176,17 @@ class BocoTable extends React.Component<IProps> {
             {this.FormBuild()}
             {this.props.month ? (
               <Form.Item>
-                {getFieldDecorator("riQi", {
+                {getFieldDecorator("timeOrder", {
                   initialValue: moment()
                 })(<DatePicker.MonthPicker />)}
               </Form.Item>
             ) : (
               <Form.Item>
-                {getFieldDecorator("riQi", {
-                  initialValue: [moment().subtract(1, "days"), moment()]
+                {getFieldDecorator("timeOrder", {
+                  initialValue: [
+                    moment().subtract(1, "days"),
+                    moment().add(1, "days")
+                  ]
                 })(<DatePicker.RangePicker />)}
               </Form.Item>
             )}
@@ -188,24 +196,27 @@ class BocoTable extends React.Component<IProps> {
               </Button>
             </Form.Item>
           </Form>
-          <div style={{ textAlign: "end", marginBottom: "10px" }}>
-            <ReactHTMLTableToExcel
-              id="test-table-xls-button"
-              className="download-table-xls-button"
-              table="table-to-xls"
-              filename="tablexls"
-              sheet="tablexls"
-              buttonText="导出"
-            />
-          </div>
           <Table
-            dataSource={this.props.data}
+            dataSource={dataSoruce.list}
             columns={this.props.tableTitle}
             bordered={true}
+            ref={ref => {
+              this.tableRefs = ref;
+            }}
             title={this.tableTitle}
             size={"small"}
-            pagination={{}}
-            onChange={this.props.serchData}
+            pagination={{
+              pageSize: dataSoruce.pageSize,
+              current: dataSoruce.pageNum,
+              total: dataSoruce.total,
+              showSizeChanger: true,
+              showQuickJumper: true,
+              pageSizeOptions: ["10", "20", "30", "40", "1000000"],
+              onChange: (page, pageSize) => {
+                this.handleTableChange(page, pageSize);
+              },
+              showTotal: total => `共 ${total} 条数据`
+            }}
           />
         </Spin>
       </div>
@@ -214,7 +225,7 @@ class BocoTable extends React.Component<IProps> {
 }
 const mapStateToProps = (state: any) => {
   return {
-    data: state.data,
+    data: getTransformData(state),
     formData: state.toJS()
   };
 };

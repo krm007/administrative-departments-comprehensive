@@ -48,7 +48,7 @@ class ReactHTMLTableToExcel extends React.Component<Iprops> {
     }
 
     if (tableExport === null) {
-      message.error("没有数据")
+      message.error("没有数据");
       return null;
     }
     const table = tableExport.outerHTML;
@@ -109,6 +109,7 @@ class ReactHTMLTableToExcel extends React.Component<Iprops> {
         id={this.props.id}
         className={this.props.className}
         type="primary"
+        size={"small"}
         onClick={this.handleDownload}
       >
         {this.props.buttonText}

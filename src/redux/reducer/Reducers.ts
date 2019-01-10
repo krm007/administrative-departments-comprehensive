@@ -24,7 +24,7 @@ const tableDataResource = handleActions<any>(
       return state.set("dataResource", fromJS(action.payload));
     }
   },
-  fromJS({ dataResource: [] })
+  fromJS({ dataResource: {} })
 
 
 );

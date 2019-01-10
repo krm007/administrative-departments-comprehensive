@@ -65,12 +65,13 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"预交款病人明细"}
+        url={"/yuJiaoKuanBingRenMingXi/page"}
         tableTitle={NormalTableTitleConfig.get("YuJiaoKuanBingRenMingXi")}
         formStructure={[
           {
-            value: "name",
+            value: "jiaoKuanFangShi",
             text: "交款方式",
-            url: ""
+            url: "/yuJiaoKuanBingRenMingXi/getSelect"
           }
         ]}
       />
