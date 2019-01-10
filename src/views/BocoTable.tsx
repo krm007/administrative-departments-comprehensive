@@ -54,7 +54,7 @@ class BocoTable extends React.Component<IProps> {
   }
 
   public componentDidMount(): void {
-    this.getData({});
+    this.getData({ limit: 200000 });
 
     const tableCon = ReactDOM.findDOMNode(this.tableRefs);
     if (tableCon instanceof Element) {
@@ -207,15 +207,15 @@ class BocoTable extends React.Component<IProps> {
             title={this.tableTitle}
             size={"small"}
             pagination={{
-              pageSize: dataSoruce.pageSize,
+              /*pageSize: dataSoruce.pageSize,
               current: dataSoruce.startRow - 1,
-              total: dataSoruce.total,
+              total: dataSoruce.total,*/
               showSizeChanger: true,
               showQuickJumper: true,
               pageSizeOptions: ["10", "20", "30", "40", "1000000"],
-              onChange: (page, pageSize) => {
+              /*onChange: (page, pageSize) => {
                 this.handleTableChange(page, pageSize);
-              },
+              },*/
               showTotal: total => `共 ${total} 条数据`
             }}
           />
