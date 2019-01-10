@@ -11,7 +11,7 @@ export const logOut = createAction(LOGOUT);
  */
 export const tableDataSource = createAction(
   SETTABLEDATASOURCE,
-  (data:any,dataLast:any,type:string) => {
-    return {data,type,dataLast};
+  (data:any) => {
+    return data;
   }
 );

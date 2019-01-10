@@ -5,9 +5,28 @@ const getTableData = (state: any) =>
 /**
  * 获取表格数据
  */
-export const getTransformData = createSelector(
+export const getTransformTableData = createSelector(
   [getTableData],
   data => {
-    return [];
+    const dataTable = data.get("data");
+    if (dataTable) {
+      return dataTable.toJS();
+    } else {
+      return null;
+    }
+  }
+);
+/**
+ * 获取表格数据
+ */
+export const getTransformFormData = createSelector(
+  [getTableData],
+  data => {
+    const dataForm = data.get("formData");
+    if (dataForm) {
+      return dataForm.toJS();
+    } else {
+      return {};
+    }
   }
 );

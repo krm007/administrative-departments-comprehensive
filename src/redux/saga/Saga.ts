@@ -3,12 +3,20 @@ import service from "../../request/Service";
 import { Action } from "redux-action";
 import { tableDataSource } from "../action/Actions";
 import { getTableDataSource } from "../action/ActionSaga";
+import { FormStructure } from "../../typings/tablePropsData";
+
 /**
  * 获取输入存入srote
  */
-function* getTableDataSaga(action: Action<any>) {
+function* getTableDataSaga(
+  action: Action<{
+    url: string;
+    params: object;
+    formStructure: FormStructure[];
+  }>
+) {
   let res;
-  let resLast;
+  const formData: any = {};
   try {
     res = yield call(
       service.post,
@@ -18,27 +26,18 @@ function* getTableDataSaga(action: Action<any>) {
         params: action.payload.params
       }
     );
-
-    resLast = yield call(
-      service.post,
-      action.payload.url,
-      {},
-      {
-        params: Object.assign(action.payload.params, {
-          createTime: action.payload.timeLast
-        })
-      }
-    );
-    yield put(
-      tableDataSource(
-        res.data,
-        resLast.data,
-        action.payload.type ? action.payload.type : "no"
-      )
-    );
+    const structures = action.payload.formStructure;
+    for (const structure of structures) {
+      const response = yield call(service.post, structure.url);
+      formData[structure.value] = response.data;
+    }
+    yield put(tableDataSource({ data: res.data, formData }));
   } catch (e) {
     yield put(
-      tableDataSource({}, {}, action.payload.type ? action.payload.type : "no")
+      tableDataSource({
+        data: {},
+        formData: new Map()
+      })
     );
   }
 }
