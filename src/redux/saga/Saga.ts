@@ -16,7 +16,7 @@ function* getTableDataSaga(
   }>
 ) {
   let res;
-  let formData: any;
+  const formData: any = {};
   try {
     res = yield call(
       service.post,
@@ -26,10 +26,10 @@ function* getTableDataSaga(
         params: action.payload.params
       }
     );
-    const structure = action.payload.formStructure;
-    for (let i = 0; i < structure.length; i++) {
-      const response = yield call(service.post, structure[i].url);
-      formData[structure[i].value] = response.data;
+    const structures = action.payload.formStructure;
+    for (const structure of structures) {
+      const response = yield call(service.post, structure.url);
+      formData[structure.value] = response.data;
     }
     yield put(tableDataSource({ data: res.data, formData }));
   } catch (e) {

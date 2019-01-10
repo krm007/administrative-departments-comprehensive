@@ -9,11 +9,11 @@ import { getTableDataSource } from "../redux/action/ActionSaga";
 import * as moment from "moment";
 import ReactHTMLTableToExcel from "../component/ReactHTMLTableToExcel";
 import * as ReactDOM from "react-dom";
+import { BocoPage, FormStructure } from "../typings/tablePropsData";
 import {
-  BocoPage,
-  FormStructure
-} from "../typings/tablePropsData";
-import { getTransformData } from "../redux/reselect/selectors";
+  getTransformFormData,
+  getTransformTableData
+} from "../redux/reselect/selectors";
 
 const styles = (theme: Theme) =>
   createStyles<"root">({
@@ -68,7 +68,8 @@ class BocoTable extends React.Component<IProps> {
   public getData(params: any) {
     this.props.serchData({
       url: this.props.url,
-      params
+      params,
+      formStructure: this.props.formStructure
     });
   }
   /**
@@ -115,23 +116,15 @@ class BocoTable extends React.Component<IProps> {
           <Form.Item key={value.text}>
             {this.props.form.getFieldDecorator(value.value)(
               <Select placeholder={value.text} style={{ width: 174 }}>
-                {() => {
-                  if (this.props.formData) {
-                    const selectList = this.props.formData[value.value];
-                    if (selectList) {
-                      selectList.map((value1: any) => {
-                        return (
-                          <Select.Option
-                            value={value1.value}
-                            key={value1.value}
-                          >
-                            {value1.text}
-                          </Select.Option>
-                        );
-                      });
-                    }
-                  }
-                }}
+                {this.props.formData[value.value]
+                  ? this.props.formData[value.value].map((value1: any) => {
+                      return (
+                        <Select.Option value={value1.value} key={value1.value}>
+                          {value1.text}
+                        </Select.Option>
+                      );
+                    })
+                  : null}
               </Select>
             )}
           </Form.Item>
@@ -225,8 +218,8 @@ class BocoTable extends React.Component<IProps> {
 }
 const mapStateToProps = (state: any) => {
   return {
-    data: getTransformData(state),
-    formData: state.toJS()
+    data: getTransformTableData(state),
+    formData: getTransformFormData(state)
   };
 };
 
