@@ -59,6 +59,7 @@ class ChronicDiseaseTable extends React.Component<Iprops, Istate> {
   };
   public render() {
     const { classes } = this.props;
+    /** 饼图数据 */
     const PieData = [
       {
         item: "心脑血管病",
@@ -109,6 +110,7 @@ class ChronicDiseaseTable extends React.Component<Iprops, Istate> {
         count: 10
       }
     ];
+    /** 表头 */
     const columns = [
       {
         title: "",
@@ -128,6 +130,7 @@ class ChronicDiseaseTable extends React.Component<Iprops, Istate> {
         dataIndex: "bing_3"
       }
     ];
+    /** 表格数据 */
     const data = [
       {
         key: "1",
@@ -172,6 +175,7 @@ class ChronicDiseaseTable extends React.Component<Iprops, Istate> {
         bing_3: "2060"
       }
     ];
+    /** 分组柱状图数据 */
     const groupBarData = [
       {
         label: "精神病",
@@ -210,6 +214,7 @@ class ChronicDiseaseTable extends React.Component<Iprops, Istate> {
         本季发病数: 160
       }
     ];
+    /** 折线图数据 */
     const lineData = [
       {
         item: "本季发病数",
@@ -261,6 +266,7 @@ class ChronicDiseaseTable extends React.Component<Iprops, Istate> {
         四季度: "6100"
       },
     ];
+    /** modal数据 */
     const ModalColumns: any[] = [
       {
         title: "",
@@ -411,7 +417,7 @@ class ChronicDiseaseTable extends React.Component<Iprops, Istate> {
                     visible={this.state.visible}
                     onOk={this.handleOk}
                     onCancel={this.handleCancel}
-                    style={{ width: "70vw!important" }}
+                     width={"70vw"}
                   >
                     <div style={{ padding: "20px" }}>
                       <Row>
