@@ -241,7 +241,8 @@ const MenuConfig: menuArray[] = [
   {
     name:"全面质量管理",
     path:"/totalQualityManage",
-    IconType:"tags"
+    IconType:"tags",
+      children:[]
   },
   {
     name: "决策分析报表管理",
@@ -342,7 +343,8 @@ const MenuConfig: menuArray[] = [
   {
     name:"质量控制管理",
     path:"/qualityControlManage",
-    IconType:"bulb"
+    IconType:"bulb",
+      children:[]
   },
   {
     name: "全流程危急值管理",

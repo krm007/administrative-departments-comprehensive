@@ -19,6 +19,13 @@ class PharmacyPaymentsTable extends React.Component {
               title={"按药品类型统计"}
               month={true}
               tableTitle={MoreTableTitleConfig.get("AnYaoPinLeiXingTongJi")}
+              formStructure={[
+                  {
+                      value: "kuFang",
+                      text: "库房",
+                      url: "/yaoPinShouFaCunBiao/getKuFang"
+                  }
+              ]}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>按账簿类型统计</span>} key="2">
@@ -26,6 +33,13 @@ class PharmacyPaymentsTable extends React.Component {
               title={"按账簿类型统计"}
               month={true}
               tableTitle={MoreTableTitleConfig.get("AnZhangBoLeiXingTongJi")}
+              formStructure={[
+                  {
+                      value: "kuFang",
+                      text: "库房",
+                      url: "/yaoPinShouFaCunBiao/getKuFang"
+                  }
+              ]}
             />
           </Tabs.TabPane>
         </Tabs>
