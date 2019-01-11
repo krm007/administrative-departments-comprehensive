@@ -4,6 +4,8 @@ import * as React from "react";
 import { Tabs } from "antd";
 import BocoTable from "./BocoTable";
 import MoreTableTitleConfig from "../config/MoreTableTitleConfig";
+import Pie from "./bizchart/Pie";
+import GroupBar from "./bizchart/GroupBar";
 
 const styles = (theme: Theme) =>
   createStyles<"root">({
@@ -38,7 +40,12 @@ class ChronicDiseaseTable extends React.Component<Iprops> {
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>慢性病图表分析</span>} key="3">
-            慢性病图表分析
+            <BocoTable
+                title={"本季度慢性病分布情况表"}
+                tableTitle={MoreTableTitleConfig.get("")}
+            />
+            <Pie titleChart={"本季度慢性病分布情况"}/>
+            <GroupBar titleChart={"本季度重点慢性病发病情况"}/>
           </Tabs.TabPane>
         </Tabs>
       </div>

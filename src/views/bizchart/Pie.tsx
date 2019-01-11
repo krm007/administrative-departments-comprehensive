@@ -8,8 +8,9 @@ import DataSet from "@antv/data-set";
 const styles = (theme: Theme) =>
   createStyles({
     root: {
-      width: "40vw",
-      border: "1px rgba(200, 226, 250, 1) solid"
+      width: "100%",
+      border: "1px rgba(200, 226, 250, 1) solid",
+      margin:"auto"
     },
     pStyle: {
       color: "rgb(60,142,217)",

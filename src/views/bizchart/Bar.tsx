@@ -8,7 +8,7 @@ import DataSet from "@antv/data-set";
 const styles = (theme: Theme) =>
   createStyles({
     root: {
-      width: "40vw",
+      width: "100%",
       border: "1px rgba(200, 226, 250, 1) solid"
       // textAlign: "center"
     },
