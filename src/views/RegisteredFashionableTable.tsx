@@ -23,7 +23,7 @@ class RegisteredFashionableTable extends React.Component<Iprops> {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Tabs defaultActiveKey="2">
+        <Tabs defaultActiveKey="1">
           <Tabs.TabPane tab={<span>门诊汇总个人日报表</span>} key="1">
             <BocoTable
               title={"门诊汇总个人日报表"}

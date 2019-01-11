@@ -13,7 +13,7 @@ class RemoteImageQueryTable extends React.Component {
   public render() {
     return (
       <div>
-        <Tabs defaultActiveKey="2">
+        <Tabs defaultActiveKey="1">
           <Tabs.TabPane tab={<span>区域影像平台统计查询</span>} key="1">
             <BocoTable
               title={"区域影像平台统计查询"}
