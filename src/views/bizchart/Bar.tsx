@@ -20,40 +20,20 @@ const styles = (theme: Theme) =>
 
 interface Iprops extends WithStyles<typeof styles> {
   titleChart?: string;
+  chartData?:any[];
+  barXAxis?:any[]
 }
 
 class GroupBar extends React.Component<Iprops> {
   public render() {
     const { classes } = this.props;
-    const data = [
-      {
-        name: "London",
-        "Jan.": 18.9,
-        "Feb.": 28.8,
-        "Mar.": 39.3,
-        "Apr.": 81.4,
-        May: 47,
-        "Jun.": 20.3,
-        "Jul.": 24,
-        "Aug.": 35.6
-      },
-      {
-        name: "Berlin",
-        "Jan.": 12.4,
-        "Feb.": 23.2,
-        "Mar.": 34.5,
-        "Apr.": 99.7,
-        May: 52.6,
-        "Jun.": 35.5,
-        "Jul.": 37.4,
-        "Aug.": 42.4
-      }
-    ];
+
     const ds = new DataSet();
-    const dv = ds.createView().source(data);
+    const dv = ds.createView().source(this.props.chartData);
     dv.transform({
       type: "fold",
-      fields: ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug."], // x展开字段集
+      // fields: ["Jan.", "Feb.", "Mar.", "Apr.", "May", "Jun.", "Jul.", "Aug."], // x展开字段集
+      fields:this.props.barXAxis,
       key: "xAxis", // key字段
       value: "yAxis" // value字段
     });
