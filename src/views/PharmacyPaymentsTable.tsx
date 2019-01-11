@@ -17,12 +17,14 @@ class PharmacyPaymentsTable extends React.Component {
           <Tabs.TabPane tab={<span>按药品类型统计</span>} key="1">
             <BocoTable
               title={"按药品类型统计"}
+              month={true}
               tableTitle={MoreTableTitleConfig.get("AnYaoPinLeiXingTongJi")}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>按账簿类型统计</span>} key="2">
             <BocoTable
               title={"按账簿类型统计"}
+              month={true}
               tableTitle={MoreTableTitleConfig.get("AnZhangBoLeiXingTongJi")}
             />
           </Tabs.TabPane>

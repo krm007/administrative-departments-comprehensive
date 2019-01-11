@@ -190,8 +190,20 @@ class BocoTable extends React.Component<IProps> {
             <Form.Item>
               {getFieldDecorator("orgId")(
                 <Select placeholder={"机构选择"} style={{ width: 174 }}>
-                  <Select.Option value={1}>人民医院</Select.Option>
-                  <Select.Option value={2}>二人民医院</Select.Option>
+                  {(() => {
+                    if (this.props.formData && this.props.formData.orgList) {
+                      return this.props.formData.orgList.map((value1: any) => {
+                        return (
+                          <Select.Option
+                            value={value1.value}
+                            key={value1.value}
+                          >
+                            {value1.key}
+                          </Select.Option>
+                        );
+                      });
+                    }
+                  })()}
                 </Select>
               )}
             </Form.Item>

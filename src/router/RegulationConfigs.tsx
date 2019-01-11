@@ -47,7 +47,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"门诊开单费用统计"}
-        url={"/menZhenKaiDanFeiYong/page"}
+        url={"/heJi/MenZhenKaiDanFeiYong/queryPage"}
         tableTitle={NormalTableTitleConfig.get("MenZhenKaiDanFeiYong")}
       />
     )
@@ -57,7 +57,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"门诊挂账统计"}
-        url={"/menZhenGuaZhangTongJi/page"}
+        url={"/heJi/MenZhenGuaZhangTongJi/queryPage"}
         tableTitle={NormalTableTitleConfig.get("MenZhenGuaZhangTongJi")}
       />
     )
@@ -86,7 +86,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"出院病人病区科室汇总"}
-        url={"/chuYuanBingRenBingQu/page"}
+        url={"/heJi/ChuYuanBingRenBingQu/queryPage"}
         tableTitle={NormalTableTitleConfig.get("ChuYuanBingRenBingQu")}
       />
     )
@@ -96,7 +96,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"在院病人总账报表"}
-        url={"/ZaiYuanBingRenZongZhang/page"}
+        url={"/heJi/ZaiYuanBingRenZongZhang/queryPage"}
         tableTitle={NormalTableTitleConfig.get("ZaiYuanBingRenZongZhang")}
       />
     )
@@ -107,6 +107,7 @@ const RegulationConfigs: RouteConfig[] = [
       <BocoTable
         title={"药品收发存表"}
         url={"/YaoPinShouFaCunBiao/page"}
+        month={true}
         tableTitle={NormalTableTitleConfig.get("YaoPinShouFaCunBiao")}
         formStructure={[
           {
@@ -138,6 +139,7 @@ const RegulationConfigs: RouteConfig[] = [
       <BocoTable
         title={"药品库存查询"}
         url={"/YaoPinKuCunChaXun/page"}
+        month={true}
         tableTitle={NormalTableTitleConfig.get("YaoPinKuCunChaXun")}
         formStructure={[
           {
