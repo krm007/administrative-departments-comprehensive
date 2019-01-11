@@ -66,6 +66,13 @@ class FinancialCollectingTable extends React.Component {
             <BocoTable
                 title={"门诊挂账统计明细"}
                 tableTitle={MoreTableTitleConfig.get("MenZhenGuaZhangTongJi")}
+                formStructure={[
+                    {
+                        value:"xuanZeJianYu",
+                        text:"选择监狱",
+                        url:"/menZhenGuaZhangTongJi/getSelect"
+                    }
+                ]}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>门诊挂账统计单位汇总</span>} key="10">

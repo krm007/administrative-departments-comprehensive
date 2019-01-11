@@ -111,19 +111,19 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("YaoPinShouFaCunBiao")}
         formStructure={[
           {
-            value: "name",
+            value: "kuFang",
             text: "库房",
-            url: ""
+            url: "/yaoPinShouFaCunBiao/getKuFang"
           },
           {
-            value: "name",
+            value: "yaoPinLeiXing",
             text: "药品类型",
-            url: ""
+            url: "/yaoPinShouFaCunBiao/getYaoPinLeiXing"
           },
           {
-            value: "name",
+            value: "duLiFenXi",
             text: "毒理分类",
-            url: ""
+            url: "/yaoPinShouFaCunBiao/getDuLiFenLei"
           }
         ]}
       />
@@ -143,9 +143,9 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("YaoPinKuCunChaXun")}
         formStructure={[
           {
-            value: "name",
+            value: "xuanZeKuFang",
             text: "选择库房",
-            url: ""
+            url: "/yaoPinKuCunChaXun/getKuFang"
           }
         ]}
       />
@@ -160,9 +160,9 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("RenShiTongJiChaXun")}
         formStructure={[
           {
-            value: "name",
+            value: "keShi",
             text: "选择科室",
-            url: ""
+            url: "/renShiTongJiChaXun/getKeShi"
           }
         ]}
       />
@@ -213,9 +213,9 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("GuaHaoJiLu")}
         formStructure={[
           {
-            value: "name",
+            value: "jiuZhenKeShi",
             text: "就诊科室",
-            url: ""
+            url: "/guaHaoJiLu/getKeShi"
           }
         ]}
       />
@@ -242,9 +242,9 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("YiBaoShuJuTongJi")}
         formStructure={[
           {
-            value: "name",
+            value: "jiSuanLeiXing",
             text: "结算类型",
-            url: ""
+            url: "/yiBaoShuJuTongJi/getJieSuanLeiXing"
           }
         ]}
       />

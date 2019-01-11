@@ -29,12 +29,36 @@ class TelemedicineSystemTable extends React.Component<Iprops> {
             <BocoTable
               title={"远程会诊统计"}
               tableTitle={MoreTableTitleConfig.get("YuanChengHuiZhen")}
+              formStructure={[
+                  {
+                      value: "huiZhenYiYuan",
+                      text: "会诊医院",
+                      url: ""
+                  },
+                  {
+                      value: "huiZhenLeiXing",
+                      text: "会诊类型",
+                      url: "/yuanChengHuiZhen/getHuiZhenXueKe"
+                  }
+              ]}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>远程门诊统计</span>} key="2">
             <BocoTable
               title={"远程门诊统计"}
               tableTitle={MoreTableTitleConfig.get("YuanChengMenZhen")}
+              formStructure={[
+                  {
+                      value: "huiZhenYiYuan",
+                      text: "会诊医院",
+                      url: ""
+                  },
+                  {
+                      value: "huiZhenLeiXing",
+                      text: "会诊类型",
+                      url: "/yuanChengHuiZhen/getHuiZhenXueKe"
+                  }
+              ]}
             />
           </Tabs.TabPane>
         </Tabs>
