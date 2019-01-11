@@ -21,51 +21,15 @@ const styles = (theme: Theme) =>
 
 interface Iprops extends WithStyles<typeof styles> {
   titleChart?: string;
+  chartData?:any[]
 }
 
 class GroupBar extends React.Component<Iprops> {
   public render() {
     const { classes } = this.props;
-    const data = [
-      {
-        label: "精神病",
-        狱内发病数: 2800,
-        新投犯带病入监数: 2260,
-        本季发病数: 2060
-      },
-      {
-        label: "恶性肿瘤",
-        狱内发病数: 1800,
-        新投犯带病入监数: 1300,
-        本季发病数: 960
-      },
-      {
-        label: "糖尿病",
-        狱内发病数: 950,
-        新投犯带病入监数: 900,
-        本季发病数: 2160
-      },
-      {
-        label: "脑卒中",
-        狱内发病数: 500,
-        新投犯带病入监数: 390,
-        本季发病数: 1060
-      },
-      {
-        label: "冠心病",
-        狱内发病数: 170,
-        新投犯带病入监数: 100,
-        本季发病数: 1660
-      },
-      {
-        label: "高血压",
-        狱内发病数: 170,
-        新投犯带病入监数: 100,
-        本季发病数: 160
-      }
-    ];
+
     const ds = new DataSet();
-    const dv = ds.createView().source(data);
+    const dv = ds.createView().source(this.props.chartData);
     dv.transform({
       type: "fold",
       fields: ["狱内发病数", "新投犯带病入监数", "本季发病数"],// x展开字段集
