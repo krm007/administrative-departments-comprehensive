@@ -7,13 +7,13 @@ import MenuConfig from "../config/MenuConfig";
 import { RouteConfig } from "react-router-config";
 import MyContent from "../component/MyContent";
 import breadcrumbNameMap from "../router/BreadCrumbLinks";
-
+import { RouteComponentProps } from "react-router";
 
 interface Istatus {
   collapse: boolean;
-  logo:boolean
+  logo: boolean;
 }
-interface Iprops {
+interface Iprops extends RouteComponentProps {
   route: RouteConfig;
 }
 /**
@@ -31,10 +31,16 @@ class BocoApp extends React.Component<Iprops, Istatus> {
     super(props);
     this.state = {
       collapse: false,
-        logo:true
+      logo: true
     };
   }
-
+  public componentWillMount(): void {
+    if (this.props.location.pathname === "/") {
+      this.props.history.push(
+        "/administrativeDepartment/hospitalFinancial/outpatientBillingFee"
+      );
+    }
+  }
   public render() {
     return (
       <Layout>
@@ -48,7 +54,7 @@ class BocoApp extends React.Component<Iprops, Istatus> {
             toggle={() => {
               this.setState({
                 collapse: !this.state.collapse,
-                  logo:!this.state.logo
+                logo: !this.state.logo
               });
             }}
             collapsed={this.state.collapse}
