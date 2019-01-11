@@ -191,18 +191,21 @@ class ChronicDiseaseTable extends React.Component<Iprops> {
             <BocoTable
               title={"慢性病月度汇总表"}
               tableTitle={MoreTableTitleConfig.get("HisZhongDianManXingBing")}
+              month={true}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>慢性病季度汇总表</span>} key="2">
             <BocoTable
               title={"慢性病季度汇总表"}
               tableTitle={MoreTableTitleConfig.get("ZhongDianManXingBing")}
+              month={true}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>慢性病图表分析</span>} key="3">
             <BocoTable
               title={"慢性病季度分布情况"}
               tableTitle={MoreTableTitleConfig.get("")}
+              month={true}
             />
             <div className={classes.myChart}>
               <Row>

@@ -123,13 +123,16 @@ class InfectiousDiseaseStatisticsTable extends React.Component<Iprops> {
           <Tabs.TabPane tab={<span>法定传染病发病、死亡统计表</span>} key="1">
             <BocoTable
               title={"法定传染病发病、死亡统计表"}
-              tableTitle={MoreTableTitleConfig.get("FaDingChuanRanTongJi")}
+              tableTitle={MoreTableTitleConfig.get("FaDingChuanRanTongJi")
+              }
+              month={true}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>法定传染病报告发病情况</span>} key="2">
             <BocoTable
               title={"法定传染病报告发病情况"}
               tableTitle={MoreTableTitleConfig.get("FaDingChuanRanFaBing")}
+              month={true}
             />
             <div className={classes.myChart}>
               <Row>
@@ -146,6 +149,7 @@ class InfectiousDiseaseStatisticsTable extends React.Component<Iprops> {
             <BocoTable
               title={"各机构法定传染病报告发病分布"}
               tableTitle={MoreTableTitleConfig.get("FaDingChuanRanFenBu")}
+              month={true}
             />
             <div className={classes.myChart}>
               <Row>

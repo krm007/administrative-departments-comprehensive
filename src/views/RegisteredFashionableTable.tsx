@@ -34,12 +34,20 @@ class RegisteredFashionableTable extends React.Component<Iprops> {
             <BocoTable
               title={"门诊挂账统计"}
               tableTitle={MoreTableTitleConfig.get("MenZhenGuaZhangHuiZong")}
+              formStructure={[
+                  {
+                    value:"xuanZeJianYu",
+                      text:"选择监狱",
+                      url:"/menZhenGuaZhangTongJi/getSelect"
+                  }
+              ]}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>门诊汇总月报表</span>} key="3">
             <BocoTable
               title={"门诊汇总月报表"}
               tableTitle={MoreTableTitleConfig.get("MenZhenHuiZongYue")}
+              month={true}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>挂号日报个人汇总报表</span>} key="4">
