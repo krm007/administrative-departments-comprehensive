@@ -20,36 +20,16 @@ const styles = (theme: Theme) =>
 
 interface Iprops extends WithStyles<typeof styles> {
   titleChart?: string;
+  chartData?:any[];
+
 }
 
 class Pie extends React.Component<Iprops> {
   public render() {
     const { classes } = this.props;
     const { DataView } = DataSet;
-    const data = [
-      {
-        item: "肺结核",
-        count: 0
-      },
-      {
-        item: "病毒性肝炎",
-        count: 38
-      },
-      {
-        item: "HIV阳性",
-        count: 66
-      },
-      {
-        item: "梅毒",
-        count: 78
-      },
-      {
-        item: "淋病",
-        count: 50
-      }
-    ];
     const dv = new DataView();
-    dv.source(data).transform({
+    dv.source(this.props.chartData).transform({
       type: "percent",
       field: "count",
       dimension: "item",
