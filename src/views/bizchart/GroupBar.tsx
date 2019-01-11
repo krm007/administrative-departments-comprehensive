@@ -9,7 +9,7 @@ const styles = (theme: Theme) =>
   createStyles({
     root: {
       margin:"auto",
-      width: "38vw",
+      width: "100%",
       border: "1px rgba(200, 226, 250, 1) solid",
       // textAlign: "center"
     },

@@ -11,7 +11,7 @@ const styles = (theme: Theme) =>
   createStyles({
     root: {},
     myChart: {
-      margin:"auto"
+      padding:"20px"
     }
   });
 
@@ -87,7 +87,13 @@ class InfectiousDiseaseStatisticsTable extends React.Component<Iprops> {
               title={"法定传染病报告发病情况"}
               tableTitle={MoreTableTitleConfig.get("FaDingChuanRanFaBing")}
             />
-            <Pie titleChart={"法定传染病发情况比例图"} />
+              <div className={classes.myChart}>
+                <Row>
+                    <Col span={11}>
+                        <Pie titleChart={"法定传染病发情况比例图"} />
+                    </Col>
+                </Row>
+              </div>
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>各机构法定传染病报告发病分布</span>} key="3">
             <BocoTable
@@ -96,7 +102,7 @@ class InfectiousDiseaseStatisticsTable extends React.Component<Iprops> {
             />
             <div className={classes.myChart}>
               <Row>
-                <Col span={9} offset={1}>
+                <Col span={12}>
                   <Table
                     columns={columns}
                     size="middle"
