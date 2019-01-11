@@ -13,7 +13,7 @@ class FinancialCollectingTable extends React.Component {
   public render() {
     return (
       <div>
-        <Tabs defaultActiveKey="2">
+        <Tabs defaultActiveKey="1">
           <Tabs.TabPane tab={<span>在院病人费用汇总报表</span>} key="1">
             <BocoTable
               title={"在院病人费用汇总报表"}

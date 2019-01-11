@@ -119,7 +119,7 @@ class InfectiousDiseaseStatisticsTable extends React.Component<Iprops> {
     const barXAxis = ["肺结核", "HIV阳性", "病毒性肝炎", "梅毒", "淋病"];
     return (
       <div className={classes.root}>
-        <Tabs defaultActiveKey="2">
+        <Tabs defaultActiveKey="1">
           <Tabs.TabPane tab={<span>法定传染病发病、死亡统计表</span>} key="1">
             <BocoTable
               title={"法定传染病发病、死亡统计表"}
