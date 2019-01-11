@@ -1,20 +1,30 @@
 import { createStyles, Theme, withStyles } from "@material-ui/core/styles";
 import { WithStyles } from "@material-ui/core/styles/withStyles";
 import * as React from "react";
-import { Col, Row, Table, Tabs } from "antd";
+import { Col, Row, Table, Tabs, Modal } from "antd";
 import BocoTable from "./BocoTable";
 import MoreTableTitleConfig from "../config/MoreTableTitleConfig";
 import Pie from "./bizchart/Pie";
 import GroupBar from "./bizchart/GroupBar";
+import Line from "./bizchart/Line";
 
 const styles = (theme: Theme) =>
   createStyles({
-    root: {},
+    root: {
+      // "& .ant-modal":{
+      //     width:"80vw!important",
+      //     "& .ant-modal-content":{
+      //         width: "50vw!important"
+      //     }
+      // }
+    },
     myChart: {
       padding: "20px"
     }
   });
-
+interface Istate {
+  visible?: boolean;
+}
 interface Iprops extends WithStyles<typeof styles> {}
 
 /**
@@ -24,10 +34,29 @@ interface Iprops extends WithStyles<typeof styles> {}
  * @date 2019/1/8-17:11
  */
 @(withStyles as any)(styles)
-class ChronicDiseaseTable extends React.Component<Iprops> {
-    public getDieasaInfo:()=>{
+class ChronicDiseaseTable extends React.Component<Iprops, Istate> {
+  constructor(props: Iprops) {
+    super(props);
+    this.state = {
+      visible: false
+    };
+  }
+  public showModal = () => {
+    this.setState({ visible: true });
+  };
+  public handleOk = (e: any) => {
+    // console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
 
-    }
+  public handleCancel = (e: any) => {
+    // console.log(e);
+    this.setState({
+      visible: false
+    });
+  };
   public render() {
     const { classes } = this.props;
     const PieData = [
@@ -80,12 +109,11 @@ class ChronicDiseaseTable extends React.Component<Iprops> {
         count: 10
       }
     ];
-    /** 表头 */
     const columns = [
       {
         title: "",
         dataIndex: "name",
-        render: (text:any) => <span onClick={this.getDieasaInfo}>{text}</span>,
+        render: (text: any) => <a onClick={this.showModal}>{text}</a>
       },
       {
         title: "本季发病数",
@@ -100,7 +128,6 @@ class ChronicDiseaseTable extends React.Component<Iprops> {
         dataIndex: "bing_3"
       }
     ];
-    /** 表格数据 */
     const data = [
       {
         key: "1",
@@ -145,45 +172,183 @@ class ChronicDiseaseTable extends React.Component<Iprops> {
         bing_3: "2060"
       }
     ];
-    /** 条形图数据 */
-      const groupBarData = [
-          {
-              label: "精神病",
-              狱内发病数: 2800,
-              新投犯带病入监数: 2260,
-              本季发病数: 2060
-          },
-          {
-              label: "恶性肿瘤",
-              狱内发病数: 1800,
-              新投犯带病入监数: 1300,
-              本季发病数: 960
-          },
-          {
-              label: "糖尿病",
-              狱内发病数: 950,
-              新投犯带病入监数: 900,
-              本季发病数: 2160
-          },
-          {
-              label: "脑卒中",
-              狱内发病数: 500,
-              新投犯带病入监数: 390,
-              本季发病数: 1060
-          },
-          {
-              label: "冠心病",
-              狱内发病数: 170,
-              新投犯带病入监数: 100,
-              本季发病数: 1660
-          },
-          {
-              label: "高血压",
-              狱内发病数: 170,
-              新投犯带病入监数: 100,
-              本季发病数: 160
-          }
-      ];
+    const groupBarData = [
+      {
+        label: "精神病",
+        狱内发病数: 2800,
+        新投犯带病入监数: 2260,
+        本季发病数: 2060
+      },
+      {
+        label: "恶性肿瘤",
+        狱内发病数: 1800,
+        新投犯带病入监数: 1300,
+        本季发病数: 960
+      },
+      {
+        label: "糖尿病",
+        狱内发病数: 950,
+        新投犯带病入监数: 900,
+        本季发病数: 2160
+      },
+      {
+        label: "脑卒中",
+        狱内发病数: 500,
+        新投犯带病入监数: 390,
+        本季发病数: 1060
+      },
+      {
+        label: "冠心病",
+        狱内发病数: 170,
+        新投犯带病入监数: 100,
+        本季发病数: 1660
+      },
+      {
+        label: "高血压",
+        狱内发病数: 170,
+        新投犯带病入监数: 100,
+        本季发病数: 160
+      }
+    ];
+    const lineData = [
+      {
+        item: "本季发病数",
+        一季度: "4800",
+        二季度: "4800",
+        三季度: "5600",
+        四季度: "5400"
+      },{
+        item: "新投犯带病数",
+        一季度: "2000",
+        二季度: "2100",
+        三季度: "2000",
+        四季度: "2000"
+      },{
+        item: "季末患病数",
+        一季度: "8000",
+        二季度: "8000",
+        三季度: "7500",
+        四季度: "8100"
+      },{
+        item: "本季押犯总数",
+        一季度: "7000",
+        二季度: "7500",
+        三季度: "6800",
+        四季度: "9000"
+      },{
+        item: "本季新犯数",
+        一季度: "10000",
+        二季度: "9000",
+        三季度: "9500",
+        四季度: "10000"
+      },{
+        item: "发病数比例",
+        一季度: "12000",
+        二季度: "13000",
+        三季度: "12000",
+        四季度: "13000"
+      },{
+        item: "患病数比例",
+        一季度: "8600",
+        二季度: "8500",
+        三季度: "7900",
+        四季度: "8000"
+      },{
+        item: "新犯带病比例",
+        一季度: "6000",
+        二季度: "6000",
+        三季度: "6400",
+        四季度: "6100"
+      },
+    ];
+    const ModalColumns: any[] = [
+      {
+        title: "",
+        dataIndex: "name"
+      },
+      {
+        title: "本季发病数",
+        dataIndex: "bing_1"
+      },
+      {
+        title: "新投犯带病入监数",
+        dataIndex: "bing_2"
+      },
+      {
+        title: "季末患病数",
+        dataIndex: "bing_3"
+      },
+      {
+        title: "当季押犯总数",
+        dataIndex: "bing_4"
+      },
+      {
+        title: "当新犯数",
+        dataIndex: "bing_5"
+      },
+      {
+        title: "发病数比例",
+        dataIndex: "bing_6"
+      },
+      {
+        title: "患病数比例",
+        dataIndex: "bing_7"
+      },
+      {
+        title: "新犯带病比例",
+        dataIndex: "bing_8"
+      }
+    ];
+    const ModalData: any[] = [
+      {
+        key: "1",
+        name: "第一季度",
+        bing_1: "170",
+        bing_2: "100",
+        bing_3: "160",
+        bing_4: "170",
+        bing_5: "100",
+        bing_6: "160",
+        bing_7: "100",
+        bing_8: "160"
+      },
+      {
+        key: "2",
+        name: "第二季度",
+        bing_1: "170",
+        bing_2: "100",
+        bing_3: "160",
+        bing_4: "170",
+        bing_5: "100",
+        bing_6: "160",
+        bing_7: "100",
+        bing_8: "160"
+      },
+      {
+        key: "3",
+        name: "第三季度",
+        bing_1: "170",
+        bing_2: "100",
+        bing_3: "160",
+        bing_4: "170",
+        bing_5: "100",
+        bing_6: "160",
+        bing_7: "100",
+        bing_8: "160"
+      },
+      {
+        key: "4",
+        name: "第4季度",
+        bing_1: "170",
+        bing_2: "100",
+        bing_3: "160",
+        bing_4: "170",
+        bing_5: "100",
+        bing_6: "160",
+        bing_7: "100",
+        bing_8: "160"
+      }
+    ];
     return (
       <div className={classes.root}>
         <Tabs defaultActiveKey="2">
@@ -206,7 +371,7 @@ class ChronicDiseaseTable extends React.Component<Iprops> {
             />
             <div className={classes.myChart}>
               <Row>
-                <Col span={11}>
+                <Col span={20} offset={2}>
                   <Pie
                     titleChart={"本季度慢性病分布情况"}
                     chartData={PieData}
@@ -238,9 +403,58 @@ class ChronicDiseaseTable extends React.Component<Iprops> {
                       </span>
                     )}
                   />
+                  <Modal
+                    // title="Basic Modal"
+                    visible={this.state.visible}
+                    onOk={this.handleOk}
+                    onCancel={this.handleCancel}
+                    style={{ width: "70vw!important" }}
+                  >
+                    <div style={{ padding: "20px" }}>
+                      <Row>
+                        <Col span={20} offset={2}>
+                          <Table
+                            columns={ModalColumns}
+                            size="middle"
+                            dataSource={ModalData}
+                            pagination={false}
+                            bordered={true}
+                            title={() => (
+                              <span style={{ padding: "10px" }}>
+                                <img
+                                  src={require("../images/chartIcon.png")}
+                                  alt=""
+                                  style={{
+                                    float: "left",
+                                    marginLeft: "1vw",
+                                    marginRight: "0.5vw"
+                                  }}
+                                />
+                                附表：年度发病情况
+                              </span>
+                            )}
+                          />
+                        </Col>
+                      </Row>
+                    </div>
+                    <div style={{ padding: "20px" }}>
+                      <Row>
+                        <Col span={20} offset={2}>
+                          <Line
+                            titleChart={"本季度重点慢性病发病情况"}
+                            chartData={lineData}
+                            lineXAxis={["一季度","二季度","三季度","四季度"]}
+                          />
+                        </Col>
+                      </Row>
+                    </div>
+                  </Modal>
                 </Col>
                 <Col span={11} offset={1}>
-                  <GroupBar titleChart={"本季度重点慢性病发病情况"} chartData={groupBarData}/>
+                  <GroupBar
+                    titleChart={"本季度重点慢性病发病情况"}
+                    chartData={groupBarData}
+                  />
                 </Col>
               </Row>
             </div>

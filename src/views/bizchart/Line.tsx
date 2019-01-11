@@ -20,48 +20,50 @@ const styles = (theme: Theme) =>
 
 interface Iprops extends WithStyles<typeof styles> {
   titleChart?: string;
+  chartData?:any[],
+  lineXAxis?:any[]
 }
 
 class Line extends React.Component<Iprops> {
   public render() {
     const { classes } = this.props;
-    const data = [
-      {
-        item: "2014",
-        one: 7,
-        two: 3,
-        three: 5
-      },
-      {
-        item: "2015",
-        one: 6,
-        two: 4,
-        three: 5
-      },
-      {
-        item: "2016",
-        one: 9,
-        two: 5,
-        three: 5
-      },
-      {
-        item: "2017",
-        one: 14,
-        two: 8,
-        three: 5
-      },
-      {
-        item: "2018",
-        one: 18,
-        two: 11,
-        three: 5
-      }
-    ];
+    // const data = [
+    //   {
+    //     item: "2014",
+    //     one: 7,
+    //     two: 3,
+    //     three: 5
+    //   },
+    //   {
+    //     item: "2015",
+    //     one: 6,
+    //     two: 4,
+    //     three: 5
+    //   },
+    //   {
+    //     item: "2016",
+    //     one: 9,
+    //     two: 5,
+    //     three: 5
+    //   },
+    //   {
+    //     item: "2017",
+    //     one: 14,
+    //     two: 8,
+    //     three: 5
+    //   },
+    //   {
+    //     item: "2018",
+    //     one: 18,
+    //     two: 11,
+    //     three: 5
+    //   }
+    // ];
     const ds = new DataSet();
-    const dv = ds.createView().source(data);
+    const dv = ds.createView().source(this.props.chartData);
     dv.transform({
       type: "fold",
-      fields: ["one", "two", "three"], // x展开字段集
+      fields: this.props.lineXAxis, // x展开字段集
       key: "year", // key字段
       value: "temperature" // value字段
     });
