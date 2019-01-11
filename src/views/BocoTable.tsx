@@ -120,14 +120,18 @@ class BocoTable extends React.Component<IProps> {
                     const selectList = this.props.formData[value.value];
                     if (selectList) {
                       return selectList.map((value1: any) => {
-                        return (
-                          <Select.Option
-                            value={value1.value}
-                            key={value1.value}
-                          >
-                            {value1.key}
-                          </Select.Option>
-                        );
+                        if (value1 && value1.value && value1.key) {
+                          return (
+                            <Select.Option
+                              value={value1.value}
+                              key={value1.value}
+                            >
+                              {value1.key}
+                            </Select.Option>
+                          );
+                        } else {
+                          return;
+                        }
                       });
                     }
                   })()}
