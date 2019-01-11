@@ -120,14 +120,18 @@ class BocoTable extends React.Component<IProps> {
                     const selectList = this.props.formData[value.value];
                     if (selectList) {
                       return selectList.map((value1: any) => {
-                        return (
-                          <Select.Option
-                            value={value1.value}
-                            key={value1.value}
-                          >
-                            {value1.key}
-                          </Select.Option>
-                        );
+                        if (value1 && value1.value && value1.key) {
+                          return (
+                            <Select.Option
+                              value={value1.value}
+                              key={value1.value}
+                            >
+                              {value1.key}
+                            </Select.Option>
+                          );
+                        } else {
+                          return;
+                        }
                       });
                     }
                   })()}
@@ -188,7 +192,9 @@ class BocoTable extends React.Component<IProps> {
         >
           <Form layout={"inline"} onSubmit={this.onSubmit}>
             <Form.Item>
-              {getFieldDecorator("orgId")(
+              {getFieldDecorator("orgId", {
+                initialValue: "浙江省青春医院"
+              })(
                 <Select placeholder={"机构选择"} style={{ width: 174 }}>
                   {(() => {
                     if (this.props.formData && this.props.formData.orgList) {

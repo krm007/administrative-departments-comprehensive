@@ -15,11 +15,11 @@ function* getTableDataSaga(
     formStructure: FormStructure[];
   }>
 ) {
-  let res;
+  let tableList;
   const formData: any = {};
   try {
     if (action.payload.url) {
-      res = yield call(
+      const res = yield call(
         service.post,
         action.payload.url,
         {},
@@ -27,6 +27,7 @@ function* getTableDataSaga(
           params: action.payload.params
         }
       );
+      tableList = res.data;
     }
     const structures = action.payload.formStructure;
     if (structures) {
@@ -37,7 +38,7 @@ function* getTableDataSaga(
     }
     const orgList = yield call(service.get, "/yiLiaoJiGou/getYiLiaoJiGou");
     formData.orgList = orgList.data;
-    yield put(tableDataSource({ data: res.data, formData }));
+    yield put(tableDataSource({ data: tableList, formData }));
   } catch (e) {
     yield put(
       tableDataSource({

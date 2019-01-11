@@ -23,7 +23,7 @@ class RegisteredFashionableTable extends React.Component<Iprops> {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Tabs defaultActiveKey="2">
+        <Tabs defaultActiveKey="1">
           <Tabs.TabPane tab={<span>门诊汇总个人日报表</span>} key="1">
             <BocoTable
               title={"门诊汇总个人日报表"}
@@ -35,17 +35,18 @@ class RegisteredFashionableTable extends React.Component<Iprops> {
               title={"门诊挂账统计"}
               tableTitle={MoreTableTitleConfig.get("MenZhenGuaZhangHuiZong")}
               formStructure={[
-                  {
-                    value:"xuanZeJianYu",
-                      text:"选择监狱",
-                      url:"/menZhenGuaZhangTongJi/getSelect"
-                  }
+                {
+                  value: "xuanZeJianYu",
+                  text: "选择监狱",
+                  url: "/menZhenGuaZhangTongJi/getSelect"
+                }
               ]}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>门诊汇总月报表</span>} key="3">
             <BocoTable
               title={"门诊汇总月报表"}
+              url={"/decisionAnalysisReport"}
               tableTitle={MoreTableTitleConfig.get("MenZhenHuiZongYue")}
               month={true}
             />
