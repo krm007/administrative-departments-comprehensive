@@ -48,7 +48,7 @@ class RegisteredFashionableTable extends React.Component<Iprops> {
               title={"门诊汇总月报表"}
               url={"/decisionAnalysisReport"}
               tableTitle={MoreTableTitleConfig.get("MenZhenHuiZongYue")}
-              month={true}
+              timeFormat={1}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>挂号日报个人汇总报表</span>} key="4">

@@ -37,7 +37,7 @@ interface IProps extends WithStyles<typeof styles>, FormComponentProps {
   data?: BocoPage<any>;
   formData?: any;
   serchData: (param: any) => void;
-  month?: boolean;
+  timeFormat?: number;
   spin?: boolean;
 }
 /**
@@ -117,7 +117,12 @@ class BocoTable extends React.Component<IProps> {
               {this.props.form.getFieldDecorator(value.value)(
                 <Select placeholder={value.text} style={{ width: 174 }}>
                   {(() => {
-                    const selectList = this.props.formData[value.value];
+                    let selectList;
+                    if (value.data) {
+                      selectList = value.data;
+                    } else {
+                      selectList = this.props.formData[value.value];
+                    }
                     if (selectList) {
                       return selectList.map((value1: any) => {
                         if (value1 && value1.value && value1.key) {
@@ -147,7 +152,38 @@ class BocoTable extends React.Component<IProps> {
       return;
     }
   };
-
+  public timeOfForm = () => {
+    if (this.props.timeFormat === 1) {
+      return (
+        <Form.Item>
+          {this.props.form.getFieldDecorator("timeOrder", {
+            initialValue: moment()
+          })(<DatePicker.MonthPicker />)}
+        </Form.Item>
+      );
+    } else if (this.props.timeFormat === 0) {
+      return null;
+    }else if (this.props.timeFormat === 2) {
+      return (
+          <Form.Item>
+            {/**  */}
+            {this.props.form.getFieldDecorator("timeOrder", {
+              initialValue: moment(),
+            })(<DatePicker.MonthPicker />)}
+          </Form.Item>
+      );
+    } else if (!this.props.timeFormat) {
+      return (
+        <Form.Item>
+          {this.props.form.getFieldDecorator("timeOrder", {
+            initialValue: [moment().subtract(1, "days"), moment()]
+          })(<DatePicker.RangePicker />)}
+        </Form.Item>
+      );
+    } else {
+      return null;
+    }
+  };
   /**
    * 获取表单数据
    */
@@ -155,18 +191,25 @@ class BocoTable extends React.Component<IProps> {
     const timeNow = this.props.form.getFieldValue("timeOrder");
 
     let timeOrder: any;
-    if (timeNow !== null && timeNow !== "" && timeNow.length !== 0) {
-      if (this.props.month) {
+    if (timeNow !== null && timeNow !== undefined && timeNow.length !== 0) {
+      if (this.props.timeFormat === 1) {
         timeOrder = {
           month: moment(timeNow).format("YYYY-MM"),
           timeOrder: null
         };
-      } else {
+      } else if (this.props.timeFormat === 2) {
+        timeOrder = {
+          years: moment(timeNow).format("YYYY"),
+          timeOrder: null
+        };
+      } else if (!this.props.timeFormat) {
         timeOrder = {
           startTime: moment(timeNow[0]).format("YYYY-MM-DD"),
           endTime: moment(timeNow[1]).format("YYYY-MM-DD"),
           timeOrder: null
         };
+      } else {
+        timeOrder = {};
       }
     }
     const formDataPre = this.props.form.getFieldsValue();
@@ -214,19 +257,7 @@ class BocoTable extends React.Component<IProps> {
               )}
             </Form.Item>
             {this.FormBuild()}
-            {this.props.month ? (
-              <Form.Item>
-                {getFieldDecorator("timeOrder", {
-                  initialValue: moment()
-                })(<DatePicker.MonthPicker />)}
-              </Form.Item>
-            ) : (
-              <Form.Item>
-                {getFieldDecorator("timeOrder", {
-                  initialValue: [moment().subtract(1, "days"), moment()]
-                })(<DatePicker.RangePicker />)}
-              </Form.Item>
-            )}
+            {this.timeOfForm()}
             <Form.Item>
               <Button htmlType={"submit"} type={"primary"}>
                 搜索
@@ -248,7 +279,7 @@ class BocoTable extends React.Component<IProps> {
               total: dataSoruce.total,
               showSizeChanger: true,
               showQuickJumper: true,
-              pageSizeOptions: ["10", "20", "30", "40", "10000000"],
+              pageSizeOptions: ["10", "20", "30", "40", "10000"],
               onShowSizeChange: (current: number, size: number) => {
                 this.handleTableChange(current, size);
               },

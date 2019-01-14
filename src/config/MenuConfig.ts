@@ -1,5 +1,7 @@
 import { menuArray } from "../component/MySider";
-
+/**
+ * 自定义菜单数据
+ */
 const MenuConfig: menuArray[] = [
   {
     name: "行政主管部门综合查询",

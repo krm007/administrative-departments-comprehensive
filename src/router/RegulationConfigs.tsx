@@ -107,7 +107,7 @@ const RegulationConfigs: RouteConfig[] = [
       <BocoTable
         title={"药品收发存表"}
         url={"/yaoPinShouFaCunBiao/page"}
-        month={true}
+        timeFormat={1}
         tableTitle={NormalTableTitleConfig.get("YaoPinShouFaCunBiao")}
         formStructure={[
           {
@@ -139,7 +139,7 @@ const RegulationConfigs: RouteConfig[] = [
       <BocoTable
         title={"药品库存查询"}
         url={"/yaoPinKuCunChaXun/page"}
-        month={true}
+        timeFormat={1}
         tableTitle={NormalTableTitleConfig.get("YaoPinKuCunChaXun")}
         formStructure={[
           {
@@ -158,6 +158,7 @@ const RegulationConfigs: RouteConfig[] = [
         title={"人事统计查询"}
         url={"/renShiTongJiChaXun/page"}
         tableTitle={NormalTableTitleConfig.get("RenShiTongJiChaXun")}
+        timeFormat={0}
         formStructure={[
           {
             value: "keShi",

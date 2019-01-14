@@ -32,8 +32,10 @@ function* getTableDataSaga(
     const structures = action.payload.formStructure;
     if (structures) {
       for (const structure of structures) {
-        const response = yield call(service.post, structure.url);
-        formData[structure.value] = response.data;
+        if (structure.url) {
+          const response = yield call(service.post, structure.url);
+          formData[structure.value] = response.data;
+        }
       }
     }
     const orgList = yield call(service.get, "/yiLiaoJiGou/getYiLiaoJiGou");

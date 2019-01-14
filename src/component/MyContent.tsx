@@ -3,7 +3,7 @@ import { WithStyles } from "@material-ui/core/styles/withStyles";
 import * as React from "react";
 import BreadCrumb from "./MyBreadCrumb";
 import { renderRoutes, RouteConfig } from "react-router-config";
-import { Layout } from "antd";
+import { BackTop, Layout } from "antd";
 
 
 const styles = (theme: Theme) =>
@@ -35,6 +35,7 @@ class MyContent extends React.Component<Iprops> {
     return (
       <Layout.Content className={classes.root}>
         <BreadCrumb breadcrumbNameMap={this.props.breadcrumbNameMap} />
+        <BackTop />
         <div className={classes.content}>
           { renderRoutes(this.props.routes)}
             {/*<Switch>*/}
