@@ -2913,7 +2913,12 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "ShuangXiangZhuanZhen",
     [
-
+        {
+            title: "医疗机构",
+            align: "center",
+            dataIndex: "yiLiaoJiGou",
+            key: "yiLiaoJiGou"
+        },
       {
         title: "日期:按月",
         align: "center",
@@ -4993,7 +4998,12 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "LinChuangJianYan",
     [
-
+        {
+            title: "医疗机构",
+            align: "center",
+            dataIndex: "yiLiaoJiGou",
+            key: "yiLiaoJiGou"
+        },
       {
         title: "确认日期",
         align: "center",
