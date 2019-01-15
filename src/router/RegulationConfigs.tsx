@@ -4,6 +4,7 @@ import BocoTable from "../views/BocoTable";
 import * as React from "react";
 import NormalTableTitleConfig from "../config/NormalTableTitleConfig";
 import Loading from "../component/Loading";
+import Home from "../views/Home";
 
 const ChronicDiseaseTable = loadable({
   loader: () => import("../views/ChronicDiseaseTable"),
@@ -524,6 +525,10 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("LinChuangJianYan")}
       />
     )
+  },
+  {
+    path: "/",
+    component:Home
   }
 ];
 
