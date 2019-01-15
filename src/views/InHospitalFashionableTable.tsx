@@ -17,12 +17,14 @@ class InHospitalFashionableTable extends React.Component {
           <Tabs.TabPane tab={<span>出院病人费用统计表</span>} key="1">
             <BocoTable
               title={"出院病人费用统计表"}
+              url={"/chuYuanBingRenFeiYong/page"}
               tableTitle={MoreTableTitleConfig.get("ChuYuanBingRenFeiYong")}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>出院病人收入统计表</span>} key="2">
             <BocoTable
               title={"出院病人收入统计表"}
+              url={"/chuYuanBingRenShouRu/page"}
               tableTitle={MoreTableTitleConfig.get("ChuYuanBingRenShouRu")}
             />
           </Tabs.TabPane>
