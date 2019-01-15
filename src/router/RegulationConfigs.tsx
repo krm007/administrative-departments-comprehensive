@@ -408,7 +408,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"双向转诊统计表"}
-        url={"/shuangXiangZhuanZhen/page"}
+        url={"/zhuanZhenMingXi/pageShangZhuan"}
         tableTitle={NormalTableTitleConfig.get("ShuangXiangZhuanZhen")}
       />
     )
