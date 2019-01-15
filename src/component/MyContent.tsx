@@ -11,12 +11,9 @@ const styles = (theme: Theme) =>
     content: {
       background: "#fff",
       margin: 14,
-      // maxHeight: "78.5vh",
-      // minHeight: "78.5vh",
-      // overflowY: "scroll",
-      height: "74vh",
-      overflow: "auto",
-      borderRadius: 5
+        minHeight: "79vh",
+        overflowY: "auto",
+        borderRadius: 10
     }
   });
 

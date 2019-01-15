@@ -4,6 +4,7 @@ import BocoTable from "../views/BocoTable";
 import * as React from "react";
 import NormalTableTitleConfig from "../config/NormalTableTitleConfig";
 import Loading from "../component/Loading";
+import Home from "../views/Home";
 
 const ChronicDiseaseTable = loadable({
   loader: () => import("../views/ChronicDiseaseTable"),
@@ -310,7 +311,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"在院疾病分布情况"}
-        url={"/zaiYuanJiBingFenBu/page"}
+        url={"/zaiYuanJiBingFenBu/pageZaiYuan"}
         tableTitle={NormalTableTitleConfig.get("ZaiYuanJiBingFenBu")}
         formStructure={[
           {
@@ -347,7 +348,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"出院疾病统计分析"}
-        url={"/zaiYuanJiBingFenBu/page"}
+        url={"/zaiYuanJiBingFenBu/pageChuYuan"}
         tableTitle={NormalTableTitleConfig.get("ZaiYuanJiBingFenBu")}
         formStructure={[
           {
@@ -524,6 +525,10 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("LinChuangJianYan")}
       />
     )
+  },
+  {
+    path: "/",
+    component:Home
   }
 ];
 
