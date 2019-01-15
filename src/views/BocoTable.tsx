@@ -22,6 +22,11 @@ const styles = (theme: Theme) =>
       "& .ant-table-middle > .ant-table-title": {
         padding: "20px 8px"
       },
+      "& .ant-table": {
+        "& td": {
+          whiteSpace: "nowrap"
+        }
+      },
       "& form": {
         marginBottom: 20
       }
@@ -30,7 +35,6 @@ const styles = (theme: Theme) =>
 
 interface IProps extends WithStyles<typeof styles>, FormComponentProps {
   url?: string;
-  tableName?: string;
   title?: string;
   formStructure?: FormStructure[];
   tableTitle?: [];
@@ -236,7 +240,7 @@ class BocoTable extends React.Component<IProps> {
           <Form layout={"inline"} onSubmit={this.onSubmit}>
             <Form.Item>
               {getFieldDecorator("orgId", {
-               /* initialValue: "浙江省青春医院"*/
+                /* initialValue: "浙江省青春医院"*/
               })(
                 <Select placeholder={"机构选择"} style={{ width: 174 }}>
                   {(() => {
@@ -272,6 +276,9 @@ class BocoTable extends React.Component<IProps> {
               this.tableRefs = ref;
             }}
             title={this.tableTitle}
+            scroll={{
+              x: true
+            }}
             size={"small"}
             pagination={{
               pageSize: dataSoruce.pageSize,
@@ -286,7 +293,7 @@ class BocoTable extends React.Component<IProps> {
               onChange: (page, pageSize) => {
                 this.handleTableChange(page, pageSize);
               },
-              showTotal: total => `共 ${total} 条数据`
+              showTotal: total => `共 ${total} 行数据`
             }}
           />
         </Spin>
