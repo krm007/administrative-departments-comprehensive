@@ -5,16 +5,18 @@ import BreadCrumb from "./MyBreadCrumb";
 import { renderRoutes, RouteConfig } from "react-router-config";
 import { BackTop, Layout } from "antd";
 
-
 const styles = (theme: Theme) =>
   createStyles<"root" | "content">({
     root: {},
     content: {
       background: "#fff",
       margin: 14,
-      minHeight: "79vh",
-      overflowY: "auto",
-      borderRadius: 10
+      // maxHeight: "78.5vh",
+      // minHeight: "78.5vh",
+      // overflowY: "scroll",
+      height: "74vh",
+      overflow: "auto",
+      borderRadius: 5
     }
   });
 
@@ -37,14 +39,14 @@ class MyContent extends React.Component<Iprops> {
         <BreadCrumb breadcrumbNameMap={this.props.breadcrumbNameMap} />
         <BackTop />
         <div className={classes.content}>
-          { renderRoutes(this.props.routes)}
-            {/*<Switch>*/}
-                {/*<Route<RouteProps>*/}
-                    {/*exact={true}*/}
-                    {/*path={"/mixtable"}*/}
-                    {/*component={}*/}
-                {/*/>*/}
-            {/*</Switch>*/}
+          {renderRoutes(this.props.routes)}
+          {/*<Switch>*/}
+          {/*<Route<RouteProps>*/}
+          {/*exact={true}*/}
+          {/*path={"/mixtable"}*/}
+          {/*component={}*/}
+          {/*/>*/}
+          {/*</Switch>*/}
         </div>
       </Layout.Content>
     );
