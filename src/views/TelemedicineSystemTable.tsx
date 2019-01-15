@@ -28,18 +28,14 @@ class TelemedicineSystemTable extends React.Component<Iprops> {
           <Tabs.TabPane tab={<span>远程会诊统计</span>} key="1">
             <BocoTable
               title={"远程会诊统计"}
+              url={"/yuanChengHuiZhen/page"}
               tableTitle={MoreTableTitleConfig.get("YuanChengHuiZhen")}
               formStructure={[
-                  {
-                      value: "huiZhenYiYuan",
-                      text: "会诊医院",
-                      url: ""
-                  },
-                  {
-                      value: "huiZhenLeiXing",
-                      text: "会诊类型",
-                      url: "/yuanChengHuiZhen/getHuiZhenXueKe"
-                  }
+                {
+                  value: "huiZhenLeiXing",
+                  text: "会诊类型",
+                  url: "/yuanChengHuiZhen/getHuiZhenXueKe"
+                }
               ]}
             />
           </Tabs.TabPane>
@@ -47,17 +43,13 @@ class TelemedicineSystemTable extends React.Component<Iprops> {
             <BocoTable
               title={"远程门诊统计"}
               tableTitle={MoreTableTitleConfig.get("YuanChengMenZhen")}
+              url={"/yuanChengMenZhen/page"}
               formStructure={[
-                  {
-                      value: "huiZhenYiYuan",
-                      text: "会诊医院",
-                      url: ""
-                  },
-                  {
-                      value: "huiZhenLeiXing",
-                      text: "会诊类型",
-                      url: "/yuanChengHuiZhen/getHuiZhenXueKe"
-                  }
+                {
+                  value: "huiZhenLeiXing",
+                  text: "会诊类型",
+                  url: "/yuanChengHuiZhen/getHuiZhenXueKe"
+                }
               ]}
             />
           </Tabs.TabPane>
