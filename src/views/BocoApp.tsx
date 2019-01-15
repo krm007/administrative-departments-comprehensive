@@ -34,13 +34,6 @@ class BocoApp extends React.Component<Iprops, Istatus> {
       logo: true
     };
   }
-  public componentWillMount(): void {
-    if (this.props.location.pathname === "/") {
-      this.props.history.push(
-        "/administrativeDepartment/hospitalFinancial/outpatientBillingFee"
-      );
-    }
-  }
   public render() {
     return (
       <Layout>

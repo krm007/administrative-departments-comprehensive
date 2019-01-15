@@ -163,20 +163,20 @@ class BocoTable extends React.Component<IProps> {
       );
     } else if (this.props.timeFormat === 0) {
       return null;
-    }else if (this.props.timeFormat === 2) {
+    } else if (this.props.timeFormat === 2) {
       return (
-          <Form.Item>
-            {/**  */}
-            {this.props.form.getFieldDecorator("timeOrder", {
-              initialValue: moment(),
-            })(<DatePicker.MonthPicker />)}
-          </Form.Item>
+        <Form.Item>
+          {/** TODO hao */}
+          {this.props.form.getFieldDecorator("timeOrder", {
+            initialValue: moment()
+          })(<DatePicker.MonthPicker />)}
+        </Form.Item>
       );
     } else if (!this.props.timeFormat) {
       return (
         <Form.Item>
           {this.props.form.getFieldDecorator("timeOrder", {
-            initialValue: [moment().subtract(1, "days"), moment()]
+            initialValue: [moment().startOf("year"), moment()]
           })(<DatePicker.RangePicker />)}
         </Form.Item>
       );
