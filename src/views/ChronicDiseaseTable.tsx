@@ -369,7 +369,7 @@ class ChronicDiseaseTable extends React.Component<Iprops, Istate> {
             <BocoTable
               title={"慢性病季度汇总表"}
               tableTitle={MoreTableTitleConfig.get("ZhongDianManXingBing")}
-              month={true}
+              timeFormat={1}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>慢性病图表分析</span>} key="3">

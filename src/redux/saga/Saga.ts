@@ -38,7 +38,7 @@ function* getTableDataSaga(
         }
       }
     }
-    const orgList = yield call(service.get, "/yiLiaoJiGou/getYiLiaoJiGou");
+    const orgList = yield call(service.post, "/yiLiaoJiGou/getYiLiaoJiGou");
     formData.orgList = orgList.data;
     yield put(tableDataSource({ data: tableList, formData }));
   } catch (e) {

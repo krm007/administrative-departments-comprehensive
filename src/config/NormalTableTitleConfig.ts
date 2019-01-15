@@ -123,67 +123,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     ]
   ],
   [
-    "MenZhenGuaZhangTongJi",
-    [
-      {
-        title: "编号",
-        align: "center",
-        dataIndex: "id",
-        key: "id",
-        render: (text,row, index) => {
-          return `${index+1}`;
-        }
-      },
-      {
-        title: "监狱",
-        align: "center",
-        dataIndex: "jianYu",
-        key: "jianYu"
-
-      },
-      {
-        title: "监区",
-        align: "center",
-        dataIndex: "jianQu",
-        key: "jianQu"
-
-      },
-      {
-        title: "姓名",
-        align: "center",
-        dataIndex: "xingMing",
-        key: "xingMing"
-
-      },
-      {
-        title: "编号",
-        align: "center",
-        dataIndex: "bianHao",
-        key: "bianHao"
-
-      },
-      {
-        title: "挂账时间",
-        align: "center",
-        dataIndex: "guaZhangShiJian",
-        key: "guaZhangShiJian"
-
-      },
-      {
-        title: "挂账金额",
-        align: "center",
-        dataIndex: "guaZhangJinE",
-        key: "guaZhangJinE"
-      },
-      {
-        title: "制表人",
-        align: "center",
-        dataIndex: "zhiBiaoRen",
-        key: "zhiBiaoRen"
-      }
-    ]
-  ],
-  [
     "YuJiaoKuanBingRenMingXi",
     [
       {
@@ -194,8 +133,8 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
           return `${index+1}`;
         }
       },
-      
-      
+
+
       {
         title: "交款方式",
         align: "center",
@@ -3416,13 +3355,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
           }
       },
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou",
-
-      },
-      {
         title: "监狱",
         align: "center",
         dataIndex: "jianYu",
@@ -5312,7 +5244,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         dataIndex: "yiLiaoJiGou",
         key: "yiLiaoJiGou"
       },
-      
+
       {
         title: "单位名称",
         align: "center",
