@@ -193,14 +193,9 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("MenZhenRiZhi")}
         formStructure={[
           {
-            value: "name",
-            text: "就诊医院",
-            url: ""
-          },
-          {
-            value: "name",
+            value: "jiuZhenKeShi",
             text: "就诊科室",
-            url: ""
+            url: "/menZhenRiZhi/getKeShi"
           }
         ]}
       />
@@ -272,14 +267,14 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("YiJiKeShiGongZuoLiang")}
         formStructure={[
           {
-            value: "name",
+            value: "danJuLeiXing",
             text: "单据类型",
-            data: [{ value: 1, key: "全部" },{ value: 1, key: "检验单" },{ value: 1, key: "检查单" }]
+            url:"/yiJiKeShiGongZuoLiang/getDanJuLeiXing"
           },
           {
-            value: "name",
+            value: "menZhenZhuYuan",
             text: "门诊住院",
-            url: ""
+            url: "/yiJiKeShiGongZuoLiang/getMenZhenZhuYuan"
           }
         ]}
       />
@@ -303,6 +298,13 @@ const RegulationConfigs: RouteConfig[] = [
         title={"在院病人分布状况"}
         url={"/zaiYuanBingRenFenBu/page"}
         tableTitle={NormalTableTitleConfig.get("ZaiYuanBingRenFenBu")}
+        formStructure={[
+            {
+                value: "zhenDuanMingCheng",
+                text: "诊断名称",
+                url:""
+            }
+        ]}
       />
     )
   },
@@ -352,7 +354,7 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("ZaiYuanJiBingFenBu")}
         formStructure={[
           {
-            value: "name",
+            value: "zhenDuanMingCheng",
             text: "诊断名称",
             url: ""
           }
