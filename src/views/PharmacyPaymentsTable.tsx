@@ -18,27 +18,29 @@ class PharmacyPaymentsTable extends React.Component {
             <BocoTable
               title={"按药品类型统计"}
               timeFormat={1}
+              url={"/anYaoPinLeiXingTongJi/page"}
               tableTitle={MoreTableTitleConfig.get("AnYaoPinLeiXingTongJi")}
               formStructure={[
-                  {
-                      value: "kuFang",
-                      text: "库房",
-                      url: "/yaoPinShouFaCunBiao/getKuFang"
-                  }
+                {
+                  value: "kuFang",
+                  text: "库房",
+                  url: "/yaoPinShouFaCunBiao/getKuFang"
+                }
               ]}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>按账簿类型统计</span>} key="2">
             <BocoTable
               title={"按账簿类型统计"}
-              month={true}
+              timeFormat={1}
+              url={"/anZhangBoLeiXingTongJi/page"}
               tableTitle={MoreTableTitleConfig.get("AnZhangBoLeiXingTongJi")}
               formStructure={[
-                  {
-                      value: "kuFang",
-                      text: "库房",
-                      url: "/yaoPinShouFaCunBiao/getKuFang"
-                  }
+                {
+                  value: "kuFang",
+                  text: "库房",
+                  url: "/yaoPinShouFaCunBiao/getKuFang"
+                }
               ]}
             />
           </Tabs.TabPane>
