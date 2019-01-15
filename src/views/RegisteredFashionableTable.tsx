@@ -27,12 +27,14 @@ class RegisteredFashionableTable extends React.Component<Iprops> {
           <Tabs.TabPane tab={<span>门诊汇总个人日报表</span>} key="1">
             <BocoTable
               title={"门诊汇总个人日报表"}
+              url={"/menZhenHuiZongGeRen/page"}
               tableTitle={MoreTableTitleConfig.get("MenZhenHuiZongGeRen")}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>门诊挂账统计</span>} key="2">
             <BocoTable
               title={"门诊挂账统计"}
+              url={"/menZhenGuaZhangHuiZong/page"}
               tableTitle={MoreTableTitleConfig.get("MenZhenGuaZhangHuiZong")}
               formStructure={[
                 {
@@ -46,7 +48,7 @@ class RegisteredFashionableTable extends React.Component<Iprops> {
           <Tabs.TabPane tab={<span>门诊汇总月报表</span>} key="3">
             <BocoTable
               title={"门诊汇总月报表"}
-              url={"/decisionAnalysisReport"}
+              url={"/menZhenHuiZongYue/page"}
               tableTitle={MoreTableTitleConfig.get("MenZhenHuiZongYue")}
               timeFormat={1}
             />
@@ -54,12 +56,14 @@ class RegisteredFashionableTable extends React.Component<Iprops> {
           <Tabs.TabPane tab={<span>挂号日报个人汇总报表</span>} key="4">
             <BocoTable
               title={"挂号日报个人汇总报表"}
+              url={"/guaHaoRiBaoGeRenHuiZong/page"}
               tableTitle={MoreTableTitleConfig.get("GuaHaoRiBaoGeRenHuiZong")}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>门诊业务收入凭证</span>} key="5">
             <BocoTable
               title={"门诊业务收入凭证"}
+              url={"/menZhenYeWuShouRu/page"}
               tableTitle={MoreTableTitleConfig.get("MenZhenYeWuShouRu")}
             />
           </Tabs.TabPane>

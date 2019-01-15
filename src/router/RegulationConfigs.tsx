@@ -311,7 +311,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"在院疾病分布情况"}
-        url={"/zaiYuanJiBingFenBu/page"}
+        url={"/zaiYuanJiBingFenBu/pageZaiYuan"}
         tableTitle={NormalTableTitleConfig.get("ZaiYuanJiBingFenBu")}
         formStructure={[
           {
@@ -348,7 +348,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"出院疾病统计分析"}
-        url={"/zaiYuanJiBingFenBu/page"}
+        url={"/zaiYuanJiBingFenBu/pageChuYuan"}
         tableTitle={NormalTableTitleConfig.get("ZaiYuanJiBingFenBu")}
         formStructure={[
           {
@@ -409,7 +409,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"双向转诊统计表"}
-        url={"/shuangXiangZhuanZhen/page"}
+        url={"/zhuanZhenMingXi/pageShangZhuan"}
         tableTitle={NormalTableTitleConfig.get("ShuangXiangZhuanZhen")}
       />
     )
