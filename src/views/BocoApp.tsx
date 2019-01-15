@@ -42,7 +42,7 @@ class BocoApp extends React.Component<Iprops, Istatus> {
           logo={this.state.logo}
           collapsed={this.state.collapse}
         />
-        <Layout style={{height:"100vh"}}>
+        <Layout>
           <MyHeader
             toggle={() => {
               this.setState({
