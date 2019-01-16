@@ -244,6 +244,7 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
    */
   public onSubmit = (event: React.FormEvent<any>) => {
     event.preventDefault();
+    this.getData(this.props.form.getFieldsValue())
   };
   /**
    * 表格的title
