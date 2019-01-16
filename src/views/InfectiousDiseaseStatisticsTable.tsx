@@ -257,7 +257,21 @@ class InfectiousDiseaseStatisticsTable extends React.Component<Iprops, Istate> {
               title={"法定传染病发病、死亡统计表"}
               url={"/faDingChuanRanFaBing/page"}
               tableTitle={MoreTableTitleConfig.get("FaDingChuanRanTongJi")}
-              timeFormat={1}
+              org={true}
+              formStructure={[
+                {
+                  value: "quarter",
+                  text: "选择季度",
+                  data: [
+                    { value: "Q1", key: "第一季度" },
+                    { value: "Q2", key: "第二季度" },
+                    { value: "Q3", key: "第三季度" },
+                    { value: "Q4", key: "第四季度" }
+                  ],
+                  initialValue: true
+                }
+              ]}
+              timeFormat={2}
             />
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>法定传染病报告发病情况</span>} key="2">
@@ -265,7 +279,21 @@ class InfectiousDiseaseStatisticsTable extends React.Component<Iprops, Istate> {
               title={"法定传染病报告发病情况"}
               url={"/faDingChuanRanFaBing/page"}
               tableTitle={MoreTableTitleConfig.get("FaDingChuanRanFaBing")}
-              timeFormat={1}
+              timeFormat={2}
+              formStructure={[
+                {
+                  value: "quarter",
+                  text: "选择季度",
+                  data: [
+                    { value: "Q1", key: "第一季度" },
+                    { value: "Q2", key: "第二季度" },
+                    { value: "Q3", key: "第三季度" },
+                    { value: "Q4", key: "第四季度" }
+                  ],
+                  initialValue: true
+                }
+              ]}
+              org={true}
             />
             <Button
               type="primary"
@@ -336,7 +364,8 @@ class InfectiousDiseaseStatisticsTable extends React.Component<Iprops, Istate> {
               title={"各机构法定传染病报告发病分布"}
               url={"/faDingChuanRanFenBu/page"}
               tableTitle={MoreTableTitleConfig.get("FaDingChuanRanFenBu")}
-              timeFormat={1}
+              timeFormat={2}
+              org={true}
               formStructure={[
                 {
                   value: "quarter",
