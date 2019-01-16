@@ -1,4 +1,5 @@
 import { ColumnProps } from "antd/lib/table";
+import { hejiColumns } from "../util/tableRender";
 
 /**
  * 一个页面多个表格的表头配置文件
@@ -14,31 +15,40 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         title: "医疗机构",
         align: "center",
         dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
+        key: "yiLiaoJiGou",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.fangShiMingCheng, 0, value)
       },
       {
         title: "日期:按月",
         align: "center",
         dataIndex: "riQi",
-        key: "riQi"
+        key: "riQi",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.fangShiMingCheng, 0, value)
       },
       {
         title: "库房",
         align: "center",
         dataIndex: "kuFang",
-        key: "kuFang"
+        key: "kuFang",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.fangShiMingCheng, 0, value)
       },
       {
         title: "分类名称",
         align: "center",
         dataIndex: "feiLeiMingCheng",
-        key: "feiLeiMingCheng"
+        key: "feiLeiMingCheng",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.fangShiMingCheng, 0, value)
       },
       {
         title: "方式名称",
         align: "center",
         dataIndex: "fangShiMingCheng",
-        key: "fangShiMingCheng"
+        key: "fangShiMingCheng",
+        render: (value: string, row: any, index) => hejiColumns(value, 5)
       },
       {
         title: "西药",
@@ -73,31 +83,40 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         title: "医疗机构",
         align: "center",
         dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
+        key: "yiLiaoJiGou",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.fangShiMingCheng, 0, value)
       },
       {
         title: "日期:按月",
         align: "center",
         dataIndex: "riQi",
-        key: "riQi"
+        key: "riQi",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.fangShiMingCheng, 0, value)
       },
       {
         title: "库房",
         align: "center",
         dataIndex: "kuFang",
-        key: "kuFang"
+        key: "kuFang",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.fangShiMingCheng, 0, value)
       },
       {
         title: "分类名称",
         align: "center",
         dataIndex: "fenLeiMingCheng",
-        key: "fenLeiMingCheng"
+        key: "fenLeiMingCheng",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.fangShiMingCheng, 0, value)
       },
       {
         title: "方式名称",
         align: "center",
         dataIndex: "fangShiMingCheng",
-        key: "fangShiMingCheng"
+        key: "fangShiMingCheng",
+        render: (value: string, row: any, index) => hejiColumns(value, 5)
       },
       {
         title: "西药",
@@ -1584,19 +1603,25 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         title: "医疗机构",
         align: "center",
         dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
+        key: "yiLiaoJiGou",
+        render: (value: string, row: any, index) =>
+            hejiColumns(row.danWei, 0, value)
       },
       {
         title: "日期",
         align: "center",
         dataIndex: "riQi",
-        key: "riQi"
+        key: "riQi",
+        render: (value: string, row: any, index) =>
+            hejiColumns(row.danWei, 0, value)
       },
       {
         title: "单位",
         align: "center",
         dataIndex: "danWei",
-        key: "danWei"
+        key: "danWei",
+        render: (value: string, row: any, index) =>
+            hejiColumns(value, 3)
       },
       {
         title: "挂账金额",
@@ -2132,37 +2157,49 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         title: "医疗机构",
         align: "center",
         dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
+        key: "yiLiaoJiGou",
+        render: (value: string, row: any, index) =>
+            hejiColumns(row.danWeiMingCheng, 0, value)
       },
       {
         title: "日期",
         align: "center",
         dataIndex: "riQi",
-        key: "riQi"
+        key: "riQi",
+        render: (value: string, row: any, index) =>
+            hejiColumns(row.danWeiMingCheng, 0, value)
       },
       {
         title: "单位名称",
         align: "center",
         dataIndex: "danWeiMingCheng",
-        key: "danWeiMingCheng"
+        key: "danWeiMingCheng",
+        render: (value: string, row: any, index) =>
+            hejiColumns(value, 6)
       },
       {
         title: "姓名",
         align: "center",
         dataIndex: "xingMing",
-        key: "xingMing"
+        key: "xingMing",
+        render: (value: string, row: any, index) =>
+            hejiColumns(row.danWeiMingCheng, 0, value)
       },
       {
         title: "病区",
         align: "center",
         dataIndex: "bingQu",
-        key: "bingQu"
+        key: "bingQu",
+        render: (value: string, row: any, index) =>
+            hejiColumns(row.danWeiMingCheng, 0, value)
       },
       {
         title: "科室",
         align: "center",
         dataIndex: "keShi",
-        key: "keShi"
+        key: "keShi",
+        render: (value: string, row: any, index) =>
+            hejiColumns(row.danWeiMingCheng, 0, value)
       },
       {
         title: "医疗费",
@@ -3464,35 +3501,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "zhiBiaoRen",
         key: "zhiBiaoRen"
-      }
-    ]
-  ],
-  [
-    "MenZhenGuaZhangHuiZong",
-    [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
-      {
-        title: "单位",
-        align: "center",
-        dataIndex: "danWei",
-        key: "danWei"
-      },
-      {
-        title: "挂账金额",
-        align: "center",
-        dataIndex: "guaZhangJinE",
-        key: "guaZhangJinE"
       }
     ]
   ],

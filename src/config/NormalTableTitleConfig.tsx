@@ -1,4 +1,5 @@
 import { ColumnProps } from "antd/lib/table";
+import { hejiColumns } from "../util/tableRender";
 /**
  * 没有合并单元格table
  */
@@ -14,8 +15,8 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-        render: (value,row, index) => {
-          return `${index+1}`;
+        render: (value, row, index) => {
+          return `${index + 1}`;
         }
       },
       {
@@ -129,29 +130,31 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         title: "编号",
         align: "center",
         key: "text",
-        render: (value,row, index) => {
-          return `${index+1}`;
+        render: (value, row, index) => {
+          return `${index + 1}`;
         }
       },
-
 
       {
         title: "交款方式",
         align: "center",
         dataIndex: "jiaoKuanFangShi",
-        key: "jiaoKuanFangShi"
+        key: "jiaoKuanFangShi",
+        render:(value: string, row: any, index) => hejiColumns(value, 3)
       },
       {
         title: "姓名",
         align: "center",
         dataIndex: "xingMing",
-        key: "xingMing"
+        key: "xingMing",
+        render:(value: string, row: any, index) => hejiColumns(row.jiaoKuanFangShi, 0, value)
       },
       {
         title: "住院号",
         align: "center",
         dataIndex: "zhuYuanHao",
-        key: "zhuYuanHao"
+        key: "zhuYuanHao",
+        render:(value: string, row: any, index) => hejiColumns(row.jiaoKuanFangShi, 0, value)
       },
       {
         title: "金额",
@@ -169,156 +172,137 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
       {
         title: "病区",
         align: "center",
         dataIndex: "bingQu",
         key: "bingQu",
-
+        render:(value: string, row: any, index) => hejiColumns(value, 2)
       },
       {
         title: "科室",
         align: "center",
         dataIndex: "keShi",
         key: "keShi",
-
+        render:(value: string, row: any, index) => hejiColumns(row.bingQu, 0, value)
       },
       {
         title: "人次",
         align: "center",
         dataIndex: "renCi",
-        key: "renCi",
-
+        key: "renCi"
       },
       {
         title: "西药费",
         align: "center",
         dataIndex: "xiYaoFei",
-        key: "xiYaoFei",
-
+        key: "xiYaoFei"
       },
       {
         title: "成药费",
         align: "center",
         dataIndex: "chengYaoFei",
-        key: "chengYaoFei",
-
+        key: "chengYaoFei"
       },
       {
         title: "检查费",
         align: "center",
         dataIndex: "jianChaFei",
-        key: "jianChaFei",
-
+        key: "jianChaFei"
       },
       {
         title: "治疗费",
         align: "center",
         dataIndex: "zhiLiaoFei",
-        key: "zhiLiaoFei",
-
+        key: "zhiLiaoFei"
       },
       {
         title: "CT费",
         align: "center",
         dataIndex: "ctFei",
-        key: "ctFei",
-
+        key: "ctFei"
       },
       {
         title: "放射费",
         align: "center",
         dataIndex: "fangSheFei",
-        key: "fangSheFei",
-
+        key: "fangSheFei"
       },
       {
         title: "手术费",
         align: "center",
         dataIndex: "shouShuFei",
-        key: "shouShuFei",
-
+        key: "shouShuFei"
       },
       {
         title: "化验费",
         align: "center",
         dataIndex: "huaYanFei",
-        key: "huaYanFei",
-
+        key: "huaYanFei"
       },
       {
         title: "其他费",
         align: "center",
         dataIndex: "qiTaFei",
-        key: "qiTaFei",
-
+        key: "qiTaFei"
       },
       {
         title: "输氧费",
         align: "center",
         dataIndex: "shuYangFei",
-        key: "shuYangFei",
-
+        key: "shuYangFei"
       },
       {
         title: "诊察费",
         align: "center",
         dataIndex: "zhenChaFei",
-        key: "zhenChaFei",
-
+        key: "zhenChaFei"
       },
       {
         title: "卫生组套费",
         align: "center",
         dataIndex: "weiShengZuTaoFei",
-        key: "weiShengZuTaoFei",
-
+        key: "weiShengZuTaoFei"
       },
       {
         title: "床位费",
         align: "center",
         dataIndex: "chuangWeiFei",
-        key: "chuangWeiFei",
-
+        key: "chuangWeiFei"
       },
       {
         title: "伙食费",
         align: "center",
         dataIndex: "huoShiFei",
-        key: "huoShiFei",
-
+        key: "huoShiFei"
       },
       {
         title: "护理费",
         align: "center",
         dataIndex: "huLiFei",
-        key: "huLiFei",
-
+        key: "huLiFei"
       },
       {
         title: "材料费",
         align: "center",
         dataIndex: "caiLiaoFei",
-        key: "caiLiaoFei",
-
+        key: "caiLiaoFei"
       },
       {
         title: "麻醉费",
         align: "center",
         dataIndex: "maZuiFei",
-        key: "maZuiFei",
-
+        key: "maZuiFei"
       },
       {
         title: "合计",
         align: "center",
         dataIndex: "heJi",
-        key: "heJi",
-
+        key: "heJi"
       }
     ]
   ],
@@ -330,11 +314,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-        render: (value,row, index) => {
-          return `${index+1}`;
+        render: (value, row, index) => {
+          return `${index + 1}`;
         }
       },
-
 
       {
         title: "病区",
@@ -490,9 +473,9 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
       {
         title: "药品名称",
@@ -661,11 +644,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "库房",
@@ -767,11 +749,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "科室",
@@ -849,11 +830,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "挂号数量",
@@ -950,7 +930,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "GuaHaoJiLu",
     [
-
       {
         title: "就诊科室",
         align: "center",
@@ -1022,135 +1001,117 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
       {
         title: "医生",
         align: "center",
         dataIndex: "yiSheng",
-        key: "yiSheng",
-
+        key: "yiSheng"
       },
       {
         title: "工号",
         align: "center",
         dataIndex: "gongHao",
-        key: "gongHao",
-
+        key: "gongHao"
       },
       {
         title: "患者满意度",
         align: "center",
         dataIndex: "huanZheManYiDu",
-        key: "huanZheManYiDu",
-
+        key: "huanZheManYiDu"
       },
       {
         title: "锦旗和感谢信数量",
         align: "center",
         dataIndex: "jingQiGanXieXinShuLiang",
-        key: "jingQiGanXieXinShuLiang",
-
+        key: "jingQiGanXieXinShuLiang"
       },
       {
         title: "预约就诊率",
         align: "center",
         dataIndex: "yuYueJiuZhenLv",
-        key: "yuYueJiuZhenLv",
-
+        key: "yuYueJiuZhenLv"
       },
       {
         title: "医疗纠纷发生率",
         align: "center",
         dataIndex: "yiLiaoJiuFenFaShengLv",
-        key: "yiLiaoJiuFenFaShengLv",
-
+        key: "yiLiaoJiuFenFaShengLv"
       },
       {
         title: "院内感染发生率",
         align: "center",
         dataIndex: "yuanNeiGanRanFaShengLv",
-        key: "yuanNeiGanRanFaShengLv",
-
+        key: "yuanNeiGanRanFaShengLv"
       },
       {
         title: "抗菌药物使用合格率",
         align: "center",
         dataIndex: "kangJunYaoShiYongHeGeLv",
-        key: "kangJunYaoShiYongHeGeLv",
-
+        key: "kangJunYaoShiYongHeGeLv"
       },
       {
         title: "手术一级创口愈合率",
         align: "center",
         dataIndex: "shouShu_1ChuangKouYuHeLv",
-        key: "shouShu_1ChuangKouYuHeLv",
-
+        key: "shouShu_1ChuangKouYuHeLv"
       },
       {
         title: "门诊收入",
         align: "center",
         dataIndex: "menZhenShouRu",
-        key: "menZhenShouRu",
-
+        key: "menZhenShouRu"
       },
       {
         title: "急诊挂号人次数",
         align: "center",
         dataIndex: "jiZhenGuaHaoRanCiShu",
-        key: "jiZhenGuaHaoRanCiShu",
-
+        key: "jiZhenGuaHaoRanCiShu"
       },
       {
         title: "门诊挂号人次数",
         align: "center",
         dataIndex: "menZhenGuaHaoRenCiShu",
-        key: "menZhenGuaHaoRenCiShu",
-
+        key: "menZhenGuaHaoRenCiShu"
       },
       {
         title: "门诊手术次数",
         align: "center",
         dataIndex: "menZhenShouShuCiShu",
-        key: "menZhenShouShuCiShu",
-
+        key: "menZhenShouShuCiShu"
       },
       {
         title: "入院人数",
         align: "center",
         dataIndex: "ruYuanRenShu",
-        key: "ruYuanRenShu",
-
+        key: "ruYuanRenShu"
       },
       {
         title: "出院人数",
         align: "center",
         dataIndex: "chuYuanRenShu",
-        key: "chuYuanRenShu",
-
+        key: "chuYuanRenShu"
       },
       {
         title: "出院床日",
         align: "center",
         dataIndex: "chuYuanChuangRi",
-        key: "chuYuanChuangRi",
-
+        key: "chuYuanChuangRi"
       },
       {
         title: "平均床日",
         align: "center",
         dataIndex: "pingJunChuangRi",
-        key: "pingJunChuangRi",
-
+        key: "pingJunChuangRi"
       },
       {
         title: "床位使用率",
         align: "center",
         dataIndex: "chuangWeiShiYongLv",
-        key: "chuangWeiShiYongLv",
-
+        key: "chuangWeiShiYongLv"
       },
       {
         title: "ICU",
@@ -1160,15 +1121,13 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
             title: "ICU住院床日",
             align: "center",
             dataIndex: "icuZhuYuanChuangRi",
-            key: "icuZhuYuanChuangRi",
-
+            key: "icuZhuYuanChuangRi"
           },
           {
             title: "ICU住院人次",
             align: "center",
             dataIndex: "icuZhuYuanRenCi",
-            key: "icuZhuYuanRenCi",
-
+            key: "icuZhuYuanRenCi"
           }
         ]
       },
@@ -1176,57 +1135,49 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         title: "手术人次",
         align: "center",
         dataIndex: "shouShuRenCi",
-        key: "shouShuRenCi",
-
+        key: "shouShuRenCi"
       },
       {
         title: "手术时间",
         align: "center",
         dataIndex: "shouShuShiJian",
-        key: "shouShuShiJian",
-
+        key: "shouShuShiJian"
       },
       {
         title: "手术级别",
         align: "center",
         dataIndex: "shouShuJiBie",
-        key: "shouShuJiBie",
-
+        key: "shouShuJiBie"
       },
       {
         title: "任务分类",
         align: "center",
         dataIndex: "renWuFenLei",
-        key: "renWuFenLei",
-
+        key: "renWuFenLei"
       },
       {
         title: "麻醉分类",
         align: "center",
         dataIndex: "maZuiFenLei",
-        key: "maZuiFenLei",
-
+        key: "maZuiFenLei"
       },
       {
         title: "常规心电图",
         align: "center",
         dataIndex: "changGuiXinDianTu",
-        key: "changGuiXinDianTu",
-
+        key: "changGuiXinDianTu"
       },
       {
         title: "动态心电图",
         align: "center",
         dataIndex: "dognTaiXinDianTu",
-        key: "dognTaiXinDianTu",
-
+        key: "dognTaiXinDianTu"
       },
       {
         title: "动态血压",
         align: "center",
         dataIndex: "dongTaiXueYa",
-        key: "dongTaiXueYa",
-
+        key: "dongTaiXueYa"
       }
     ]
   ],
@@ -1238,11 +1189,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "结算类型",
@@ -1326,37 +1276,33 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
       {
         title: "诊断ID",
         align: "center",
         dataIndex: "zhenDuanId",
-        key: "zhenDuanId",
-
+        key: "zhenDuanId"
       },
       {
         title: "ICD10码",
         align: "center",
         dataIndex: "icd10Ma",
-        key: "icd10Ma",
-
+        key: "icd10Ma"
       },
       {
         title: "诊断名称",
         align: "center",
         dataIndex: "zhenDuanMingCheng",
-        key: "zhenDuanMingCheng",
-
+        key: "zhenDuanMingCheng"
       },
       {
         title: "人次",
         align: "center",
         dataIndex: "renCi",
-        key: "renCi",
-
+        key: "renCi"
       }
     ]
   ],
@@ -1368,29 +1314,25 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
-      },
-
-
-      {
-        title: "单据类型",
-        align: "center",
-        dataIndex: "danJuLeiXing",
-        key: "danJuLeiXing"
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
       {
         title: "门诊住院",
         align: "center",
         dataIndex: "menZhenZhuYuan",
-        key: "menZhenZhuYuan"
+        key: "menZhenZhuYuan",
+        render: (value: string, row: any, index) =>
+            hejiColumns(row.zhiXingKeShi, 0, value)
       },
       {
         title: "执行科室",
         align: "center",
         dataIndex: "zhiXingKeShi",
-        key: "zhiXingKeShi"
+        key: "zhiXingKeShi",
+        render: (value: string, row: any, index) =>
+            hejiColumns(value, 2)
       },
       {
         title: "项目",
@@ -1426,31 +1368,27 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
       {
         title: "科室",
         align: "center",
         dataIndex: "keShi",
-        key: "keShi",
-
+        key: "keShi"
       },
       {
         title: "合计",
         align: "center",
         dataIndex: "heJi",
-        key: "heJi",
-
+        key: "heJi"
       }
     ]
   ],
   [
     "ZaiYuanBingRenFenBu",
     [
-
-
       {
         title: "科室1",
         align: "center",
@@ -1479,11 +1417,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "诊断ID",
@@ -1519,11 +1456,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "类型",
@@ -1685,11 +1621,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "病案号",
@@ -1743,11 +1678,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "病区",
@@ -1831,9 +1765,9 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
       {
         title: "医疗机构",
@@ -1846,126 +1780,108 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "bingLiHao",
         key: "bingLiHao"
-
       },
       {
         title: "姓名",
         align: "center",
         dataIndex: "xingMing",
         key: "xingMing"
-
       },
       {
         title: "性别",
         align: "center",
         dataIndex: "xingBie",
         key: "xingBie"
-
       },
       {
         title: "年龄",
         align: "center",
         dataIndex: "nianLing",
         key: "nianLing"
-
       },
       {
         title: "病人类别",
         align: "center",
         dataIndex: "bingRenLeiBie",
         key: "bingRenLeiBie"
-
       },
       {
         title: "病人性质",
         align: "center",
         dataIndex: "bingRenXingZhi",
         key: "bingRenXingZhi"
-
       },
       {
         title: "当前科室",
         align: "center",
         dataIndex: "dangQianKeShi",
         key: "dangQianKeShi"
-
       },
       {
         title: "当前病区",
         align: "center",
         dataIndex: "dangQianBingQu",
         key: "dangQianBingQu"
-
       },
       {
         title: "床位",
         align: "center",
         dataIndex: "chuangWei",
         key: "chuangWei"
-
       },
       {
         title: "入院日期",
         align: "center",
         dataIndex: "ruYuanRiQi",
         key: "ruYuanRiQi"
-
       },
       {
         title: "单位名称",
         align: "center",
         dataIndex: "danWeiMingCheng",
         key: "danWeiMingCheng"
-
       },
       {
         title: "收治医生",
         align: "center",
         dataIndex: "shouZhiYiSheng",
         key: "shouZhiYiSheng"
-
       },
       {
         title: "主治医生",
         align: "center",
         dataIndex: "zhuZhiYiSheng",
         key: "zhuZhiYiSheng"
-
       },
       {
         title: "担保人",
         align: "center",
         dataIndex: "danBaoRen",
-        key: "danBaoRen",
-
+        key: "danBaoRen"
       },
       {
         title: "担保金额",
         align: "center",
         dataIndex: "danBaoJinE",
         key: "danBaoJinE"
-
       },
       {
         title: "住院天数",
         align: "center",
         dataIndex: "zhuYuanTianShu",
         key: "zhuYuanTianShu"
-
       },
       {
         title: "操作员",
         align: "center",
         dataIndex: "caoZuoYuan",
         key: "caoZuoYuan"
-
       }
     ]
   ],
   [
     "FaDingChuanRanTongJi",
     [
-
       {
         title: "日期:格式：年份+季度 2018Q1",
         align: "center",
@@ -2013,7 +1929,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "FaDingChuanRanFaBing",
     [
-
       {
         title: "日期:格式：年份+季度 2018Q1",
         align: "center",
@@ -2061,8 +1976,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "FaDingChuanRanFenBu",
     [
-
-
       {
         title: "地区:包括：杭州，宁波，湖州，金华，衢州，台州，丽水",
         align: "center",
@@ -2697,7 +2610,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "HisZhongDianManXingBing",
     [
-
       {
         title: "日期:按月",
         align: "center",
@@ -2811,7 +2723,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "YuanChengHuiZhen",
     [
-
       {
         title: "时间",
         align: "center",
@@ -2865,7 +2776,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "YuanChengMenZhen",
     [
-
       {
         title: "时间",
         align: "center",
@@ -2913,12 +2823,12 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "ShuangXiangZhuanZhen",
     [
-        {
-            title: "医疗机构",
-            align: "center",
-            dataIndex: "yiLiaoJiGou",
-            key: "yiLiaoJiGou"
-        },
+      {
+        title: "医疗机构",
+        align: "center",
+        dataIndex: "yiLiaoJiGou",
+        key: "yiLiaoJiGou"
+      },
       {
         title: "日期:按月",
         align: "center",
@@ -2959,11 +2869,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "病历号",
@@ -3072,7 +2981,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "QuYuYingXiangTongJi",
     [
-
       {
         title: "机构名称",
         align: "center",
@@ -3123,8 +3031,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "QuYuYiShengGongZuo",
     [
-
-
       {
         title: "机构名称",
         align: "center",
@@ -3149,8 +3055,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "QuYuSheBeiTongJi",
     [
-
-
       {
         title: "机构名称",
         align: "center",
@@ -3175,8 +3079,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "QuYuYiShengGongZuo",
     [
-
-
       {
         title: "机构名称",
         align: "center",
@@ -3201,7 +3103,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "QuYuKuaYuanBaoGao",
     [
-
       {
         title: "机构名称",
         align: "center",
@@ -3243,8 +3144,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "JianYanBiaoBenTongJi",
     [
-
-
       {
         title: "指标值:指标说明",
         align: "center",
@@ -3327,11 +3226,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "单位",
@@ -3355,58 +3253,59 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
       {
         title: "监狱",
         align: "center",
         dataIndex: "jianYu",
         key: "jianYu",
-
+        render: (value: string, row: any, index) => hejiColumns(value, 5)
       },
       {
         title: "监区",
         align: "center",
         dataIndex: "jianQu",
         key: "jianQu",
-
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.jianYu, 0, value)
       },
       {
         title: "姓名",
         align: "center",
         dataIndex: "xingMing",
         key: "xingMing",
-
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.jianYu, 0, value)
       },
       {
         title: "编号",
         align: "center",
         dataIndex: "bianHao",
         key: "bianHao",
-
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.jianYu, 0, value)
       },
       {
         title: "挂账时间",
         align: "center",
         dataIndex: "guaZhangShiJian",
         key: "guaZhangShiJian",
-
+        render: (value: string, row: any, index) => hejiColumns(row.jianYu, 0, value)
       },
       {
         title: "挂账金额",
         align: "center",
         dataIndex: "guaZhangJinE",
         key: "guaZhangJinE",
-
       },
       {
         title: "制表人",
         align: "center",
         dataIndex: "zhiBiaoRen",
-        key: "zhiBiaoRen",
-
+        key: "zhiBiaoRen"
       }
     ]
   ],
@@ -3418,9 +3317,9 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
 
       {
@@ -3487,11 +3386,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "工号",
@@ -3551,11 +3449,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "病区",
@@ -3748,7 +3645,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "MenZhenHuiZongYue",
     [
-
       {
         title: "月份",
         align: "center",
@@ -3849,11 +3745,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "科室",
@@ -3967,11 +3862,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "科室",
@@ -4175,11 +4069,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "医生",
@@ -4270,7 +4163,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "MenZhenYeWuShouRu",
     [
-
       {
         title: "月份",
         align: "center",
@@ -4377,9 +4269,9 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
 
       {
@@ -4441,8 +4333,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "ChuYuanBingRenFeiYong",
     [
-
-
       {
         title: "病历号",
         align: "center",
@@ -4561,11 +4451,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "病区",
@@ -4626,7 +4515,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "ChuYuanBingRenShouRu",
     [
-
       {
         title: "科室",
         align: "center",
@@ -4866,8 +4754,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "DingDianShenQingHeDui",
     [
-
-
       {
         title: "险种",
         align: "center",
@@ -4920,11 +4806,10 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
-
 
       {
         title: "工号",
@@ -4998,12 +4883,12 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "LinChuangJianYan",
     [
-        {
-            title: "医疗机构",
-            align: "center",
-            dataIndex: "yiLiaoJiGou",
-            key: "yiLiaoJiGou"
-        },
+      {
+        title: "医疗机构",
+        align: "center",
+        dataIndex: "yiLiaoJiGou",
+        key: "yiLiaoJiGou"
+      },
       {
         title: "确认日期",
         align: "center",
@@ -5044,9 +4929,9 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
       {
         title: "病区",
@@ -5244,9 +5129,9 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "id",
         key: "id",
-          render: (value,row, index) => {
-              return `${index+1}`;
-          }
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
       {
         title: "医疗机构",
@@ -5260,35 +5145,30 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "danWeiMingCheng",
         key: "danWeiMingCheng"
-
       },
       {
         title: "姓名",
         align: "center",
         dataIndex: "xingMing",
         key: "xingMing"
-
       },
       {
         title: "病区",
         align: "center",
         dataIndex: "bingQu",
         key: "bingQu"
-
       },
       {
         title: "科室",
         align: "center",
         dataIndex: "keShi",
         key: "keShi"
-
       },
       {
         title: "医疗费",
         align: "center",
         dataIndex: "yiLiaoFei",
         key: "yiLiaoFei"
-
       }
     ]
   ]
