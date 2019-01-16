@@ -10,6 +10,10 @@ const ChronicDiseaseTable = loadable({
   loader: () => import("../views/ChronicDiseaseTable"),
   loading: Loading
 });
+const TwoWayTransOutPatientTable = loadable({
+  loader: () => import("../views/twoway-transOutpatient/TwoWayTransOutPatientTable"),
+  loading: Loading
+});
 const TelemedicineSystemTable = loadable({
   loader: () => import("../views/TelemedicineSystemTable"),
   loading: Loading
@@ -407,14 +411,9 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/administrativeDepartment/dualReferral/query",
+    // 双向转诊
+    component: TwoWayTransOutPatientTable
 
-    component: () => (
-      <BocoTable
-        title={"双向转诊统计表"}
-        url={"/zhuanZhenMingXi/pageShangZhuan"}
-        tableTitle={NormalTableTitleConfig.get("ShuangXiangZhuanZhen")}
-      />
-    )
   },
   {
     path: "/administrativeDepartment/statementManagement/query",
