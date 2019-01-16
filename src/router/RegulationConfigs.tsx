@@ -193,7 +193,7 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("MenZhenRiZhi")}
         formStructure={[
           {
-            value: "jiuZhenKeShi",
+            value: "keShi",
             text: "就诊科室",
             url: "/menZhenRiZhi/getKeShi"
           }
