@@ -14,6 +14,7 @@ const styles = (theme: Theme) =>
   });
 interface Istate {
   visible?: boolean;
+  key?: string;
 }
 interface Iprops extends WithStyles<typeof styles> {}
 /**
@@ -27,7 +28,8 @@ class RemoteImageQueryTable extends React.Component<Iprops, Istate> {
   constructor(props: Iprops) {
     super(props);
     this.state = {
-      visible: false
+      visible: false,
+      key: "1"
     };
   }
   public showModal = () => {
@@ -77,76 +79,97 @@ class RemoteImageQueryTable extends React.Component<Iprops, Istate> {
     ];
     return (
       <div className={classes.root}>
-        <Tabs defaultActiveKey="1">
+        <Tabs
+          activeKey={this.state.key}
+          onChange={activeKey => this.setState({ key: activeKey })}
+        >
           <Tabs.TabPane tab={<span>区域影像平台统计查询</span>} key="1">
-            <BocoTable
-              title={"区域影像平台统计查询"}
-              url={"/quYuYingXiangTongJi/page"}
-              tableTitle={MoreTableTitleConfig.get("QuYuYingXiangTongJi")}
-            />
+            {this.state.key === "1" ? (
+              <BocoTable
+                title={"区域影像平台统计查询"}
+                url={"/quYuYingXiangTongJi/page"}
+                tableTitle={MoreTableTitleConfig.get("QuYuYingXiangTongJi")}
+              />
+            ) : (
+              <div />
+            )}
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>区域设备统计查询</span>} key="2">
-            <BocoTable
-              title={"区域设备统计查询"}
-              url={"/quYuSheBeiTongJi/page"}
-              tableTitle={MoreTableTitleConfig.get("QuYuSheBeiTongJi")}
-            />
+            {this.state.key === "2" ? (
+              <BocoTable
+                title={"区域设备统计查询"}
+                url={"/quYuSheBeiTongJi/page"}
+                tableTitle={MoreTableTitleConfig.get("QuYuSheBeiTongJi")}
+              />
+            ) : (
+              <div />
+            )}
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>区域医生工作量统计查询</span>} key="3">
-            <BocoTable
-              title={"区域医生工作量统计查询"}
-              url={"/quYuYiShengGongZuo/page"}
-              tableTitle={MoreTableTitleConfig.get("QuYuYiShengGongZuo")}
-            />
-            <Button
-              onClick={this.showModal}
-              type={"primary"}
-              style={{ margin: "20px" }}
-            >
-              触发弹框
-            </Button>
-            <Modal
-              // title="Basic Modal"
-              visible={this.state.visible}
-              onOk={this.handleOk}
-              onCancel={this.handleCancel}
-              width={"70vw"}
-            >
-              <div style={{ padding: "20px" }}>
-                <Row>
-                  <Col span={20} offset={2}>
-                    <Table
-                      columns={ModalColumns}
-                      size="middle"
-                      dataSource={ModalData}
-                      pagination={false}
-                      bordered={true}
-                      title={() => (
-                        <span style={{ padding: "10px" }}>
-                          <img
-                            src={require("../images/chartIcon.png")}
-                            alt=""
-                            style={{
-                              float: "left",
-                              marginLeft: "1vw",
-                              marginRight: "0.5vw"
-                            }}
-                          />
-                          附表：医生工作量统计明细
-                        </span>
-                      )}
-                    />
-                  </Col>
-                </Row>
+            {this.state.key === "3" ? (
+              <div>
+                <BocoTable
+                  title={"区域医生工作量统计查询"}
+                  url={"/quYuYiShengGongZuo/page"}
+                  tableTitle={MoreTableTitleConfig.get("QuYuYiShengGongZuo")}
+                />
+                <Button
+                  onClick={this.showModal}
+                  type={"primary"}
+                  style={{ margin: "20px" }}
+                >
+                  触发弹框
+                </Button>
+                <Modal
+                  // title="Basic Modal"
+                  visible={this.state.visible}
+                  onOk={this.handleOk}
+                  onCancel={this.handleCancel}
+                  width={"70vw"}
+                >
+                  <div style={{ padding: "20px" }}>
+                    <Row>
+                      <Col span={20} offset={2}>
+                        <Table
+                          columns={ModalColumns}
+                          size="middle"
+                          dataSource={ModalData}
+                          pagination={false}
+                          bordered={true}
+                          title={() => (
+                            <span style={{ padding: "10px" }}>
+                              <img
+                                src={require("../images/chartIcon.png")}
+                                alt=""
+                                style={{
+                                  float: "left",
+                                  marginLeft: "1vw",
+                                  marginRight: "0.5vw"
+                                }}
+                              />
+                              附表：医生工作量统计明细
+                            </span>
+                          )}
+                        />
+                      </Col>
+                    </Row>
+                  </div>
+                </Modal>
               </div>
-            </Modal>
+            ) : (
+              <div />
+            )}
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>区域跨院写报告统计</span>} key="4">
-            <BocoTable
-              title={"区域跨院写报告统计"}
-              url={"/quYuKuaYuanBaoGao/page"}
-              tableTitle={MoreTableTitleConfig.get("QuYuKuaYuanBaoGao")}
-            />
+            {this.state.key === "4" ? (
+              <BocoTable
+                title={"区域跨院写报告统计"}
+                url={"/quYuKuaYuanBaoGao/page"}
+                tableTitle={MoreTableTitleConfig.get("QuYuKuaYuanBaoGao")}
+              />
+            ) : (
+              <div />
+            )}
           </Tabs.TabPane>
         </Tabs>
       </div>

@@ -9,7 +9,9 @@ const styles = (theme: Theme) =>
   createStyles<"root">({
     root: {}
   });
-
+interface Istate {
+  key?: string;
+}
 interface Iprops extends WithStyles<typeof styles> {}
 
 /**
@@ -19,12 +21,21 @@ interface Iprops extends WithStyles<typeof styles> {}
  * @date 2019/1/8-17:11
  */
 @(withStyles as any)(styles)
-class TelemedicineSystemTable extends React.Component<Iprops> {
+class TelemedicineSystemTable extends React.Component<Iprops, Istate> {
+  constructor(props: Iprops) {
+    super(props);
+    this.state = {
+      key: "1"
+    };
+  }
   public render() {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Tabs defaultActiveKey="1">
+        <Tabs
+          activeKey={this.state.key}
+          onChange={activeKey => this.setState({ key: activeKey })}
+        >
           <Tabs.TabPane tab={<span>远程会诊统计</span>} key="1">
             <BocoTable
               title={"远程会诊统计"}
@@ -32,7 +43,7 @@ class TelemedicineSystemTable extends React.Component<Iprops> {
               tableTitle={MoreTableTitleConfig.get("YuanChengHuiZhen")}
               formStructure={[
                 {
-                  value: "huiZhenXueKe",
+                  value: "huiZhenLeiXing",
                   text: "会诊类型",
                   url: "/yuanChengHuiZhen/getHuiZhenXueKe"
                 }
@@ -46,7 +57,7 @@ class TelemedicineSystemTable extends React.Component<Iprops> {
               url={"/yuanChengMenZhen/page"}
               formStructure={[
                 {
-                  value: "huiZhenXueKe",
+                  value: "huiZhenLeiXing",
                   text: "会诊类型",
                   url: "/yuanChengHuiZhen/getHuiZhenXueKe"
                 }

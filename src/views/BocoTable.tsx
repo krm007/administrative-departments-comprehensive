@@ -171,7 +171,6 @@ class BocoTable extends React.Component<IProps> {
     } else if (this.props.timeFormat === 2) {
       return (
         <Form.Item>
-          {/** TODO hao */}
           {this.props.form.getFieldDecorator("timeOrder", {
             initialValue: moment()
           })(<DatePicker.MonthPicker format={"YYYY"} />)}
