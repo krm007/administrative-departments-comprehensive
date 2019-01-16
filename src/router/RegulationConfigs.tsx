@@ -144,7 +144,7 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("YaoPinKuCunChaXun")}
         formStructure={[
           {
-            value: "xuanZeKuFang",
+            value: "kuFang",
             text: "选择库房",
             url: "/yaoPinKuCunChaXun/getKuFang"
           }
@@ -210,7 +210,7 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("GuaHaoJiLu")}
         formStructure={[
           {
-            value: "jiuZhenKeShi",
+            value: "keShi",
             text: "就诊科室",
             url: "/guaHaoJiLu/getKeShi"
           }
@@ -239,7 +239,7 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("YiBaoShuJuTongJi")}
         formStructure={[
           {
-            value: "jiSuanLeiXing",
+            value: "jieSuanLeiXing",
             text: "结算类型",
             url: "/yiBaoShuJuTongJi/getJieSuanLeiXing"
           }
@@ -435,7 +435,7 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("MenZhenRiZhi")}
         formStructure={[
           {
-            value: "name",
+            value: "keShi",
             text: "就诊科室",
             url: "/menZhenRiZhi/getKeShi"
           }
