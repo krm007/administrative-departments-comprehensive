@@ -1,6 +1,5 @@
 import * as React from "react";
 import * as ReactDOM from "react-dom";
-import "babel-polyfill";
 import * as moment from "moment";
 import App from "./App";
 import "./index.css";

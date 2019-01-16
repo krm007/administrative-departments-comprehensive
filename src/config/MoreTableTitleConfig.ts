@@ -208,18 +208,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "FaDingChuanRanFaBing",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
-      {
         title: "病种",
         align: "center",
         dataIndex: "bingZhong",
