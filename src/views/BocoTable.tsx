@@ -43,6 +43,7 @@ interface IProps extends WithStyles<typeof styles>, FormComponentProps {
   serchData: (param: any) => void;
   timeFormat?: number;
   spin?: boolean;
+  org: boolean;
 }
 /**
  * 描述：
@@ -173,7 +174,7 @@ class BocoTable extends React.Component<IProps> {
           {/** TODO hao */}
           {this.props.form.getFieldDecorator("timeOrder", {
             initialValue: moment()
-          })(<DatePicker.MonthPicker />)}
+          })(<DatePicker.MonthPicker format={"YYYY"} />)}
         </Form.Item>
       );
     } else if (!this.props.timeFormat) {
@@ -238,28 +239,34 @@ class BocoTable extends React.Component<IProps> {
           spinning={this.props.spin ? true : false}
         >
           <Form layout={"inline"} onSubmit={this.onSubmit}>
-            <Form.Item>
-              {getFieldDecorator("orgId", {
-                /* initialValue: "浙江省青春医院"*/
-              })(
-                <Select placeholder={"机构选择"} style={{ width: 174 }}>
-                  {(() => {
-                    if (this.props.formData && this.props.formData.orgList) {
-                      return this.props.formData.orgList.map((value1: any) => {
-                        return (
-                          <Select.Option
-                            value={value1.value}
-                            key={value1.value}
-                          >
-                            {value1.key}
-                          </Select.Option>
+            {this.props.org ? (
+              ""
+            ) : (
+              <Form.Item>
+                {getFieldDecorator("orgId", {
+                  /* initialValue: "浙江省青春医院"*/
+                })(
+                  <Select placeholder={"机构选择"} style={{ width: 174 }}>
+                    {(() => {
+                      if (this.props.formData && this.props.formData.orgList) {
+                        return this.props.formData.orgList.map(
+                          (value1: any) => {
+                            return (
+                              <Select.Option
+                                value={value1.value}
+                                key={value1.value}
+                              >
+                                {value1.key}
+                              </Select.Option>
+                            );
+                          }
                         );
-                      });
-                    }
-                  })()}
-                </Select>
-              )}
-            </Form.Item>
+                      }
+                    })()}
+                  </Select>
+                )}
+              </Form.Item>
+            )}
             {this.FormBuild()}
             {this.timeOfForm()}
             <Form.Item>
