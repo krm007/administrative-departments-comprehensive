@@ -150,7 +150,7 @@ const RegulationConfigs: RouteConfig[] = [
       <BocoTable
         title={"药品库存查询"}
         url={"/yaoPinKuCunChaXun/page"}
-        timeFormat={1}
+        timeFormat={0}
         tableTitle={NormalTableTitleConfig.get("YaoPinKuCunChaXun")}
         formStructure={[
           {
@@ -251,7 +251,8 @@ const RegulationConfigs: RouteConfig[] = [
           {
             value: "jieSuanLeiXing",
             text: "结算类型",
-            url: "/yiBaoShuJuTongJi/getJieSuanLeiXing"
+            url: "/yiBaoShuJuTongJi/getJieSuanLeiXing",
+            must: true
           }
         ]}
       />
@@ -279,7 +280,7 @@ const RegulationConfigs: RouteConfig[] = [
           {
             value: "danJuLeiXing",
             text: "单据类型",
-            url:"/yiJiKeShiGongZuoLiang/getDanJuLeiXing"
+            url: "/yiJiKeShiGongZuoLiang/getDanJuLeiXing"
           },
           {
             value: "menZhenZhuYuan",
@@ -308,13 +309,6 @@ const RegulationConfigs: RouteConfig[] = [
         title={"在院病人分布状况"}
         url={"/zaiYuanBingRenFenBu/page"}
         tableTitle={NormalTableTitleConfig.get("ZaiYuanBingRenFenBu")}
-        formStructure={[
-            {
-                value: "zhenDuanMingCheng",
-                text: "诊断名称",
-                url:""
-            }
-        ]}
       />
     )
   },
@@ -540,7 +534,7 @@ const RegulationConfigs: RouteConfig[] = [
   },
   {
     path: "/",
-    component:Home
+    component: Home
   }
 ];
 

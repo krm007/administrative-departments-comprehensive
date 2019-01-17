@@ -153,7 +153,7 @@ class InfectiousDiseaseStatisticsTable extends React.Component<Iprops, Istate> {
                       { value: "Q3", key: "第三季度" },
                       { value: "Q4", key: "第四季度" }
                     ],
-                    initialValue: true
+                    initialValue: "Q1"
                   }
                 ]}
                 timeFormat={2}

@@ -11,9 +11,17 @@ export function hejiColumns(value: string, n: number, text?: string) {
         }
       };
     } else {
-      return text ? text : value;
+      if (text === undefined) {
+        return value;
+      } else {
+        return text;
+      }
     }
   } else {
-    return text ? text : value;
+    if (text === undefined) {
+      return value;
+    } else {
+      return text;
+    }
   }
 }

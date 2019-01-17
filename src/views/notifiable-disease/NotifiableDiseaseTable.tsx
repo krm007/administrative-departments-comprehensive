@@ -38,6 +38,7 @@ interface Istatus {
   model: boolean;
   PieData: any[];
   bingZhong: any;
+  text: string;
 }
 /**
  * 描述：
@@ -126,7 +127,8 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
       tableData: {},
       model: false,
       PieData: this.PieData,
-      bingZhong: ""
+      bingZhong: "",
+      text: ""
     };
   }
 
@@ -155,9 +157,13 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
           model: true
         });
       });
-    service.post("/baoGaoFaBingQingKuang/queryByBingZhong",{},{params:newparams}).then(value => {
-      
-    })
+    service
+      .post(
+        "/baoGaoFaBingQingKuang/queryByBingZhong",
+        {},
+        { params: newparams }
+      )
+      .then(value => {});
   };
   /**
    * 按查询数据展示
@@ -228,7 +234,7 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
             })(<DatePicker.MonthPicker format={"YYYY"} />)}
           </Form.Item>
           <Form.Item>
-            {this.props.form.getFieldDecorator("select")(
+            {this.props.form.getFieldDecorator("select",{initialValue:"Q1"})(
               <Select placeholder={"选择季度"} style={{ width: 174 }}>
                 <Select.Option value={"Q1"}>{"第一季度"}</Select.Option>
                 <Select.Option value={"Q2"}>{"第二季度"}</Select.Option>
@@ -257,6 +263,7 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
           size={"small"}
         />
         <PhthisisModel
+          text={this.state.text}
           bingZhong={this.state.bingZhong}
           model={this.state.model}
           onOk={() => {

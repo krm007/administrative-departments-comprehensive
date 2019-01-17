@@ -1,7 +1,7 @@
 import { createStyles, Theme, withStyles } from "@material-ui/core/styles";
 import { WithStyles } from "@material-ui/core/styles/withStyles";
 import * as React from "react";
-import { Button, DatePicker, Form, Select, Spin, Table } from "antd";
+import { Button, DatePicker, Form, Select, Table } from "antd";
 import { FormComponentProps } from "antd/lib/form";
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
@@ -44,6 +44,8 @@ interface IProps extends WithStyles<typeof styles>, FormComponentProps {
   timeFormat?: number;
   spin?: boolean;
   org: boolean;
+  orgDefortValue: boolean;
+  orgPassable: boolean;
 }
 /**
  * 描述：
@@ -119,12 +121,14 @@ class BocoTable extends React.Component<IProps> {
         if (this.props.formData) {
           return (
             <Form.Item key={value.text}>
-              {this.props.form.getFieldDecorator(value.value)(
+              {this.props.form.getFieldDecorator(value.value, {
+                initialValue: value.initialValue
+              })(
                 <Select
                   placeholder={value.text}
                   style={{ width: 174 }}
                   showSearch={true}
-                  allowClear={true}
+                  allowClear={!value.must}
                 >
                   {(() => {
                     let selectList;
@@ -168,7 +172,7 @@ class BocoTable extends React.Component<IProps> {
         <Form.Item>
           {this.props.form.getFieldDecorator("timeOrder", {
             initialValue: moment()
-          })(<DatePicker.MonthPicker />)}
+          })(<DatePicker.MonthPicker allowClear={true} />)}
         </Form.Item>
       );
     } else if (this.props.timeFormat === 0) {
@@ -236,82 +240,77 @@ class BocoTable extends React.Component<IProps> {
     const { classes } = this.props;
     const { getFieldDecorator } = this.props.form;
     const dataSoruce: any = this.props.data ? this.props.data : {};
+    const orgdefortValue = this.props.orgDefortValue ? null : "浙江省青春医院";
     return (
       <div className={classes.root}>
-        <Spin
-          tip="开发中！敬请期待....."
-          spinning={this.props.spin ? true : false}
-        >
-          <Form layout={"inline"} onSubmit={this.onSubmit}>
-            {this.props.org ? (
-              ""
-            ) : (
-              <Form.Item>
-                {getFieldDecorator("orgId", {
-                  initialValue: "浙江省青春医院"
-                })(
-                  <Select
-                    placeholder={"机构选择"}
-                    showSearch={true}
-                    style={{ width: 174 }}
-                  >
-                    {(() => {
-                      if (this.props.formData && this.props.formData.orgList) {
-                        return this.props.formData.orgList.map(
-                          (value1: any) => {
-                            return (
-                              <Select.Option
-                                value={value1.value}
-                                key={value1.value}
-                              >
-                                {value1.key}
-                              </Select.Option>
-                            );
-                          }
-                        );
-                      }
-                    })()}
-                  </Select>
-                )}
-              </Form.Item>
-            )}
-            {this.FormBuild()}
-            {this.timeOfForm()}
+        <Form layout={"inline"} onSubmit={this.onSubmit}>
+          {this.props.org ? (
+            ""
+          ) : (
             <Form.Item>
-              <Button htmlType={"submit"} type={"primary"}>
-                搜索
-              </Button>
+              {getFieldDecorator("orgId", {
+                initialValue: orgdefortValue
+              })(
+                <Select
+                  placeholder={"机构选择"}
+                  showSearch={true}
+                  allowClear={this.props.orgPassable}
+                  style={{ width: 174 }}
+                >
+                  {(() => {
+                    if (this.props.formData && this.props.formData.orgList) {
+                      return this.props.formData.orgList.map((value1: any) => {
+                        return (
+                          <Select.Option
+                            value={value1.value}
+                            key={value1.value}
+                          >
+                            {value1.key}
+                          </Select.Option>
+                        );
+                      });
+                    }
+                  })()}
+                </Select>
+              )}
             </Form.Item>
-          </Form>
-          <Table
-            dataSource={dataSoruce.list}
-            columns={this.props.tableTitle}
-            bordered={true}
-            ref={ref => {
-              this.tableRefs = ref;
-            }}
-            title={this.tableTitle}
-            scroll={{
-              x: true
-            }}
-            size={"small"}
-            pagination={{
-              pageSize: dataSoruce.pageSize,
-              current: dataSoruce.pageNum,
-              total: dataSoruce.total,
-              showSizeChanger: true,
-              showQuickJumper: true,
-              pageSizeOptions: ["10", "20", "30", "40", "10000"],
-              onShowSizeChange: (current: number, size: number) => {
-                this.handleTableChange(current, size);
-              },
-              onChange: (page, pageSize) => {
-                this.handleTableChange(page, pageSize);
-              },
-              showTotal: total => `共 ${total} 行数据`
-            }}
-          />
-        </Spin>
+          )}
+          {this.FormBuild()}
+          {this.timeOfForm()}
+          <Form.Item>
+            <Button htmlType={"submit"} type={"primary"}>
+              搜索
+            </Button>
+          </Form.Item>
+        </Form>
+        <Table
+          dataSource={dataSoruce.list}
+          columns={this.props.tableTitle}
+          bordered={true}
+          ref={ref => {
+            this.tableRefs = ref;
+          }}
+          title={this.tableTitle}
+          scroll={{
+            x: true
+          }}
+          size={"small"}
+          pagination={{
+            pageSize: dataSoruce.pageSize,
+            current: dataSoruce.pageNum,
+            total: dataSoruce.total,
+            showSizeChanger: true,
+            showQuickJumper: true,
+            pageSizeOptions: ["10", "20", "30", "40", "10000"],
+            onShowSizeChange: (current: number, size: number) => {
+              this.handleTableChange(current, size);
+            },
+            onChange: (page, pageSize) => {
+              this.handleTableChange(page, pageSize);
+            },
+            showTotal: total => `共 ${total} 行数据`
+          }}
+        />
       </div>
     );
   }

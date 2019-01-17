@@ -5,8 +5,9 @@ export interface FormStructure {
   value: string;
   text: string;
   url?: string;
-  initialValue?: boolean;
+  initialValue?: string;
   data: { value: any; key: any }[];
+  must:boolean
 }
 /**
  * 选择框数据

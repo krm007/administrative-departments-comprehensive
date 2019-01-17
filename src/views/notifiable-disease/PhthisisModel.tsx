@@ -3,6 +3,7 @@ import { WithStyles } from "@material-ui/core/styles/withStyles";
 import * as React from "react";
 import { Col, Modal, Row, Table } from "antd";
 import Line from "../bizchart/Line";
+import * as moment from "moment";
 
 const styles = (theme: Theme) =>
   createStyles<"root">({
@@ -13,7 +14,8 @@ interface Iprops extends WithStyles<typeof styles> {
   model: boolean;
   onOk: () => void;
   onCancel: () => void;
-  bingZhong: any;
+  bingZhong: any[][];
+  text: string;
 }
 
 /**
@@ -26,7 +28,7 @@ class PhthisisModel extends React.Component<Iprops> {
   /** modal数据 */
   private ModalColumns: any[] = [
     {
-      title: "",
+      title: ``,
       dataIndex: "name"
     },
     {
@@ -42,15 +44,15 @@ class PhthisisModel extends React.Component<Iprops> {
       dataIndex: "bing_3"
     },
     {
-      title: "2017",
+      title: `${moment().subtract().format("YYYY")}`,
       dataIndex: "bing_4"
     },
     {
-      title: "2018",
+      title: `${moment().format("YYYY")}`,
       dataIndex: "bing_5"
     }
   ];
-  private ModalData: any[] = [
+  private ModalData = [
     {
       key: "1",
       name: "第一季度",
@@ -127,12 +129,23 @@ class PhthisisModel extends React.Component<Iprops> {
     }
   ];
 
-  public componentDidMount(): void {
-
-  }
-
+  public componentDidMount(): void {}
+  public convertData = (value: any[][]) => {
+    return this.ModalData.map((value1, index) => {
+      const columndata = value[index];
+      for (let i = 1; i <= 5; i++) {
+        const key = "bing_" + `${i}`;
+        value1[key] = columndata[i];
+      }
+      return value1;
+    });
+  };
   public render() {
     const { classes } = this.props;
+    let dataSource: any[] = [];
+    if (this.props.bingZhong) {
+      dataSource = this.convertData(this.props.bingZhong);
+    }
     return (
       <div className={classes.root}>
         <Modal
@@ -147,7 +160,7 @@ class PhthisisModel extends React.Component<Iprops> {
                 <Table
                   columns={this.ModalColumns}
                   size="middle"
-                  dataSource={this.ModalData}
+                  dataSource={dataSource}
                   pagination={false}
                   bordered={true}
                   title={() => (
@@ -161,7 +174,7 @@ class PhthisisModel extends React.Component<Iprops> {
                           marginRight: "0.5vw"
                         }}
                       />
-                      附表：近5年发病情况
+                      附表：近5年{this.props.text}发病情况
                     </span>
                   )}
                 />

@@ -12,22 +12,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "AnYaoPinLeiXingTongJi",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou",
-        render: (value: string, row: any, index) =>
-          hejiColumns(row.fangShiMingCheng, 0, value)
-      },
-      {
-        title: "日期:按月",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi",
-        render: (value: string, row: any, index) =>
-          hejiColumns(row.fangShiMingCheng, 0, value)
-      },
-      {
         title: "库房",
         align: "center",
         dataIndex: "kuFang",
@@ -48,7 +32,7 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "fangShiMingCheng",
         key: "fangShiMingCheng",
-        render: (value: string, row: any, index) => hejiColumns(value, 5)
+        render: (value: string, row: any, index) => hejiColumns(value, 3)
       },
       {
         title: "西药",
@@ -80,22 +64,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "AnZhangBoLeiXingTongJi",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou",
-        render: (value: string, row: any, index) =>
-          hejiColumns(row.fangShiMingCheng, 0, value)
-      },
-      {
-        title: "日期:按月",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi",
-        render: (value: string, row: any, index) =>
-          hejiColumns(row.fangShiMingCheng, 0, value)
-      },
-      {
         title: "库房",
         align: "center",
         dataIndex: "kuFang",
@@ -116,7 +84,7 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "fangShiMingCheng",
         key: "fangShiMingCheng",
-        render: (value: string, row: any, index) => hejiColumns(value, 5)
+        render: (value: string, row: any, index) => hejiColumns(value, 3)
       },
       {
         title: "西药",
@@ -1256,22 +1224,10 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "QuYuYingXiangTongJi",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
         title: "机构名称",
         align: "center",
         dataIndex: "jiGouMingCheng",
         key: "jiGouMingCheng"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
       },
       {
         title: "区域检查申请总数",
@@ -1315,18 +1271,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "QuYuSheBeiTongJi",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
-      {
         title: "机构名称",
         align: "center",
         dataIndex: "jiGouMingCheng",
@@ -1339,6 +1283,12 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         key: "sheBeiLeiXing"
       },
       {
+        title: "设备数量",
+        align: "center",
+        dataIndex: "sheBeiShuLiang",
+        key: "sheBeiShuLiang"
+      },
+      {
         title: "拍片数量",
         align: "center",
         dataIndex: "paiPianShuLiang",
@@ -1349,18 +1299,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "QuYuYiShengGongZuo",
     [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
       {
         title: "机构名称",
         align: "center",
@@ -1432,18 +1370,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "JianYanBiaoBenTongJi",
     [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
       {
         title: "指标值",
         align: "center",
@@ -1523,12 +1449,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "MenZhenHuiZongGeRen",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
         title: "日报ID",
         align: "center",
         dataIndex: "riBaoId",
@@ -1588,28 +1508,20 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "MenZhenGuaZhangHuiZong",
     [
       {
-        title: "医疗机构",
+        title: "编号",
         align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou",
-        render: (value: string, row: any, index) =>
-            hejiColumns(row.danWei, 0, value)
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi",
-        render: (value: string, row: any, index) =>
-            hejiColumns(row.danWei, 0, value)
+        dataIndex: "id",
+        key: "id",
+        render: (value, row, index) => {
+          return `${index + 1}`;
+        }
       },
       {
         title: "单位",
         align: "center",
         dataIndex: "danWei",
         key: "danWei",
-        render: (value: string, row: any, index) =>
-            hejiColumns(value, 3)
+        render: (value: string, row: any, index) => hejiColumns(value, 3)
       },
       {
         title: "挂账金额",
@@ -1622,12 +1534,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "MenZhenHuiZongYue",
     [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
       {
         title: "月份",
         align: "center",
@@ -1723,12 +1629,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "GuaHaoRiBaoGeRenHuiZong",
     [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
       {
         title: "日期",
         align: "center",
@@ -1831,12 +1731,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "MenZhenYeWuShouRu",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
         title: "月份",
         align: "center",
         dataIndex: "yueFei",
@@ -1938,18 +1832,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "YuanBingQuFeiYong",
     [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
       {
         title: "病区",
         align: "center",
@@ -2142,28 +2024,11 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "BingQuChuYuanYingShou",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou",
-        render: (value: string, row: any, index) =>
-            hejiColumns(row.danWeiMingCheng, 0, value)
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi",
-        render: (value: string, row: any, index) =>
-            hejiColumns(row.danWeiMingCheng, 0, value)
-      },
-      {
         title: "单位名称",
         align: "center",
         dataIndex: "danWeiMingCheng",
         key: "danWeiMingCheng",
-        render: (value: string, row: any, index) =>
-            hejiColumns(value, 6)
+        render: (value: string, row: any, index) => hejiColumns(value, 4)
       },
       {
         title: "姓名",
@@ -2171,7 +2036,7 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         dataIndex: "xingMing",
         key: "xingMing",
         render: (value: string, row: any, index) =>
-            hejiColumns(row.danWeiMingCheng, 0, value)
+          hejiColumns(row.danWeiMingCheng, 0, value)
       },
       {
         title: "病区",
@@ -2179,7 +2044,7 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         dataIndex: "bingQu",
         key: "bingQu",
         render: (value: string, row: any, index) =>
-            hejiColumns(row.danWeiMingCheng, 0, value)
+          hejiColumns(row.danWeiMingCheng, 0, value)
       },
       {
         title: "科室",
@@ -2187,7 +2052,7 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         dataIndex: "keShi",
         key: "keShi",
         render: (value: string, row: any, index) =>
-            hejiColumns(row.danWeiMingCheng, 0, value)
+          hejiColumns(row.danWeiMingCheng, 0, value)
       },
       {
         title: "医疗费",
@@ -2200,18 +2065,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "MenZhenKeShiFeiYong",
     [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
       {
         title: "科室",
         align: "center",
@@ -2410,18 +2263,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "MenZhenKaiDanKeShiFei",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
-      {
         title: "科室",
         align: "center",
         dataIndex: "keShi",
@@ -2528,18 +2369,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "RiBaoHuiZongChaXun",
     [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
       {
         title: "现金",
         align: "center",
@@ -2846,18 +2675,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "MenZhenHuiZongQingDan",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
-      {
         title: "工号",
         align: "center",
         dataIndex: "gongHao",
@@ -2910,18 +2727,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "ZhuYuanRiBao",
     [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
       {
         title: "冲预交款",
         align: "center",
@@ -3360,18 +3165,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "ZhuYuanQingDan",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
-      {
         title: "工号",
         align: "center",
         dataIndex: "gongHao",
@@ -3443,12 +3236,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "MenZhenGuaZhangTongJi",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
         title: "监狱",
         align: "center",
         dataIndex: "jianYu",
@@ -3496,18 +3283,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "ZhuYuanHuoShiFeiGuaZhang",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
-      {
         title: "病区",
         align: "center",
         dataIndex: "bingQu",
@@ -3549,18 +3324,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "ChuYuanBingRenFeiYong",
     [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
       {
         title: "病历号",
         align: "center",
@@ -3674,12 +3437,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "ChuYuanBingRenShouRu",
     [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
       {
         title: "科室",
         align: "center",
@@ -4505,18 +4262,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "ChuYuanBingRenJieZhang",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
-      {
         title: "病区",
         align: "center",
         dataIndex: "bingQu",
@@ -4576,12 +4321,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "QianFeiKongZhiChaXun",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
         title: "病案号",
         align: "center",
         dataIndex: "bingAnHao",
@@ -4640,18 +4379,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "DingDianShenQingHeDui",
     [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
       {
         title: "险种",
         align: "center",
