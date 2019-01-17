@@ -128,7 +128,7 @@ class FinancialCollectingTable extends React.Component<Iprops, Istate> {
                 tableTitle={MoreTableTitleConfig.get("MenZhenGuaZhangTongJi")}
                 formStructure={[
                   {
-                    value: "xuanZeJianYu",
+                    value: "jianYu",
                     text: "选择监狱",
                     url: "/menZhenGuaZhangTongJi/getSelect"
                   }

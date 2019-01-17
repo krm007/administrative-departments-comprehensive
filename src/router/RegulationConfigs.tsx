@@ -5,6 +5,7 @@ import * as React from "react";
 import NormalTableTitleConfig from "../config/NormalTableTitleConfig";
 import Loading from "../component/Loading";
 import Home from "../views/Home";
+import TwoWayTransOutPatientTable from "../views/twoway-transOutpatient/TwoWayTransOutPatientTable";
 
 const ChronicDiseaseTable = loadable({
   loader: () => import("../views/ChronicDiseaseTable"),
@@ -122,7 +123,7 @@ const RegulationConfigs: RouteConfig[] = [
             url: "/yaoPinShouFaCunBiao/getYaoPinLeiXing"
           },
           {
-            value: "duLiFenXi",
+            value: "duLiFenLei",
             text: "毒理分类",
             url: "/yaoPinShouFaCunBiao/getDuLiFenLei"
           }
@@ -298,13 +299,6 @@ const RegulationConfigs: RouteConfig[] = [
         title={"在院病人分布状况"}
         url={"/zaiYuanBingRenFenBu/page"}
         tableTitle={NormalTableTitleConfig.get("ZaiYuanBingRenFenBu")}
-        formStructure={[
-            {
-                value: "zhenDuanMingCheng",
-                text: "诊断名称",
-                url:""
-            }
-        ]}
       />
     )
   },
@@ -317,9 +311,9 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("ZaiYuanJiBingFenBu")}
         formStructure={[
           {
-            value: "name",
+            value: "zhenDuanMingCheng",
             text: "诊断名称",
-            url: ""
+            url: "zaiYuanJiBingFenBu/getZhenDuanMingCheng"
           }
         ]}
       />
@@ -356,7 +350,7 @@ const RegulationConfigs: RouteConfig[] = [
           {
             value: "zhenDuanMingCheng",
             text: "诊断名称",
-            url: ""
+            url: "zaiYuanJiBingFenBu/getZhenDuanMingCheng"
           }
         ]}
       />
@@ -408,13 +402,7 @@ const RegulationConfigs: RouteConfig[] = [
   {
     path: "/administrativeDepartment/dualReferral/query",
 
-    component: () => (
-      <BocoTable
-        title={"双向转诊统计表"}
-        url={"/zhuanZhenMingXi/pageShangZhuan"}
-        tableTitle={NormalTableTitleConfig.get("ShuangXiangZhuanZhen")}
-      />
-    )
+    component: TwoWayTransOutPatientTable
   },
   {
     path: "/administrativeDepartment/statementManagement/query",

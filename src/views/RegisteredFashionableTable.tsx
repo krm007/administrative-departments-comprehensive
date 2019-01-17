@@ -54,7 +54,7 @@ class RegisteredFashionableTable extends React.Component<Iprops, Istate> {
                 tableTitle={MoreTableTitleConfig.get("MenZhenGuaZhangHuiZong")}
                 formStructure={[
                   {
-                    value: "xuanZeJianYu",
+                    value: "jianYu",
                     text: "选择监狱",
                     url: "/menZhenGuaZhangTongJi/getSelect"
                   }
