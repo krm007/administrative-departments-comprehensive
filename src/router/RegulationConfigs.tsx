@@ -7,42 +7,52 @@ import Loading from "../component/Loading";
 import Home from "../views/Home";
 import TwoWayTransOutPatientTable from "../views/twoway-transOutpatient/TwoWayTransOutPatientTable";
 
+/** 慢病统计查询 */
 const ChronicDiseaseTable = loadable({
   loader: () => import("../views/ChronicDiseaseTable"),
   loading: Loading
 });
+/** 远程医疗统计查询 */
 const TelemedicineSystemTable = loadable({
   loader: () => import("../views/TelemedicineSystemTable"),
   loading: Loading
 });
+/** 远程影像查询 */
 const RemoteImageQueryTable = loadable({
   loader: () => import("../views/RemoteImageQueryTable"),
   loading: Loading
 });
+/** 检验查询 */
 const CheckQueryTable = loadable({
   loader: () => import("../views/CheckQueryTable"),
   loading: Loading
 });
+/** 挂号分账 */
 const RegisteredFashionableTable = loadable({
   loader: () => import("../views/RegisteredFashionableTable"),
   loading: Loading
 });
+/** 财务分账 */
 const FinancialCollectingTable = loadable({
   loader: () => import("../views/FinancialCollectingTable"),
   loading: Loading
 });
+/** 住院分账 */
 const InHospitalFashionableTable = loadable({
   loader: () => import("../views/InHospitalFashionableTable"),
   loading: Loading
 });
+/** 药库收支月报 */
 const PharmacyPaymentsTable = loadable({
   loader: () => import("../views/PharmacyPaymentsTable"),
   loading: Loading
 });
+/** 传染病统计查询 */
 const InfectiousDiseaseStatisticsTable = loadable({
   loader: () => import("../views/InfectiousDiseaseStatisticsTable"),
   loading: Loading
 });
+
 const RegulationConfigs: RouteConfig[] = [
   {
     path: "/administrativeDepartment/hospitalFinancial/outpatientBillingFee",

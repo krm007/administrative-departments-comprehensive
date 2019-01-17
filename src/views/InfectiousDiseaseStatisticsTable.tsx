@@ -16,6 +16,7 @@ const styles = (theme: Theme) =>
   });
 interface Istate {
   visible?: boolean;
+  key: string;
 }
 interface Iprops extends WithStyles<typeof styles> {}
 /**
@@ -28,7 +29,8 @@ class InfectiousDiseaseStatisticsTable extends React.Component<Iprops, Istate> {
   constructor(props: Iprops) {
     super(props);
     this.state = {
-      visible: false
+      visible: false,
+      key: "1"
     };
   }
   public showModal = () => {
@@ -126,87 +128,104 @@ class InfectiousDiseaseStatisticsTable extends React.Component<Iprops, Istate> {
 
     return (
       <div className={classes.root}>
-        <Tabs defaultActiveKey="1">
+        <Tabs
+          activeKey={this.state.key}
+          onChange={activeKey => {
+            this.setState({
+              key: activeKey
+            });
+          }}
+        >
           <Tabs.TabPane tab={<span>法定传染病发病、死亡统计表</span>} key="1">
-            <BocoTable
-              title={"法定传染病发病、死亡统计表"}
-              url={"faDingChuanRanTongJi/page"}
-              tableTitle={MoreTableTitleConfig.get("FaDingChuanRanTongJi")}
-              org={true}
-              formStructure={[
-                {
-                  value: "quarter",
-                  text: "选择季度",
-                  data: [
-                    { value: "Q1", key: "第一季度" },
-                    { value: "Q2", key: "第二季度" },
-                    { value: "Q3", key: "第三季度" },
-                    { value: "Q4", key: "第四季度" }
-                  ],
-                  initialValue: true
-                }
-              ]}
-              timeFormat={2}
-            />
+            {this.state.key === "1" ? (
+              <BocoTable
+                title={"法定传染病发病、死亡统计表"}
+                url={"faDingChuanRanTongJi/page"}
+                tableTitle={MoreTableTitleConfig.get("FaDingChuanRanTongJi")}
+                org={true}
+                formStructure={[
+                  {
+                    value: "quarter",
+                    text: "选择季度",
+                    data: [
+                      { value: "Q1", key: "第一季度" },
+                      { value: "Q2", key: "第二季度" },
+                      { value: "Q3", key: "第三季度" },
+                      { value: "Q4", key: "第四季度" }
+                    ],
+                    initialValue: true
+                  }
+                ]}
+                timeFormat={2}
+              />
+            ) : (
+              <div />
+            )}
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>法定传染病报告发病情况</span>} key="2">
-            <NotifiableDiseaseTable />
+            {this.state.key === "2" ? <NotifiableDiseaseTable /> : <div />}
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>各机构法定传染病报告发病分布</span>} key="3">
-            <BocoTable
-              title={"各机构法定传染病报告发病分布"}
-              url={"/faDingChuanRanFenBu/page"}
-              tableTitle={MoreTableTitleConfig.get("FaDingChuanRanFenBu")}
-              timeFormat={2}
-              org={true}
-              formStructure={[
-                {
-                  value: "quarter",
-                  text: "选择季度",
-                  data: [
-                    { value: "Q1", key: "第一季度" },
-                    { value: "Q2", key: "第二季度" },
-                    { value: "Q3", key: "第三季度" },
-                    { value: "Q4", key: "第四季度" }
-                  ],
-                  initialValue: true
-                }
-              ]}
-            />
-            <div className={classes.myChart}>
-              <Row>
-                <Col span={12}>
-                  <Table
-                    columns={columns}
-                    size="middle"
-                    dataSource={data}
-                    pagination={false}
-                    bordered={true}
-                    title={() => (
-                      <span style={{ padding: "10px" }}>
-                        <img
-                          src={require("../images/chartIcon.png")}
-                          alt=""
-                          style={{
-                            float: "left",
-                            marginLeft: "1vw",
-                            marginRight: "0.5vw"
-                          }}
-                        />
-                        法定传染病发病报告
-                      </span>
-                    )}
-                  />
-                </Col>
-                <Col span={11} offset={1}>
-                  <Bar
-                    titleChart={"法定传染病发病报告"}
-                    chartData={BarData}
-                    barXAxis={barXAxis}
-                  />
-                </Col>
-              </Row>
-            </div>
+            {this.state.key === "3" ? (
+              <div>
+                <BocoTable
+                  title={"各机构法定传染病报告发病分布"}
+                  url={"/faDingChuanRanFenBu/page"}
+                  tableTitle={MoreTableTitleConfig.get("FaDingChuanRanFenBu")}
+                  timeFormat={2}
+                  org={true}
+                  formStructure={[
+                    {
+                      value: "quarter",
+                      text: "选择季度",
+                      data: [
+                        { value: "Q1", key: "第一季度" },
+                        { value: "Q2", key: "第二季度" },
+                        { value: "Q3", key: "第三季度" },
+                        { value: "Q4", key: "第四季度" }
+                      ],
+                      initialValue: true
+                    }
+                  ]}
+                />
+                <div className={classes.myChart}>
+                  <Row>
+                    <Col span={12}>
+                      <Table
+                        columns={columns}
+                        size="middle"
+                        dataSource={data}
+                        pagination={false}
+                        bordered={true}
+                        title={() => (
+                          <span style={{ padding: "10px" }}>
+                            <img
+                              src={require("../images/chartIcon.png")}
+                              alt=""
+                              style={{
+                                float: "left",
+                                marginLeft: "1vw",
+                                marginRight: "0.5vw"
+                              }}
+                            />
+                            法定传染病发病报告
+                          </span>
+                        )}
+                      />
+                    </Col>
+                    <Col span={11} offset={1}>
+                      <Bar
+                        titleChart={"法定传染病发病报告"}
+                        chartData={BarData}
+                        barXAxis={barXAxis}
+                      />
+                    </Col>
+                  </Row>
+                </div>
+              </div>
+            ) : (
+              <div />
+            )}
           </Tabs.TabPane>
         </Tabs>
       </div>
