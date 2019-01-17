@@ -802,7 +802,16 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         title: "状态",
         align: "center",
         dataIndex: "zhuangTai",
-        key: "zhuangTai"
+        key: "zhuangTai",
+          render:(text,row,index) => {
+            if(text === 0){
+              return "在职"
+            }else if(text === 1){
+              return "离职"
+            }else{
+              return "退休"
+            }
+          }
       },
       {
         title: "身份证号",
@@ -1834,7 +1843,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         key: "danWeiMingCheng"
       },
       {
-        title: "收治医生",
+        title: "首治医生",
         align: "center",
         dataIndex: "shouZhiYiSheng",
         key: "shouZhiYiSheng"

@@ -5,6 +5,7 @@ import * as React from "react";
 import NormalTableTitleConfig from "../config/NormalTableTitleConfig";
 import Loading from "../component/Loading";
 import Home from "../views/Home";
+import TwoWayTransOutPatientTable from "../views/twoway-transOutpatient/TwoWayTransOutPatientTable";
 
 /** 慢病统计查询 */
 const ChronicDiseaseTable = loadable({
@@ -132,7 +133,7 @@ const RegulationConfigs: RouteConfig[] = [
             url: "/yaoPinShouFaCunBiao/getYaoPinLeiXing"
           },
           {
-            value: "duLiFenXi",
+            value: "duLiFenLei",
             text: "毒理分类",
             url: "/yaoPinShouFaCunBiao/getDuLiFenLei"
           }
@@ -321,9 +322,9 @@ const RegulationConfigs: RouteConfig[] = [
         tableTitle={NormalTableTitleConfig.get("ZaiYuanJiBingFenBu")}
         formStructure={[
           {
-            value: "name",
+            value: "zhenDuanMingCheng",
             text: "诊断名称",
-            url: ""
+            url: "zaiYuanJiBingFenBu/getZhenDuanMingCheng"
           }
         ]}
       />
@@ -360,7 +361,7 @@ const RegulationConfigs: RouteConfig[] = [
           {
             value: "zhenDuanMingCheng",
             text: "诊断名称",
-            url: ""
+            url: "zaiYuanJiBingFenBu/getZhenDuanMingCheng"
           }
         ]}
       />
@@ -412,13 +413,7 @@ const RegulationConfigs: RouteConfig[] = [
   {
     path: "/administrativeDepartment/dualReferral/query",
 
-    component: () => (
-      <BocoTable
-        title={"双向转诊统计表"}
-        url={"/zhuanZhenMingXi/pageShangZhuan"}
-        tableTitle={NormalTableTitleConfig.get("ShuangXiangZhuanZhen")}
-      />
-    )
+    component: TwoWayTransOutPatientTable
   },
   {
     path: "/administrativeDepartment/statementManagement/query",

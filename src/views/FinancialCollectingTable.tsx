@@ -128,6 +128,13 @@ class FinancialCollectingTable extends React.Component<Iprops, Istate> {
                 url={"menZhenGuaZhangTongJi/page"}
                 tableTitle={MoreTableTitleConfig.get("MenZhenGuaZhangTongJi")}
                 orgPassable={true}
+                formStructure={[
+                  {
+                    value: "jianYu",
+                    text: "选择监狱",
+                    url: "/menZhenGuaZhangTongJi/getSelect"
+                  }
+                ]}
               />
             ) : (
               <div />
