@@ -140,21 +140,23 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "jiaoKuanFangShi",
         key: "jiaoKuanFangShi",
-        render:(value: string, row: any, index) => hejiColumns(value, 3)
+        render: (value: string, row: any, index) => hejiColumns(value, 3)
       },
       {
         title: "姓名",
         align: "center",
         dataIndex: "xingMing",
         key: "xingMing",
-        render:(value: string, row: any, index) => hejiColumns(row.jiaoKuanFangShi, 0, value)
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.jiaoKuanFangShi, 0, value)
       },
       {
         title: "住院号",
         align: "center",
         dataIndex: "zhuYuanHao",
         key: "zhuYuanHao",
-        render:(value: string, row: any, index) => hejiColumns(row.jiaoKuanFangShi, 0, value)
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.jiaoKuanFangShi, 0, value)
       },
       {
         title: "金额",
@@ -181,14 +183,15 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "bingQu",
         key: "bingQu",
-        render:(value: string, row: any, index) => hejiColumns(value, 2)
+        render: (value: string, row: any, index) => hejiColumns(value, 2)
       },
       {
         title: "科室",
         align: "center",
         dataIndex: "keShi",
         key: "keShi",
-        render:(value: string, row: any, index) => hejiColumns(row.bingQu, 0, value)
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.bingQu, 0, value)
       },
       {
         title: "人次",
@@ -610,12 +613,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         ]
       },
       {
-        title: "日期:按月",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
-      {
         title: "库房",
         align: "center",
         dataIndex: "kuFang",
@@ -653,12 +650,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "kuFang",
         key: "kuFang"
-      },
-      {
-        title: "库存",
-        align: "center",
-        dataIndex: "kuCun",
-        key: "kuCun"
       },
       {
         title: "药品名称",
@@ -1201,13 +1192,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
           return `${index + 1}`;
         }
       },
-
-      {
-        title: "结算类型",
-        align: "center",
-        dataIndex: "jieSuanLeiXing",
-        key: "jieSuanLeiXing"
-      },
       {
         title: "科  室",
         align: "center",
@@ -1327,26 +1311,35 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         }
       },
       {
+        title: "单据类型",
+        align: "center",
+        dataIndex: "danJuLeiXing",
+        key: "danJuLeiXing",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.zhiXingKeShi, 0, value)
+      },
+      {
         title: "门诊住院",
         align: "center",
         dataIndex: "menZhenZhuYuan",
         key: "menZhenZhuYuan",
         render: (value: string, row: any, index) =>
-            hejiColumns(row.zhiXingKeShi, 0, value)
+          hejiColumns(row.zhiXingKeShi, 0, value)
       },
       {
         title: "执行科室",
         align: "center",
         dataIndex: "zhiXingKeShi",
         key: "zhiXingKeShi",
-        render: (value: string, row: any, index) =>
-            hejiColumns(value, 2)
+        render: (value: string, row: any, index) => hejiColumns(value, 4)
       },
       {
         title: "项目",
         align: "center",
         dataIndex: "xiangMu",
-        key: "xiangMu"
+        key: "xiangMu",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.zhiXingKeShi, 0, value)
       },
       {
         title: "数量",
@@ -3301,13 +3294,14 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         align: "center",
         dataIndex: "guaZhangShiJian",
         key: "guaZhangShiJian",
-        render: (value: string, row: any, index) => hejiColumns(row.jianYu, 0, value)
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.jianYu, 0, value)
       },
       {
         title: "挂账金额",
         align: "center",
         dataIndex: "guaZhangJinE",
-        key: "guaZhangJinE",
+        key: "guaZhangJinE"
       },
       {
         title: "制表人",
@@ -4891,12 +4885,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "LinChuangJianYan",
     [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
       {
         title: "确认日期",
         align: "center",

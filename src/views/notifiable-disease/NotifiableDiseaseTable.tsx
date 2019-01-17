@@ -1,15 +1,15 @@
 import { createStyles, Theme, withStyles } from "@material-ui/core/styles";
 import { WithStyles } from "@material-ui/core/styles/withStyles";
 import * as React from "react";
-import { Button, Col, DatePicker, Form, Modal, Row, Select, Table } from "antd";
+import { Button, Col, DatePicker, Form, Row, Select, Table } from "antd";
 import { FormComponentProps } from "antd/lib/form";
 import * as moment from "moment";
 import ReactHTMLTableToExcel from "../../component/ReactHTMLTableToExcel";
 import * as ReactDOM from "react-dom";
-import Line from "../bizchart/Line";
 import Pie from "../bizchart/Pie";
 import service from "../../request/Service";
 import { ColumnProps } from "antd/lib/table";
+import PhthisisModel from "./PhthisisModel";
 
 const styles = (theme: Theme) =>
   createStyles<"root" | "myChart">({
@@ -36,6 +36,9 @@ interface Iprops extends WithStyles<typeof styles>, FormComponentProps {}
 interface Istatus {
   tableData: any;
   model: boolean;
+  PieData: any[];
+  bingZhong: any;
+  text: string;
 }
 /**
  * 描述：
@@ -55,7 +58,7 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
         return (
           <a
             onClick={() => {
-              this.openModel(text);
+              this.clickOne(text);
             }}
           >
             {text}
@@ -94,71 +97,7 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
       key: "tongBi"
     }
   ];
-  /** modal数据 */
-  private ModalColumns: any[] = [
-    {
-      title: "",
-      dataIndex: "name"
-    },
-    {
-      title: "2014",
-      dataIndex: "bing_1"
-    },
-    {
-      title: "2015",
-      dataIndex: "bing_2"
-    },
-    {
-      title: "2016",
-      dataIndex: "bing_3"
-    },
-    {
-      title: "2017",
-      dataIndex: "bing_4"
-    },
-    {
-      title: "2018",
-      dataIndex: "bing_5"
-    }
-  ];
-  private ModalData: any[] = [
-    {
-      key: "1",
-      name: "第一季度",
-      bing_1: "170",
-      bing_2: "100",
-      bing_3: "160",
-      bing_4: "170",
-      bing_5: "100"
-    },
-    {
-      key: "2",
-      name: "第二季度",
-      bing_1: "170",
-      bing_2: "100",
-      bing_3: "160",
-      bing_4: "170",
-      bing_5: "100"
-    },
-    {
-      key: "3",
-      name: "第三季度",
-      bing_1: "170",
-      bing_2: "100",
-      bing_3: "160",
-      bing_4: "170",
-      bing_5: "100"
-    },
-    {
-      key: "4",
-      name: "第4季度",
-      bing_1: "170",
-      bing_2: "100",
-      bing_3: "160",
-      bing_4: "170",
-      bing_5: "100"
-    }
-  ];
+
   /** 饼图数据 */
   private PieData = [
     {
@@ -182,49 +121,14 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
       count: 50
     }
   ];
-  /** 折线图数据 */
-  private lineData = [
-    {
-      item: "2014",
-      一季度: "2",
-      二季度: "5",
-      三季度: "4",
-      四季度: "3"
-    },
-    {
-      item: "2015",
-      一季度: "0",
-      二季度: "5",
-      三季度: "3",
-      四季度: "1"
-    },
-    {
-      item: "2016",
-      一季度: "5",
-      二季度: "3",
-      三季度: "4",
-      四季度: "6"
-    },
-    {
-      item: "2017",
-      一季度: "4",
-      二季度: "1",
-      三季度: "5",
-      四季度: "6"
-    },
-    {
-      item: "2018",
-      一季度: "2",
-      二季度: "4",
-      三季度: "6",
-      四季度: "6"
-    }
-  ];
   constructor(props: Iprops) {
     super(props);
     this.state = {
       tableData: {},
-      model: false
+      model: false,
+      PieData: this.PieData,
+      bingZhong: "",
+      text: ""
     };
   }
 
@@ -238,13 +142,35 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
       }
     }
   }
-
+  public clickOne = (text: string) => {
+    const params = this.props.form.getFieldsValue();
+    const newparams = Object.assign(params, { bingZhong: text });
+    service
+      .post(
+        "/baoGaoFaBingQingKuang/queryLast5",
+        {},
+        { params: { bingZhong: text } }
+      )
+      .then(value => {
+        this.setState({
+          bingZhong: value.data,
+          model: true
+        });
+      });
+    service
+      .post(
+        "/baoGaoFaBingQingKuang/queryByBingZhong",
+        {},
+        { params: newparams }
+      )
+      .then(value => {});
+  };
   /**
    * 按查询数据展示
    */
   public onSubmit = (event: React.FormEvent<any>) => {
     event.preventDefault();
-    this.getData(this.props.form.getFieldsValue())
+    this.getData(this.props.form.getFieldsValue());
   };
   /**
    * 表格的title
@@ -283,6 +209,17 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
       this.setState({
         tableData: value.data
       });
+      if (value.data && value.data.list) {
+        const list: any[] = value.data.list;
+        list.forEach((value1, index, array) => {
+          if (index < 5) {
+            this.PieData[index].count = value1.benJiBaoGaoShu;
+          }
+        });
+        this.setState({
+          PieData: this.PieData
+        });
+      }
     });
   }
   public render() {
@@ -297,7 +234,7 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
             })(<DatePicker.MonthPicker format={"YYYY"} />)}
           </Form.Item>
           <Form.Item>
-            {this.props.form.getFieldDecorator("select")(
+            {this.props.form.getFieldDecorator("select",{initialValue:"Q1"})(
               <Select placeholder={"选择季度"} style={{ width: 174 }}>
                 <Select.Option value={"Q1"}>{"第一季度"}</Select.Option>
                 <Select.Option value={"Q2"}>{"第二季度"}</Select.Option>
@@ -325,9 +262,10 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
           title={this.tableTitle}
           size={"small"}
         />
-        <Modal
-          // title="Basic Modal"
-          visible={this.state.model}
+        <PhthisisModel
+          text={this.state.text}
+          bingZhong={this.state.bingZhong}
+          model={this.state.model}
           onOk={() => {
             this.setState({
               model: false
@@ -338,54 +276,13 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
               model: false
             });
           }}
-          width={"70vw"}
-        >
-          <div style={{ padding: "20px" }}>
-            <Row>
-              <Col span={20} offset={2}>
-                <Table
-                  columns={this.ModalColumns}
-                  size="middle"
-                  dataSource={this.ModalData}
-                  pagination={false}
-                  bordered={true}
-                  title={() => (
-                    <span style={{ padding: "10px" }}>
-                      <img
-                        src={require("../../images/chartIcon.png")}
-                        alt=""
-                        style={{
-                          float: "left",
-                          marginLeft: "1vw",
-                          marginRight: "0.5vw"
-                        }}
-                      />
-                      附表：近5年发病情况
-                    </span>
-                  )}
-                />
-              </Col>
-            </Row>
-          </div>
-          <div style={{ padding: "20px" }}>
-            <Row>
-              <Col span={20} offset={2}>
-                <line />
-                <Line
-                  titleChart={"报告发病情况"}
-                  chartData={this.lineData}
-                  lineXAxis={["一季度", "二季度", "三季度", "四季度"]}
-                />
-              </Col>
-            </Row>
-          </div>
-        </Modal>
+        />
         <div className={classes.myChart}>
           <Row>
             <Col span={16} offset={4}>
               <Pie
                 titleChart={"法定传染病发情况比例图"}
-                chartData={this.PieData}
+                chartData={this.state.PieData}
               />
             </Col>
           </Row>

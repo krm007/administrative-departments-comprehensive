@@ -52,13 +52,7 @@ class RegisteredFashionableTable extends React.Component<Iprops, Istate> {
                 title={"门诊挂账统计"}
                 url={"/menZhenGuaZhangHuiZong/page"}
                 tableTitle={MoreTableTitleConfig.get("MenZhenGuaZhangHuiZong")}
-                formStructure={[
-                  {
-                    value: "jianYu",
-                    text: "选择监狱",
-                    url: "/menZhenGuaZhangTongJi/getSelect"
-                  }
-                ]}
+                orgPassable={true}
               />
             ) : (
               <div />

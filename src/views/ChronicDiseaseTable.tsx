@@ -377,6 +377,7 @@ class ChronicDiseaseTable extends React.Component<Iprops, Istate> {
                 url={"/hisZhongDianManXingBing/page"}
                 tableTitle={MoreTableTitleConfig.get("HisZhongDianManXingBing")}
                 timeFormat={1}
+                orgDefortValue={true}
               />
             ) : (
               <div />
@@ -388,7 +389,21 @@ class ChronicDiseaseTable extends React.Component<Iprops, Istate> {
                 title={"慢性病季度汇总表"}
                 url={"/zhongDianManXingBing/page"}
                 tableTitle={MoreTableTitleConfig.get("ZhongDianManXingBing")}
-                timeFormat={1}
+                timeFormat={0}
+                formStructure={[
+                  {
+                    value: "quarter",
+                    text: "选择季度",
+                    data: [
+                      { value: "Q1", key: "第一季度" },
+                      { value: "Q2", key: "第二季度" },
+                      { value: "Q3", key: "第三季度" },
+                      { value: "Q4", key: "第四季度" }
+                    ],
+                    initialValue: "Q1"
+                  }
+                ]}
+                orgDefortValue={true}
               />
             ) : (
               <div />
