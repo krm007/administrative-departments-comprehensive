@@ -1,7 +1,7 @@
 import { createStyles, Theme, withStyles } from "@material-ui/core/styles";
 import { WithStyles } from "@material-ui/core/styles/withStyles";
 import * as React from "react";
-import { Tabs, Button, Row, Col, Table, Modal } from "antd";
+import { Tabs } from "antd";
 import BocoTable from "./BocoTable";
 import MoreTableTitleConfig from "../config/MoreTableTitleConfig";
 
@@ -50,33 +50,6 @@ class RemoteImageQueryTable extends React.Component<Iprops, Istate> {
   };
   public render() {
     const { classes } = this.props;
-    const ModalColumns: any[] = [
-      {
-        title: "医师姓名",
-        dataIndex: "yishixingming"
-      },
-      {
-        title: "报告数量",
-        dataIndex: "baogaoshuliang"
-      },
-      {
-        title: "放射报告",
-        dataIndex: "fangshebaogao"
-      },
-      {
-        title: "超声报告",
-        dataIndex: "chaoshengbaogao"
-      }
-    ];
-    const ModalData: any[] = [
-      {
-        key: "1",
-        yishixingming: "张三",
-        baogaoshuliang: "480",
-        fangshebaogao: "123",
-        chaoshengbaogao: "456"
-      }
-    ];
     return (
       <div className={classes.root}>
         <Tabs
@@ -106,59 +79,7 @@ class RemoteImageQueryTable extends React.Component<Iprops, Istate> {
             )}
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>区域医生工作量统计查询</span>} key="3">
-            {this.state.key === "3" ? (
-              <div>
-                <BocoTable
-                  title={"区域医生工作量统计查询"}
-                  url={"/quYuYiShengGongZuo/page"}
-                  tableTitle={MoreTableTitleConfig.get("QuYuYiShengGongZuo")}
-                />
-                <Button
-                  onClick={this.showModal}
-                  type={"primary"}
-                  style={{ margin: "20px" }}
-                >
-                  触发弹框
-                </Button>
-                <Modal
-                  // title="Basic Modal"
-                  visible={this.state.visible}
-                  onOk={this.handleOk}
-                  onCancel={this.handleCancel}
-                  width={"70vw"}
-                >
-                  <div style={{ padding: "20px" }}>
-                    <Row>
-                      <Col span={20} offset={2}>
-                        <Table
-                          columns={ModalColumns}
-                          size="middle"
-                          dataSource={ModalData}
-                          pagination={false}
-                          bordered={true}
-                          title={() => (
-                            <span style={{ padding: "10px" }}>
-                              <img
-                                src={require("../images/chartIcon.png")}
-                                alt=""
-                                style={{
-                                  float: "left",
-                                  marginLeft: "1vw",
-                                  marginRight: "0.5vw"
-                                }}
-                              />
-                              附表：医生工作量统计明细
-                            </span>
-                          )}
-                        />
-                      </Col>
-                    </Row>
-                  </div>
-                </Modal>
-              </div>
-            ) : (
-              <div />
-            )}
+            {}
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>区域跨院写报告统计</span>} key="4">
             {this.state.key === "4" ? (

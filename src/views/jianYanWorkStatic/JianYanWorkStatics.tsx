@@ -7,7 +7,10 @@ import {FormComponentProps} from "antd/lib/form";
 import {ColumnProps} from "antd/lib/table";
 import service from '../../request/Service';
 import ReactHTMLTableToExcel from "../../component/ReactHTMLTableToExcel";
-import { yuanChengModalPost, yuanchengPagePost} from "../../request/Request";
+import {
+    jianYanChaXunModalPost,
+    jianYanChaXunPagePost
+} from "../../request/Request";
 import {BocoPage} from "../../typings/tablePropsData";
 
 const RangePicker = DatePicker.RangePicker;
@@ -41,9 +44,14 @@ class QuYuDoctorWork extends React.Component<Iprops, Istate> {
      */
     public columns: Array<ColumnProps<any>> = [
         {
-            title: '医院/医生',
-            dataIndex: 'yiYuanYiSheng',
-            key: 'yiYuanYiSheng',
+            title: '机构名称',
+            dataIndex: 'yiLiaoJiGou',
+            key: 'yiLiaoJiGou'
+        },
+        {
+            title: '标本量',
+            dataIndex: 'biaoBenLiang',
+            key: 'biaoBenLiang',
             render: (text, row, index) => {
                 return (
                     <a
@@ -57,9 +65,10 @@ class QuYuDoctorWork extends React.Component<Iprops, Istate> {
             }
         },
         {
-            title: '报告数量',
-            dataIndex: 'baoGaoShuLiang',
-            key: 'baoGaoShuLiang'
+            title: '检验人次',
+            dataIndex: 'jianYanRenCi',
+            key: 'jianYanRenCi',
+
         }
     ];
     public modalColumns: Array<ColumnProps<any>> = [
@@ -69,20 +78,25 @@ class QuYuDoctorWork extends React.Component<Iprops, Istate> {
             dataIndex: "yiShiMingCheng",
             key: "yiShiMingCheng"
         }, {
-            title: '报告数量',
-            align:"center",
-            dataIndex: 'baoGaoShuLiang',
-            key: 'baoGaoShuLiang'
-        }, {
-            title: "放射报告",
+            title: "临检",
             align: "center",
-            dataIndex: "fangSheBaoGao",
-            key: "fangSheBaoGao"
+            dataIndex: "linJian",
+            key: "linJian"
         }, {
-            title: "超声报告",
+            title: "生化",
             align: "center",
-            dataIndex: "chaoShengBaoGao",
-            key: "chaoShengBaoGao"
+            dataIndex: "shengHua",
+            key: "shengHua"
+        }, {
+            title: "免疫",
+            align: "center",
+            dataIndex: "mianYi",
+            key: "mianYi"
+        }, {
+            title: "细菌",
+            align: "center",
+            dataIndex: "xiJun",
+            key: "xiJun"
         }
     ];
 
@@ -132,7 +146,7 @@ class QuYuDoctorWork extends React.Component<Iprops, Istate> {
         this.getData({ offset: page, limit: size, ...formData });
     };
     public getData(params:any){
-        yuanchengPagePost(params).then((value) => {
+        jianYanChaXunPagePost(params).then((value) => {
             this.setState({
                 data:value.data
             })
@@ -147,7 +161,7 @@ class QuYuDoctorWork extends React.Component<Iprops, Istate> {
         return Object.assign(formDataPre, timeNow);
     }
     public showModel = (val: any) => {
-        yuanChengModalPost({orgId:val}).then(value => {
+        jianYanChaXunModalPost({orgId:val}).then(value => {
             const modalList = value.data.list;
             this.setState({
                 modalData:modalList

@@ -140,7 +140,7 @@ class TwoWayTransOutPatientTable extends React.Component<Iprops, Istate> {
               marginRight: "0.5vw"
           }}
       />
-            {"双向转诊"}
+            {"双向转诊统计"}
             <span style={{float: "right"}}>
         <ReactHTMLTableToExcel
             id="test-table-xls-button"
