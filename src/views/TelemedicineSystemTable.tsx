@@ -43,7 +43,7 @@ class TelemedicineSystemTable extends React.Component<Iprops, Istate> {
               tableTitle={MoreTableTitleConfig.get("YuanChengHuiZhen")}
               formStructure={[
                 {
-                  value: "huiZhenLeiXing",
+                  value: "huiZhenXueke",
                   text: "会诊学科",
                   url: "/yuanChengHuiZhen/getHuiZhenXueKe"
                 }
@@ -57,7 +57,7 @@ class TelemedicineSystemTable extends React.Component<Iprops, Istate> {
               url={"/yuanChengMenZhen/page"}
               formStructure={[
                 {
-                  value: "huiZhenLeiXing",
+                  value: "jieZhenXueKe",
                   text: "接诊学科",
                   url: "/yuanChengHuiZhen/getHuiZhenXueKe"
                 }
