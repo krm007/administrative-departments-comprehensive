@@ -7,6 +7,7 @@ import GroupBar from "../bizchart/GroupBar";
 import * as ReactDOM from "react-dom";
 import { ColumnProps } from "antd/lib/table";
 import ReactHTMLTableToExcel from "../../component/ReactHTMLTableToExcel";
+import service from "../../request/Service";
 
 const styles = (theme: Theme) =>
   createStyles<"root">({
@@ -15,11 +16,16 @@ const styles = (theme: Theme) =>
 
 interface Istate {
   visible: boolean;
+  ModalTableData: any[];
+  lineDataOne: any[];
+  lineDataTwo: any[];
 }
 
 interface Iprops extends WithStyles<typeof styles> {
-  childrenData: any;
+  childrenData: any[];
+  groupBarData: any[];
 }
+
 /** 接口数据类型 */
 export interface SmallTableDataInfo {
   benJiFaBingShu: number;
@@ -29,7 +35,18 @@ export interface SmallTableDataInfo {
   yiLiaoJiGou: string;
   yuNeiFaBingShu: number;
 }
-
+export interface ModalTableTitleType {
+  benJiFaBingShu: number;
+  benJiXinFanShu: number;
+  benJiYaFanShu: number;
+  faBingShuBiLi: string;
+  huanBingShuBiLi: string;
+  jiMoHuanBingShu: number;
+  riQi: string;
+  xinFaDaiBingBiLi: string;
+  xinTouFanDaiBingShu: number;
+  yiLiaoJiGou: string;
+}
 class MorbidityModal extends React.Component<Iprops, Istate> {
   /** 表格节点 */
   private tableRefs: any;
@@ -37,29 +54,185 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
   private samallTableTiele: Array<ColumnProps<SmallTableDataInfo>> = [
     {
       title: "",
+      align: "center",
       dataIndex: "manBingBingZhong",
+      key: "manBingBingZhong",
       render: (text: any) => <a onClick={this.showModal}>{text}</a>
     },
     {
       title: "本季发病数",
-      dataIndex: "benJiFaBingShu"
+      align: "center",
+      dataIndex: "benJiFaBingShu",
+      key: "benJiFaBingShu"
     },
     {
       title: "新投犯带病入监数",
-      dataIndex: "xinFanDaiBingRuJianShu"
+      align: "center",
+      dataIndex: "xinFanDaiBingRuJianShu",
+      key: "xinFanDaiBingRuJianShu"
     },
     {
       title: "狱内发病数",
-      dataIndex: "yuNeiFaBingShu"
+      align: "center",
+      dataIndex: "yuNeiFaBingShu",
+      key: "yuNeiFaBingShu"
+    }
+  ];
+  /** 弹出层表头 */
+  private ModalTableTitle: Array<ColumnProps<ModalTableTitleType>> = [
+    {
+      title: "季度",
+      align: "center",
+      dataIndex: "jiDu",
+      key: "jiDu"
+    },
+    {
+      title: "当季发病数",
+      align: "center",
+      dataIndex: "benJiFaBingShu",
+      key: "benJiFaBingShu"
+    },
+    {
+      title: "新投犯带病数",
+      align: "center",
+      dataIndex: "xinTouFanDaiBingShu",
+      key: "xinTouFanDaiBingShu"
+    },
+    {
+      title: "季末患病数",
+      align: "center",
+      dataIndex: "jiMoHuanBingShu",
+      key: "jiMoHuanBingShu"
+    },
+    {
+      title: "当季押犯总数",
+      align: "center",
+      dataIndex: "benJiYaFanShu",
+      key: "benJiYaFanShu"
+    },
+    {
+      title: "当新犯数",
+      align: "center",
+      dataIndex: "benJiXinFanShu",
+      key: "benJiXinFanShu"
+    },
+    {
+      title: "发病数比例",
+      align: "center",
+      dataIndex: "faBingShuBiLi",
+      key: "faBingShuBiLi"
+    },
+    {
+      title: "患病数比例",
+      align: "center",
+      dataIndex: "huanBingShuBiLi",
+      key: "huanBingShuBiLi"
+    },
+    {
+      title: "新犯带病比例",
+      align: "center",
+      dataIndex: "xinFaDaiBingBiLi",
+      key: "xinFaDaiBingBiLi"
+    }
+  ];
+  /** 折线图-1构造数据 */
+  private lineDataOneList = [
+    {
+      item: "本季发病数",
+      quarter1: "4800",
+      quarter2: "4800",
+      quarter3: "5600",
+      quarter4: "5400",
+      name: "benJiFaBingShu"
+    },
+    {
+      item: "新投犯带病数",
+      quarter1: "2000",
+      quarter2: "2100",
+      quarter3: "2000",
+      quarter4: "2000",
+      name: "xinTouFanDaiBingShu"
+    },
+    {
+      item: "季末患病数",
+      quarter1: "8000",
+      quarter2: "8000",
+      quarter3: "7500",
+      quarter4: "8100",
+      name: "jiMoHuanBingShu"
+    },
+    {
+      item: "本季押犯总数",
+      quarter1: "7000",
+      quarter2: "7500",
+      quarter3: "6800",
+      quarter4: "9000",
+      name: "benJiYaFanShu"
+    },
+    {
+      item: "本季新犯数",
+      quarter1: "10000",
+      quarter2: "9000",
+      quarter3: "9500",
+      quarter4: "10000",
+      name: "benJiXinFanShu"
+    }
+  ];
+  /** 折线图-2构造数据 */
+  private lineDataTwoList = [
+    {
+      item: "发病数比例",
+      quarter1: "12000",
+      quarter2: "13000",
+      quarter3: "12000",
+      quarter4: "13000",
+      name: "faBingShuBiLi"
+    },
+    {
+      item: "患病数比例",
+      quarter1: "8600",
+      quarter2: "8500",
+      quarter3: "7900",
+      quarter4: "8000",
+      name: "huanBingShuBiLi"
+    },
+    {
+      item: "新犯带病比例",
+      quarter1: "6000",
+      quarter2: "6000",
+      quarter3: "6400",
+      quarter4: "6100",
+      name: "xinFaDaiBingBiLi"
     }
   ];
 
   constructor(props: Iprops) {
     super(props);
     this.state = {
-      visible: false
+      visible: false,
+      ModalTableData: [],
+      lineDataOne: [],
+      lineDataTwo: []
     };
   }
+  /** 处理折线图-1数据 */
+  public covertDataOne = (ResData: ModalTableTitleType[]) => {
+    return this.lineDataOneList.map((value, index) => {
+      ResData.forEach((value1, index1) => {
+        const sub = "quarter" + `${index1 + 1}`;
+        value[sub] = value1[value.name];
+      });
+    });
+  };
+  /** 处理折线图-2数据 */
+  public covertDataTwo = (ResData: ModalTableTitleType[]) => {
+    return this.lineDataTwoList.map((value, index) => {
+      ResData.forEach((value1, index1) => {
+        const sub = "quarter" + `${index1 + 1}`;
+        value[sub] = value1[value.name];
+      });
+    });
+  };
 
   /** 表格标题 */
   public tableTitle = () => (
@@ -101,201 +274,38 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
   /** 弹出层 */
   public showModal = () => {
     this.setState({ visible: true });
+    service.post("/manXingJiDuFaBing/queryByBingZhong", {}, {}).then(value => {
+      // console.log(value.data);//[{},{},{},{}]
+      /** 配置表格数据 */
+      const arryA = new Array();
+      value.data.forEach((item: any, index: any) => {
+        arryA.push({
+          jiDu: `第${index + 1}季度`,
+          benJiFaBingShu: `${item.benJiFaBingShu}`,
+          xinTouFanDaiBingShu: `${item.xinTouFanDaiBingShu}`,
+          jiMoHuanBingShu: `${item.jiMoHuanBingShu}`,
+          benJiYaFanShu: `${item.benJiYaFanShu}`,
+          benJiXinFanShu: `${item.benJiXinFanShu}`,
+          faBingShuBiLi: `${item.faBingShuBiLi}`,
+          huanBingShuBiLi: `${item.huanBingShuBiLi}`,
+          xinFaDaiBingBiLi: `${item.xinFaDaiBingBiLi}`
+        });
+      });
+      this.covertDataOne(value.data);
+      // console.log(value.data);
+      // console.log(this.lineDataOneList);
+      this.covertDataTwo(value.data);
+      this.setState({
+        ModalTableData: arryA,
+        lineDataOne: this.lineDataOneList,
+        lineDataTwo: this.lineDataTwoList
+      });
+    });
   };
 
   public render() {
     const { classes } = this.props;
 
-    /** 分组柱状图数据 */
-    const groupBarData =this.props.childrenData.map((item:any)=>{
-      console.log(item.manBingBingZhong);
-      return [
-        {
-          label: "manBingBingZhong",
-          狱内发病数: "yuNeiFaBingShu",
-          新投犯带病入监数: "xinFanDaiBingRuJianShu",
-          本季发病数: "benJiFaBingShu"
-        },
-        {
-          label: "恶性肿瘤",
-          狱内发病数: 1800,
-          新投犯带病入监数: 1300,
-          本季发病数: 960
-        },
-        {
-          label: "糖尿病",
-          狱内发病数: 950,
-          新投犯带病入监数: 900,
-          本季发病数: 2160
-        },
-        {
-          label: "脑卒中",
-          狱内发病数: 500,
-          新投犯带病入监数: 390,
-          本季发病数: 1060
-        },
-        {
-          label: "冠心病",
-          狱内发病数: 170,
-          新投犯带病入监数: 100,
-          本季发病数: 1660
-        },
-        {
-          label: "高血压",
-          狱内发病数: 170,
-          新投犯带病入监数: 100,
-          本季发病数: 160
-        }
-      ];
-    })
-    /** 折线图数据 */
-    const lineData = [
-      {
-        item: "本季发病数",
-        一季度: "4800",
-        二季度: "4800",
-        三季度: "5600",
-        四季度: "5400"
-      },
-      {
-        item: "新投犯带病数",
-        一季度: "2000",
-        二季度: "2100",
-        三季度: "2000",
-        四季度: "2000"
-      },
-      {
-        item: "季末患病数",
-        一季度: "8000",
-        二季度: "8000",
-        三季度: "7500",
-        四季度: "8100"
-      },
-      {
-        item: "本季押犯总数",
-        一季度: "7000",
-        二季度: "7500",
-        三季度: "6800",
-        四季度: "9000"
-      },
-      {
-        item: "本季新犯数",
-        一季度: "10000",
-        二季度: "9000",
-        三季度: "9500",
-        四季度: "10000"
-      },
-      {
-        item: "发病数比例",
-        一季度: "12000",
-        二季度: "13000",
-        三季度: "12000",
-        四季度: "13000"
-      },
-      {
-        item: "患病数比例",
-        一季度: "8600",
-        二季度: "8500",
-        三季度: "7900",
-        四季度: "8000"
-      },
-      {
-        item: "新犯带病比例",
-        一季度: "6000",
-        二季度: "6000",
-        三季度: "6400",
-        四季度: "6100"
-      }
-    ];
-    /** modal数据 */
-    const ModalColumns: any[] = [
-      {
-        title: "",
-        dataIndex: "name"
-      },
-      {
-        title: "本季发病数",
-        dataIndex: "bing_1"
-      },
-      {
-        title: "新投犯带病入监数",
-        dataIndex: "bing_2"
-      },
-      {
-        title: "季末患病数",
-        dataIndex: "bing_3"
-      },
-      {
-        title: "当季押犯总数",
-        dataIndex: "bing_4"
-      },
-      {
-        title: "当新犯数",
-        dataIndex: "bing_5"
-      },
-      {
-        title: "发病数比例",
-        dataIndex: "bing_6"
-      },
-      {
-        title: "患病数比例",
-        dataIndex: "bing_7"
-      },
-      {
-        title: "新犯带病比例",
-        dataIndex: "bing_8"
-      }
-    ];
-    const ModalData: any[] = [
-      {
-        key: "1",
-        name: "第一季度",
-        bing_1: "170",
-        bing_2: "100",
-        bing_3: "160",
-        bing_4: "170",
-        bing_5: "100",
-        bing_6: "160",
-        bing_7: "100",
-        bing_8: "160"
-      },
-      {
-        key: "2",
-        name: "第二季度",
-        bing_1: "170",
-        bing_2: "100",
-        bing_3: "160",
-        bing_4: "170",
-        bing_5: "100",
-        bing_6: "160",
-        bing_7: "100",
-        bing_8: "160"
-      },
-      {
-        key: "3",
-        name: "第三季度",
-        bing_1: "170",
-        bing_2: "100",
-        bing_3: "160",
-        bing_4: "170",
-        bing_5: "100",
-        bing_6: "160",
-        bing_7: "100",
-        bing_8: "160"
-      },
-      {
-        key: "4",
-        name: "第4季度",
-        bing_1: "170",
-        bing_2: "100",
-        bing_3: "160",
-        bing_4: "170",
-        bing_5: "100",
-        bing_6: "160",
-        bing_7: "100",
-        bing_8: "160"
-      }
-    ];
     return (
       <div className={classes.root}>
         <Row>
@@ -315,7 +325,6 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
               pagination={false}
             />
             <Modal
-              // title="Basic Modal"
               visible={this.state.visible}
               onOk={(e: any) => {
                 this.setState({
@@ -333,9 +342,9 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
                 <Row>
                   <Col span={20} offset={2}>
                     <Table
-                      columns={ModalColumns}
+                      columns={this.ModalTableTitle}
                       size="middle"
-                      dataSource={ModalData}
+                      dataSource={this.state.ModalTableData}
                       pagination={false}
                       bordered={true}
                       title={() => (
@@ -360,8 +369,19 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
                 <Row>
                   <Col span={20} offset={2}>
                     <Line
-                      titleChart={"本季度重点慢性病发病情况"}
-                      chartData={lineData}
+                      titleChart={"附图：年度发病情况"}
+                      chartData={this.state.lineDataOne}
+                      lineXAxis={["一季度", "二季度", "三季度", "四季度"]}
+                    />
+                  </Col>
+                </Row>
+              </div>
+              <div style={{ padding: "20px" }}>
+                <Row>
+                  <Col span={20} offset={2}>
+                    <Line
+                      titleChart={"附图：年度发病情况"}
+                      chartData={this.state.lineDataTwo}
                       lineXAxis={["一季度", "二季度", "三季度", "四季度"]}
                     />
                   </Col>
@@ -372,7 +392,7 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
           <Col span={11} offset={1}>
             <GroupBar
               titleChart={"本季度重点慢性病发病情况"}
-              chartData={groupBarData}
+              chartData={this.props.groupBarData}
             />
           </Col>
         </Row>

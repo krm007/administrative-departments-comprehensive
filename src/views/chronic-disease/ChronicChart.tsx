@@ -36,6 +36,7 @@ interface Istate {
   visible: boolean;
   childrenData: any;
   PieData?: any[];
+  chartGroupBar: any[];
 }
 interface Iprops extends WithStyles<typeof styles>, FormComponentProps {}
 /** 接口数据类型 */
@@ -139,6 +140,69 @@ class ChronicChart extends React.Component<Iprops, Istate> {
       key: "qiTa"
     }
   ];
+  /** 构造饼图数据 */
+  private pieDataLast = [
+    {
+      item: "心脑血管病",
+      count: 0,
+      name: "xinNaoXueGuan"
+    },
+    {
+      item: "内分泌营养代谢疾病",
+      count: 0,
+      name: "neiFenMiYingYangDaiXie"
+    },
+    {
+      item: "精神疾病",
+      count: 0,
+      name: "jingShen"
+    },
+    {
+      item: "运动系统疾病",
+      count: 0,
+      name: "yunDongXiTong"
+    },
+    {
+      item: "消化系统疾病",
+      count: 0,
+      name: "xiaoHuaXiTong"
+    },
+    {
+      item: "呼吸系统疾病",
+      count: 0,
+      name: "huXiXiTong"
+    },
+    {
+      item: "泌尿生殖系统疾病",
+      count: 0,
+      name: "miNiaoShengZhiXiTong"
+    },
+    {
+      item: "神经系统疾病",
+      count: 0,
+      name: "shenJingXiTong"
+    },
+    {
+      item: "血液造血系统疾病",
+      count: 0,
+      name: "xueYeZaoXueXiTong"
+    },
+    {
+      item: "恶性肿瘤",
+      count: 0,
+      name: "exingZhongLiu"
+    },
+    {
+      item: "免疫风湿性疾病",
+      count: 0,
+      name: "mianYiFengShi"
+    },
+    {
+      item: "其他",
+      count: 0,
+      name: "qiTa"
+    }
+  ];
 
   constructor(props: Iprops) {
     super(props);
@@ -146,7 +210,8 @@ class ChronicChart extends React.Component<Iprops, Istate> {
       tableData: [],
       visible: false,
       childrenData: [],
-      PieData: []
+      PieData: [],
+      chartGroupBar: []
     };
   }
 
@@ -155,74 +220,45 @@ class ChronicChart extends React.Component<Iprops, Istate> {
     event.preventDefault();
     this.getData(this.props.form.getFieldsValue());
   };
-  /** 获取表格数据 */
+
+  /** 请求接口数据 */
   public getData = (params: any) => {
     service
       .post<TabledataInfo>("/benJiManXingFenBu/page", {}, { params })
       .then(value => {
-        // console.log(value.data);
+        /** 表格数据 */
         const data = new Array();
         data.push(value.data);
+        /** 饼图数据 */
+        const pieData = value.data;
+        this.pieDataLast = this.pieDataLast.map((value1, index) => {
+          value1.count = pieData[value1.name];
+          return value1;
+        });
         this.setState({
           tableData: data,
-          PieData: data.map((item: any) => {
-            return [
-              {
-                item: "心脑血管病",
-                count: item.xinNaoXueGuan
-              },
-              {
-                item: "内分泌营养代谢疾病",
-                count: item.neiFenMiYingYangDaiXie
-              },
-              {
-                item: "精神疾病",
-                count: item.jingShen
-              },
-              {
-                item: "运动系统疾病",
-                count: item.yunDongXiTong
-              },
-              {
-                item: "消化系统疾病",
-                count: item.xiaoHuaXiTong
-              },
-              {
-                item: "呼吸系统疾病",
-                count: item.huXiXiTong
-              },
-              {
-                item: "泌尿生殖系统疾病",
-                count: item.miNiaoShengZhiXiTong
-              },
-              {
-                item: "神经系统疾病",
-                count: item.shenJingXiTong
-              },
-              {
-                item: "血液造血系统疾病",
-                count: item.xueYeZaoXueXiTong
-              },
-              {
-                item: "恶性肿瘤",
-                count: item.exingZhongLiu
-              },
-              {
-                item: "免疫风湿性疾病",
-                count: item.mianYiFengShi
-              },
-              {
-                item: "其他",
-                count: item.qiTa
-              }
-            ];
-          })
+          PieData: this.pieDataLast
         });
       });
+    /** 请求附表数据和chart图 */
     service
       .post("/xinFanFaBingQingKuang/queryMain", {}, { params })
       .then(value => {
-        this.setState({ childrenData: value.data });
+        // console.log(value.data);
+        /** 分组柱状图数据 */
+        const lableArray = new Array();
+        value.data.forEach((item: any, index: any) => {
+          lableArray.push({
+            label: `${item.manBingBingZhong}`,
+            狱内发病数: `${item.yuNeiFaBingShu}`,
+            新投犯带病入监数: `${item.xinFanDaiBingRuJianShu}`,
+            本季发病数: `${item.benJiFaBingShu}`
+          });
+        });
+        this.setState({
+            childrenData: value.data,
+            chartGroupBar: lableArray
+        });
       });
   };
 
@@ -303,6 +339,7 @@ class ChronicChart extends React.Component<Iprops, Istate> {
           title={this.tableTitle}
           size={"small"}
           bordered={true}
+          pagination={false}
         />
         {/** 饼图 */}
         <div className={classes.myChart}>
@@ -316,7 +353,10 @@ class ChronicChart extends React.Component<Iprops, Istate> {
           </Row>
         </div>
         {/** 表格加条形图 */}
-        <MorbidityModal childrenData={this.state.childrenData} />
+        <MorbidityModal
+          childrenData={this.state.childrenData}
+          groupBarData={this.state.chartGroupBar}
+        />
       </div>
     );
   }
