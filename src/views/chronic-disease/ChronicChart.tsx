@@ -8,8 +8,8 @@ import * as ReactDOM from "react-dom";
 import { ColumnProps } from "antd/lib/table";
 import service from "../../request/Service";
 import { FormComponentProps } from "antd/lib/form";
-import * as moment from "moment";
 import MorbidityModal from "./MorbidityModal";
+import * as moment from "moment";
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -37,6 +37,7 @@ interface Istate {
   childrenData: any;
   PieData?: any[];
   chartGroupBar: any[];
+  modalParam: any;
 }
 interface Iprops extends WithStyles<typeof styles>, FormComponentProps {}
 /** 接口数据类型 */
@@ -211,13 +212,17 @@ class ChronicChart extends React.Component<Iprops, Istate> {
       visible: false,
       childrenData: [],
       PieData: [],
-      chartGroupBar: []
+      chartGroupBar: [],
+      modalParam: this.props.form.getFieldValue("year")
     };
   }
 
   /** 提交表单 */
   public onSubmit = (event: React.FormEvent<any>) => {
     event.preventDefault();
+    this.setState({
+      modalParam: moment(this.props.form.getFieldValue("year")).format("YYYY")
+    });
     this.getData(this.props.form.getFieldsValue());
   };
 
@@ -256,8 +261,8 @@ class ChronicChart extends React.Component<Iprops, Istate> {
           });
         });
         this.setState({
-            childrenData: value.data,
-            chartGroupBar: lableArray
+          childrenData: value.data,
+          chartGroupBar: lableArray
         });
       });
   };
@@ -306,7 +311,7 @@ class ChronicChart extends React.Component<Iprops, Istate> {
       <div className={classes.root}>
         <Form layout={"inline"} onSubmit={this.onSubmit}>
           <Form.Item>
-            {this.props.form.getFieldDecorator("timeOrder", {
+            {this.props.form.getFieldDecorator("year", {
               initialValue: moment()
             })(<DatePicker.MonthPicker format={"YYYY"} />)}
           </Form.Item>
@@ -356,6 +361,7 @@ class ChronicChart extends React.Component<Iprops, Istate> {
         <MorbidityModal
           childrenData={this.state.childrenData}
           groupBarData={this.state.chartGroupBar}
+          modalParam={this.state.modalParam}
         />
       </div>
     );

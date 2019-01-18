@@ -24,6 +24,7 @@ interface Istate {
 interface Iprops extends WithStyles<typeof styles> {
   childrenData: any[];
   groupBarData: any[];
+  modalParam:any
 }
 
 /** 接口数据类型 */
@@ -57,7 +58,15 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
       align: "center",
       dataIndex: "manBingBingZhong",
       key: "manBingBingZhong",
-      render: (text: any) => <a onClick={this.showModal}>{text}</a>
+      render: (text: any) => (
+        <a
+          onClick={() => {
+            this.showModal(text,this.props.modalParam);
+          }}
+        >
+          {text}
+        </a>
+      )
     },
     {
       title: "本季发病数",
@@ -272,9 +281,9 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
   }
 
   /** 弹出层 */
-  public showModal = () => {
+  public showModal = (text: string,params:any) => {
     this.setState({ visible: true });
-    service.post("/manXingJiDuFaBing/queryByBingZhong", {}, {}).then(value => {
+    service.post("/manXingJiDuFaBing/queryByBingZhong", {}, {params:{bingZhong:text,year:params}}).then(value => {
       // console.log(value.data);//[{},{},{},{}]
       /** 配置表格数据 */
       const arryA = new Array();
