@@ -10,6 +10,7 @@ import Pie from "../bizchart/Pie";
 import service from "../../request/Service";
 import { ColumnProps } from "antd/lib/table";
 import PhthisisModel from "./PhthisisModel";
+import Axios from "axios";
 
 const styles = (theme: Theme) =>
   createStyles<"root" | "myChart">({
@@ -39,6 +40,8 @@ interface Istatus {
   PieData: any[];
   bingZhong: any;
   text: string;
+  textData: any;
+  feiJieHeiTable?: any[];
 }
 /**
  * 描述：
@@ -128,7 +131,8 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
       model: false,
       PieData: this.PieData,
       bingZhong: "",
-      text: ""
+      text: "",
+      textData: {}
     };
   }
 
@@ -145,25 +149,39 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
   public clickOne = (text: string) => {
     const params = this.props.form.getFieldsValue();
     const newparams = Object.assign(params, { bingZhong: text });
-    service
-      .post(
+    const axiosArray = [
+      service.post(
         "/baoGaoFaBingQingKuang/queryLast5",
         {},
         { params: { bingZhong: text } }
-      )
-      .then(value => {
-        this.setState({
-          bingZhong: value.data,
-          model: true
-        });
-      });
-    service
-      .post(
+      ),
+      service.post(
         "/baoGaoFaBingQingKuang/queryByBingZhong",
         {},
         { params: newparams }
       )
-      .then(value => {});
+    ];
+    if (text === "肺结核") {
+      axiosArray.push(service.post("/feiJieHe/page", {}, { params }));
+    }
+    Axios.all(axiosArray).then(
+      Axios.spread((res1, res2, res3) => {
+        if (res3) {
+          this.setState({
+            bingZhong: res1.data,
+            textData: res2.data,
+            model: true,
+            feiJieHeiTable: res3.data.list
+          });
+        } else {
+          this.setState({
+            bingZhong: res1.data,
+            textData: res2.data,
+            model: true
+          });
+        }
+      })
+    );
   };
   /**
    * 按查询数据展示
@@ -206,9 +224,6 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
   }
   public getData(params: any) {
     service.post("/faDingChuanRanFaBing/page", {}, { params }).then(value => {
-      this.setState({
-        tableData: value.data
-      });
       if (value.data && value.data.list) {
         const list: any[] = value.data.list;
         list.forEach((value1, index, array) => {
@@ -217,7 +232,12 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
           }
         });
         this.setState({
-          PieData: this.PieData
+          PieData: this.PieData,
+          tableData: value.data
+        });
+      } else {
+        this.setState({
+          tableData: value.data
         });
       }
     });
@@ -234,7 +254,9 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
             })(<DatePicker.MonthPicker format={"YYYY"} />)}
           </Form.Item>
           <Form.Item>
-            {this.props.form.getFieldDecorator("select",{initialValue:"Q1"})(
+            {this.props.form.getFieldDecorator("select", {
+              initialValue: "Q1"
+            })(
               <Select placeholder={"选择季度"} style={{ width: 174 }}>
                 <Select.Option value={"Q1"}>{"第一季度"}</Select.Option>
                 <Select.Option value={"Q2"}>{"第二季度"}</Select.Option>
@@ -266,6 +288,8 @@ class NotifiableDiseaseTable extends React.Component<Iprops, Istatus> {
           text={this.state.text}
           bingZhong={this.state.bingZhong}
           model={this.state.model}
+          textData={this.state.textData}
+          feiJieHeiTable={this.state.feiJieHeiTable}
           onOk={() => {
             this.setState({
               model: false

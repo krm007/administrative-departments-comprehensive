@@ -60,7 +60,7 @@ class BocoTable extends React.Component<IProps> {
   }
 
   public componentDidMount(): void {
-    this.getData(this.getFormDataValue());
+    this.getData(this.getFormDataValue(), true);
     const tableCon = ReactDOM.findDOMNode(this.tableRefs);
     if (tableCon instanceof Element) {
       const table = tableCon.querySelector("table");
@@ -70,7 +70,7 @@ class BocoTable extends React.Component<IProps> {
     }
   }
 
-  public getData(params: any) {
+  public getData(params: any, status?: boolean) {
     this.props.serchData({
       url: this.props.url,
       params,
@@ -301,6 +301,7 @@ class BocoTable extends React.Component<IProps> {
             total: dataSoruce.total,
             showSizeChanger: true,
             showQuickJumper: true,
+            hideOnSinglePage:true,
             pageSizeOptions: ["10", "20", "30", "40", "10000"],
             onShowSizeChange: (current: number, size: number) => {
               this.handleTableChange(current, size);
