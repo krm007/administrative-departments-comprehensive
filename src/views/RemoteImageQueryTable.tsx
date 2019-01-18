@@ -4,6 +4,8 @@ import * as React from "react";
 import { Tabs } from "antd";
 import BocoTable from "./BocoTable";
 import MoreTableTitleConfig from "../config/MoreTableTitleConfig";
+import QuYuDoctorWork from "./quYuYiShengWork/QuYuDoctorWork";
+
 
 const styles = (theme: Theme) =>
   createStyles({
@@ -79,7 +81,11 @@ class RemoteImageQueryTable extends React.Component<Iprops, Istate> {
             )}
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>区域医生工作量统计查询</span>} key="3">
-            {}
+            {
+              this.state.key === "3"?(
+                  <QuYuDoctorWork title={"区域医生工作量统计"}/>
+              ):("")
+            }
           </Tabs.TabPane>
           <Tabs.TabPane tab={<span>区域跨院写报告统计</span>} key="4">
             {this.state.key === "4" ? (

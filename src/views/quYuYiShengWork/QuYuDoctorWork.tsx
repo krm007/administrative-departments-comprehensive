@@ -22,6 +22,7 @@ const styles = (theme: Theme) => createStyles<"TwoWayTransOutPatientTable" | "fo
 });
 
 interface Iprops extends WithStyles<typeof styles>, FormComponentProps {
+    title:string
 }
 
 interface Istate {
@@ -111,7 +112,7 @@ class QuYuDoctorWork extends React.Component<Iprops, Istate> {
               marginRight: "0.5vw"
           }}
       />
-            {"检验工作量统计"}
+            {this.state.show?"附表：医生工作量统计明细":this.props.title}
             <span style={{float: "right"}}>
         <ReactHTMLTableToExcel
             id="test-table-xls-button"
@@ -253,6 +254,7 @@ class QuYuDoctorWork extends React.Component<Iprops, Istate> {
                 >
                     <Spin spinning={this.state.sping}>
                         <Table
+                            title={this.tableTitle}
                             columns={this.modalColumns}
                             bordered={true} size={"small"}
                             dataSource={this.state.modalData}/>
