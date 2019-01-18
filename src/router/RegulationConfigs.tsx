@@ -413,7 +413,7 @@ const RegulationConfigs: RouteConfig[] = [
   {
     path: "/administrativeDepartment/dualReferral/query",
 
-    component: TwoWayTransOutPatientTable
+    component:()=> <TwoWayTransOutPatientTable title={"双向转诊统计"}/>
   },
   {
     path: "/administrativeDepartment/statementManagement/query",
