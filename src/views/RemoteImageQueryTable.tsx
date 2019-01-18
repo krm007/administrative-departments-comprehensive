@@ -93,6 +93,7 @@ class RemoteImageQueryTable extends React.Component<Iprops, Istate> {
                 title={"区域跨院写报告统计"}
                 url={"/quYuKuaYuanBaoGao/page"}
                 tableTitle={MoreTableTitleConfig.get("QuYuKuaYuanBaoGao")}
+                orgDefortValue={true}
               />
             ) : (
               <div />

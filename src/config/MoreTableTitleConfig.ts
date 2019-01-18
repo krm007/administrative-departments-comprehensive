@@ -1323,12 +1323,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     "QuYuKuaYuanBaoGao",
     [
       {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
         title: "机构名称",
         align: "center",
         dataIndex: "jiGouMingCheng",

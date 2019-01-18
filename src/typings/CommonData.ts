@@ -440,7 +440,7 @@ export interface FaDingChuanRanTongJi{
 /**
  * 肺结核
  */
-export interface FeiJieHe{
+export interface FeiJieHeBoco{
   /** 医疗机构 */
   yiLiaoJiGou?: string;
   /** 日期:格式：年份+季度 2018Q1 */
