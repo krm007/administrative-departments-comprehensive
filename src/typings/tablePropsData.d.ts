@@ -5,8 +5,9 @@ export interface FormStructure {
   value: string;
   text: string;
   url?: string;
-  initialValue?: boolean;
+  initialValue?: string;
   data: { value: any; key: any }[];
+  must:boolean
 }
 /**
  * 选择框数据
@@ -19,24 +20,24 @@ export interface FormSelectData {
  * 分页
  */
 export interface BocoPage<T> {
-  pageNum: number;
-  pageSize: number;
-  size: number;
-  startRow: number;
-  endRow: number;
-  total: number;
-  pages: number;
-  list: T;
-  prePage: number;
-  nextPage: number;
-  isFirstPage: boolean;
-  isLastPage: boolean;
-  hasPreviousPage: boolean;
-  hasNextPage: boolean;
-  navigatePages: number;
-  navigatepageNums: number[];
-  navigateFirstPage: number;
-  navigateLastPage: number;
-  firstPage: number;
-  lastPage: number;
+  pageNum?: number;
+  pageSize?: number;
+  size?: number;
+  startRow?: number;
+  endRow?: number;
+  total?: number;
+  pages?: number;
+  list?: T;
+  prePage?: number;
+  nextPage?: number;
+  isFirstPage?: boolean;
+  isLastPage?: boolean;
+  hasPreviousPage?: boolean;
+  hasNextPage?: boolean;
+  navigatePages?: number;
+  navigatepageNums?: number[];
+  navigateFirstPage?: number;
+  navigateLastPage?: number;
+  firstPage?: number;
+  lastPage?: number;
 }

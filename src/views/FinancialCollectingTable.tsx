@@ -47,6 +47,7 @@ class FinancialCollectingTable extends React.Component<Iprops, Istate> {
             {this.state.key === "2" ? (
               <BocoTable
                 title={"出院病人费用统计表"}
+                orgPassable={true}
                 url={"/bingQuChuYuanYingShou/page"}
                 tableTitle={MoreTableTitleConfig.get("BingQuChuYuanYingShou")}
               />
@@ -126,9 +127,10 @@ class FinancialCollectingTable extends React.Component<Iprops, Istate> {
                 title={"门诊挂账统计明细"}
                 url={"menZhenGuaZhangTongJi/page"}
                 tableTitle={MoreTableTitleConfig.get("MenZhenGuaZhangTongJi")}
+                orgPassable={true}
                 formStructure={[
                   {
-                    value: "xuanZeJianYu",
+                    value: "jianYu",
                     text: "选择监狱",
                     url: "/menZhenGuaZhangTongJi/getSelect"
                   }
@@ -142,7 +144,8 @@ class FinancialCollectingTable extends React.Component<Iprops, Istate> {
             {this.state.key === "10" ? (
               <BocoTable
                 title={"门诊挂账统计单位汇总"}
-                url={"/menZhenGuaZhangHuiZong/page"}
+                url={"heJi/MenZhenGuaZhangHuiZong/queryPage"}
+                orgPassable={true}
                 tableTitle={MoreTableTitleConfig.get("MenZhenGuaZhangHuiZong")}
               />
             ) : (

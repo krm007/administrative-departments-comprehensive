@@ -4,6 +4,7 @@ import * as React from "react";
 import { Tabs } from "antd";
 import BocoTable from "./BocoTable";
 import MoreTableTitleConfig from "../config/MoreTableTitleConfig";
+import JianYanWorkStatics from "./jianYanWorkStatic/JianYanWorkStatics";
 
 const styles = (theme: Theme) =>
   createStyles<"root">({
@@ -37,11 +38,7 @@ class CheckQueryTable extends React.Component<Iprops, Istate> {
         >
           <Tabs.TabPane tab={<span>检验工作量统计查询</span>} key="1">
             {this.state.key === "1" ? (
-              <BocoTable
-                title={"检验工作量统计查询"}
-                url={"/heJi/ZongHeChaXun/queryPage"}
-                tableTitle={MoreTableTitleConfig.get("")}
-              />
+              <JianYanWorkStatics title={"检验工作量统计"}/>
             ) : (
               <div />
             )}
