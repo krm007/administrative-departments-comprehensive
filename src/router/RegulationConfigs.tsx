@@ -1,4 +1,4 @@
-import {RouteConfig} from "react-router-config";
+import { RouteConfig } from "react-router-config";
 import * as loadable from "react-loadable";
 import BocoTable from "../views/BocoTable";
 import * as React from "react";
@@ -10,23 +10,23 @@ import TwoWayTransOutPatientTable from "../views/twoway-transOutpatient/TwoWayTr
 
 /** 慢病统计查询 */
 const ChronicDiseaseTable = loadable({
-    loader: () => import("../views/ChronicDiseaseTable"),
-    loading: Loading
+  loader: () => import("../views/ChronicDiseaseTable"),
+  loading: Loading
 });
 /** 远程医疗统计查询 */
 const TelemedicineSystemTable = loadable({
-    loader: () => import("../views/TelemedicineSystemTable"),
-    loading: Loading
+  loader: () => import("../views/TelemedicineSystemTable"),
+  loading: Loading
 });
 /** 远程影像查询 */
 const RemoteImageQueryTable = loadable({
-    loader: () => import("../views/RemoteImageQueryTable"),
-    loading: Loading
+  loader: () => import("../views/RemoteImageQueryTable"),
+  loading: Loading
 });
 /** 检验查询 */
 const CheckQueryTable = loadable({
-    loader: () => import("../views/CheckQueryTable"),
-    loading: Loading
+  loader: () => import("../views/CheckQueryTable"),
+  loading: Loading
 });
 /** 挂号分账 */
 const RegisteredFashionableTable = loadable({
@@ -48,12 +48,6 @@ const PharmacyPaymentsTable = loadable({
     loader: () => import("../views/PharmacyPaymentsTable"),
     loading: Loading
 });
-// /** 传染病统计查询 */
-// const NeiHanZhiLiang = loadable({
-//     loader: () => import("../views/NeiHanZhiLiang"),
-//     loading: Loading
-// });
-
 
 const RegulationConfigs: RouteConfig[] = [
     {
