@@ -68,7 +68,7 @@
   },
   "proxy": {
     "/api": {
-      "target": "http://192.168.15.78:8086",
+      "target": "http://192.168.15.216:8086",
       "pathRewrite": {
         "^/api": ""
       },
