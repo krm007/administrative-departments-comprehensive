@@ -24,7 +24,7 @@ interface Istate {
 interface Iprops extends WithStyles<typeof styles> {
   childrenData: any[];
   groupBarData: any[];
-  modalParam:any
+  modalParam: any;
 }
 
 /** 接口数据类型 */
@@ -61,7 +61,7 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
       render: (text: any) => (
         <a
           onClick={() => {
-            this.showModal(text,this.props.modalParam);
+            this.showModal(text, this.props.modalParam);
           }}
         >
           {text}
@@ -145,75 +145,109 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
     }
   ];
   /** 折线图-1构造数据 */
-  private lineDataOneList = [
-    {
-      item: "本季发病数",
-      quarter1: "4800",
-      quarter2: "4800",
-      quarter3: "5600",
-      quarter4: "5400",
-      name: "benJiFaBingShu"
-    },
-    {
-      item: "新投犯带病数",
-      quarter1: "2000",
-      quarter2: "2100",
-      quarter3: "2000",
-      quarter4: "2000",
-      name: "xinTouFanDaiBingShu"
-    },
-    {
-      item: "季末患病数",
-      quarter1: "8000",
-      quarter2: "8000",
-      quarter3: "7500",
-      quarter4: "8100",
-      name: "jiMoHuanBingShu"
-    },
-    {
-      item: "本季押犯总数",
-      quarter1: "7000",
-      quarter2: "7500",
-      quarter3: "6800",
-      quarter4: "9000",
-      name: "benJiYaFanShu"
-    },
-    {
-      item: "本季新犯数",
-      quarter1: "10000",
-      quarter2: "9000",
-      quarter3: "9500",
-      quarter4: "10000",
-      name: "benJiXinFanShu"
-    }
-  ];
+  // private lineDataOneList = [
+  //   {
+  //     item: "本季发病数",
+  //     quarter1: "4800",
+  //     quarter2: "4800",
+  //     quarter3: "5600",
+  //     quarter4: "5400",
+  //     name: "benJiFaBingShu"
+  //   },
+  //   {
+  //     item: "新投犯带病数",
+  //     quarter1: "2000",
+  //     quarter2: "2100",
+  //     quarter3: "2000",
+  //     quarter4: "2000",
+  //     name: "xinTouFanDaiBingShu"
+  //   },
+  //   {
+  //     item: "季末患病数",
+  //     quarter1: "8000",
+  //     quarter2: "8000",
+  //     quarter3: "7500",
+  //     quarter4: "8100",
+  //     name: "jiMoHuanBingShu"
+  //   },
+  //   {
+  //     item: "本季押犯总数",
+  //     quarter1: "7000",
+  //     quarter2: "7500",
+  //     quarter3: "6800",
+  //     quarter4: "9000",
+  //     name: "benJiYaFanShu"
+  //   },
+  //   {
+  //     item: "本季新犯数",
+  //     quarter1: "10000",
+  //     quarter2: "9000",
+  //     quarter3: "9500",
+  //     quarter4: "10000",
+  //     name: "benJiXinFanShu"
+  //   }
+  // ];
+  // private lineDataOneList = [
+  //   {
+  //     item: "一季度",
+  //     本季发病数: 1,
+  //     新投犯带病数: 2,
+  //     季末患病数: 5,
+  //     本季押犯总数: 6,
+  //     本季新犯数: 6
+  //   },
+  //   {
+  //     item: "二季度",
+  //     本季发病数: 6,
+  //     新投犯带病数: 2,
+  //     季末患病数: 5,
+  //     本季押犯总数: 5,
+  //     本季新犯数: 6
+  //   },
+  //   {
+  //     item: "三季度",
+  //     本季发病数: 4,
+  //     新投犯带病数: 2,
+  //     季末患病数: 5,
+  //     本季押犯总数: 5,
+  //     本季新犯数: 6
+  //   },
+  //   {
+  //     item: "四季度",
+  //     本季发病数: 2,
+  //     新投犯带病数: 2,
+  //     季末患病数: 5,
+  //     本季押犯总数: 6,
+  //     本季新犯数: 6
+  //   }
+  // ];
   /** 折线图-2构造数据 */
-  private lineDataTwoList = [
-    {
-      item: "发病数比例",
-      quarter1: "12000",
-      quarter2: "13000",
-      quarter3: "12000",
-      quarter4: "13000",
-      name: "faBingShuBiLi"
-    },
-    {
-      item: "患病数比例",
-      quarter1: "8600",
-      quarter2: "8500",
-      quarter3: "7900",
-      quarter4: "8000",
-      name: "huanBingShuBiLi"
-    },
-    {
-      item: "新犯带病比例",
-      quarter1: "6000",
-      quarter2: "6000",
-      quarter3: "6400",
-      quarter4: "6100",
-      name: "xinFaDaiBingBiLi"
-    }
-  ];
+  // private lineDataTwoList = [
+  //   {
+  //     item: "发病数比例",
+  //     quarter1: "12000",
+  //     quarter2: "13000",
+  //     quarter3: "12000",
+  //     quarter4: "13000",
+  //     name: "faBingShuBiLi"
+  //   },
+  //   {
+  //     item: "患病数比例",
+  //     quarter1: "8600",
+  //     quarter2: "8500",
+  //     quarter3: "7900",
+  //     quarter4: "8000",
+  //     name: "huanBingShuBiLi"
+  //   },
+  //   {
+  //     item: "新犯带病比例",
+  //     quarter1: "6000",
+  //     quarter2: "6000",
+  //     quarter3: "6400",
+  //     quarter4: "6100",
+  //     name: "xinFaDaiBingBiLi"
+  //   }
+  // ];
 
   constructor(props: Iprops) {
     super(props);
@@ -224,24 +258,24 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
       lineDataTwo: []
     };
   }
-  /** 处理折线图-1数据 */
-  public covertDataOne = (ResData: ModalTableTitleType[]) => {
-    return this.lineDataOneList.map((value, index) => {
-      ResData.forEach((value1, index1) => {
-        const sub = "quarter" + `${index1 + 1}`;
-        value[sub] = value1[value.name];
-      });
-    });
-  };
-  /** 处理折线图-2数据 */
-  public covertDataTwo = (ResData: ModalTableTitleType[]) => {
-    return this.lineDataTwoList.map((value, index) => {
-      ResData.forEach((value1, index1) => {
-        const sub = "quarter" + `${index1 + 1}`;
-        value[sub] = value1[value.name];
-      });
-    });
-  };
+  // /** 处理折线图-1数据 */
+  // public covertDataOne = (ResData: ModalTableTitleType[]) => {
+  //   return this.lineDataOneList.map((value, index) => {
+  //     ResData.forEach((value1, index1) => {
+  //       const sub = "quarter" + `${index1 + 1}`;
+  //       value[sub] = value1[value.name];
+  //     });
+  //   });
+  // };
+  // /** 处理折线图-2数据 */
+  // public covertDataTwo = (ResData: ModalTableTitleType[]) => {
+  //   return this.lineDataTwoList.map((value, index) => {
+  //     ResData.forEach((value1, index1) => {
+  //       const sub = "quarter" + `${index1 + 1}`;
+  //       value[sub] = value1[value.name];
+  //     });
+  //   });
+  // };
 
   /** 表格标题 */
   public tableTitle = () => (
@@ -281,35 +315,58 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
   }
 
   /** 弹出层 */
-  public showModal = (text: string,params:any) => {
+  public showModal = (text: string, params: any) => {
     this.setState({ visible: true });
-    service.post("/manXingJiDuFaBing/queryByBingZhong", {}, {params:{bingZhong:text,year:params}}).then(value => {
-      // console.log(value.data);//[{},{},{},{}]
-      /** 配置表格数据 */
-      const arryA = new Array();
-      value.data.forEach((item: any, index: any) => {
-        arryA.push({
-          jiDu: `第${index + 1}季度`,
-          benJiFaBingShu: `${item.benJiFaBingShu}`,
-          xinTouFanDaiBingShu: `${item.xinTouFanDaiBingShu}`,
-          jiMoHuanBingShu: `${item.jiMoHuanBingShu}`,
-          benJiYaFanShu: `${item.benJiYaFanShu}`,
-          benJiXinFanShu: `${item.benJiXinFanShu}`,
-          faBingShuBiLi: `${item.faBingShuBiLi}`,
-          huanBingShuBiLi: `${item.huanBingShuBiLi}`,
-          xinFaDaiBingBiLi: `${item.xinFaDaiBingBiLi}`
+    service
+      .post(
+        "/manXingJiDuFaBing/queryByBingZhong",
+        {},
+        { params: { bingZhong: text, year: params } }
+      )
+      .then(value => {
+        // console.log(value.data);//[{},{},{},{}]
+        /** 配置表格数据 */
+        const arryA = new Array();
+        const lineDataOneList = new Array();
+        const lineDataTwoList = new Array();
+        value.data.forEach((item: any, index: any) => {
+          arryA.push({
+            jiDu: `第${index + 1}季度`,
+            benJiFaBingShu: `${item.benJiFaBingShu}`,
+            xinTouFanDaiBingShu: `${item.xinTouFanDaiBingShu}`,
+            jiMoHuanBingShu: `${item.jiMoHuanBingShu}`,
+            benJiYaFanShu: `${item.benJiYaFanShu}`,
+            benJiXinFanShu: `${item.benJiXinFanShu}`,
+            faBingShuBiLi: `${item.faBingShuBiLi}`,
+            huanBingShuBiLi: `${item.huanBingShuBiLi}`,
+            xinFaDaiBingBiLi: `${item.xinFaDaiBingBiLi}`
+          });
+          lineDataOneList.push({
+            item: `${index + 1}季度`,
+            本季发病数: `${item.benJiFaBingShu}`,
+            新投犯带病数: `${item.xinTouFanDaiBingShu}`,
+            季末患病数: `${item.jiMoHuanBingShu}`,
+            本季押犯总数: `${item.benJiYaFanShu}`,
+            本季新犯数: `${item.benJiXinFanShu}`
+          });
+          lineDataTwoList.push({
+            item: `${index + 1}季度`,
+            发病数比例: `${item.faBingShuBiLi}`,
+            患病数比例: `${item.huanBingShuBiLi}`,
+            新犯带病比例: `${item.xinFaDaiBingBiLi}`
+          });
+        });
+
+        // this.covertDataOne(value.data);
+        // console.log(value.data);
+        // console.log(this.lineDataOneList);
+        // this.covertDataTwo(value.data);
+        this.setState({
+          ModalTableData: arryA,
+          lineDataOne: lineDataOneList,
+          lineDataTwo:lineDataTwoList
         });
       });
-      this.covertDataOne(value.data);
-      // console.log(value.data);
-      // console.log(this.lineDataOneList);
-      this.covertDataTwo(value.data);
-      this.setState({
-        ModalTableData: arryA,
-        lineDataOne: this.lineDataOneList,
-        lineDataTwo: this.lineDataTwoList
-      });
-    });
   };
 
   public render() {
@@ -380,7 +437,13 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
                     <Line
                       titleChart={"附图：年度发病情况"}
                       chartData={this.state.lineDataOne}
-                      lineXAxis={["一季度", "二季度", "三季度", "四季度"]}
+                      lineXAxis={[
+                        "本季发病数",
+                        "新投犯带病数",
+                        "季末患病数",
+                        "本季押犯总数",
+                        "本季新犯数"
+                      ]}
                     />
                   </Col>
                 </Row>
@@ -391,7 +454,7 @@ class MorbidityModal extends React.Component<Iprops, Istate> {
                     <Line
                       titleChart={"附图：年度发病情况"}
                       chartData={this.state.lineDataTwo}
-                      lineXAxis={["一季度", "二季度", "三季度", "四季度"]}
+                      lineXAxis={["发病数比例", "患病数比例", "新犯带病比例"]}
                     />
                   </Col>
                 </Row>
