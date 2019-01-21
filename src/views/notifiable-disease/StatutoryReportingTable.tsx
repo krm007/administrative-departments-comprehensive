@@ -19,6 +19,7 @@ const styles = (theme: Theme) =>
 interface Iprops extends WithStyles<typeof styles>, FormComponentProps {}
 interface Istatus {
   tableData: [];
+  tableData2: [];
 }
 /**
  * 描述：
@@ -94,63 +95,23 @@ class StatutoryReportingTable extends React.Component<Iprops, Istatus> {
     },
     {
       title: "肺结核",
-      dataIndex: "bing_1"
+      dataIndex: "肺结核"
     },
     {
       title: "HIV阳性",
-      dataIndex: "bing_2"
+      dataIndex: "HIV阳性"
     },
     {
       title: "病毒性肝炎",
-      dataIndex: "bing_3"
+      dataIndex: "病毒性肝炎"
     },
     {
       title: "梅毒",
-      dataIndex: "bing_4"
+      dataIndex: "梅毒"
     },
     {
       title: "淋病",
-      dataIndex: "bing_5"
-    }
-  ];
-  /** 表格数据 */
-  private middleData = [
-    {
-      key: "1",
-      name: "总报告数",
-      bing_1: "0",
-      bing_2: "0",
-      bing_3: "0",
-      bing_4: "0",
-      bing_5: "0"
-    },
-    {
-      key: "2",
-      name: "新投犯报告数",
-      bing_1: "0",
-      bing_2: "0",
-      bing_3: "0",
-      bing_4: "0",
-      bing_5: "0"
-    }
-  ];
-  /** 分组柱状图数据 */
-  private BarData = [
-    {
-      name: "总报告数",
-      肺结核: 10,
-      HIV阳性: 11,
-      病毒性肝炎: 12,
-      梅毒: 13,
-      淋病: 14
-    },
-    {
-      name: "新投犯报告数",
-      肺结核: 5,
-      HIV阳性: 6,
-      病毒性肝炎: 7,
-      梅毒: 8,
-      淋病: 9
+      dataIndex: "淋病"
     }
   ];
 
@@ -159,7 +120,8 @@ class StatutoryReportingTable extends React.Component<Iprops, Istatus> {
   constructor(props: Iprops) {
     super(props);
     this.state = {
-      tableData: []
+      tableData: [],
+      tableData2: []
     };
   }
 
@@ -178,7 +140,14 @@ class StatutoryReportingTable extends React.Component<Iprops, Istatus> {
       service.post("faDingChuanRanFenBu/pageByQuarter", {}, { params }),
       service.post("baoGaoFaBingQingKuang/pageByQuarter", {}, { params })
     ];
-    Axios.all(axiosArray).then(Axios.spread((res1, res2) => {}));
+    Axios.all(axiosArray).then(
+      Axios.spread((res1, res2) => {
+        this.setState({
+          tableData: res1.data,
+          tableData2: res2.data
+        });
+      })
+    );
   }
   /**
    * 表格的title
@@ -215,6 +184,14 @@ class StatutoryReportingTable extends React.Component<Iprops, Istatus> {
   };
   public render() {
     const { classes } = this.props;
+    const chatData = this.state.tableData2.map((value: any, index) => {
+      if (index === 0) {
+        value.name = "总报告数";
+      } else {
+        value.name = "新投犯报告数";
+      }
+      return value;
+    });
     return (
       <div className={classes.root}>
         <Form layout={"inline"} onSubmit={this.onSubmit}>
@@ -257,7 +234,7 @@ class StatutoryReportingTable extends React.Component<Iprops, Istatus> {
             <Table
               columns={this.columns}
               size="middle"
-              dataSource={this.middleData}
+              dataSource={this.state.tableData2}
               pagination={false}
               bordered={true}
               title={() => (
@@ -279,7 +256,7 @@ class StatutoryReportingTable extends React.Component<Iprops, Istatus> {
           <Col span={11} offset={1}>
             <Bar
               titleChart={"法定传染病发病报告"}
-              chartData={this.BarData}
+              chartData={chatData}
               barXAxis={this.barXAxis}
             />
           </Col>

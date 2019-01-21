@@ -85,8 +85,7 @@ const RegulationConfigs: RouteConfig[] = [
           {
             value: "jiaoKuanFangShi",
             text: "交款方式",
-            url: "/yuJiaoKuanBingRenMingXi/getSelect",
-            initialValue: true
+            url: "/yuJiaoKuanBingRenMingXi/getSelect"
           }
         ]}
       />
