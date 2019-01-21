@@ -175,6 +175,14 @@ class BocoTable extends React.Component<IProps> {
           })(<DatePicker.MonthPicker allowClear={true} />)}
         </Form.Item>
       );
+    } else if (this.props.timeFormat === 10) {
+      return (
+        <Form.Item>
+          {this.props.form.getFieldDecorator("timeOrder", {
+            initialValue: moment()
+          })(<DatePicker.MonthPicker allowClear={true} />)}
+        </Form.Item>
+      );
     } else if (this.props.timeFormat === 0) {
       return null;
     } else if (this.props.timeFormat === 2) {
@@ -210,9 +218,15 @@ class BocoTable extends React.Component<IProps> {
           month: moment(timeNow).format("YYYY-MM"),
           timeOrder: null
         };
+      } else if (this.props.timeFormat === 10) {
+        timeOrder = {
+          month: moment(timeNow).format("MM"),
+          year: moment(timeNow).format("YYYY"),
+          timeOrder: null
+        };
       } else if (this.props.timeFormat === 2) {
         timeOrder = {
-          years: moment(timeNow).format("YYYY"),
+          year: moment(timeNow).format("YYYY"),
           timeOrder: null
         };
       } else if (!this.props.timeFormat) {
@@ -301,7 +315,7 @@ class BocoTable extends React.Component<IProps> {
             total: dataSoruce.total,
             showSizeChanger: true,
             showQuickJumper: true,
-            hideOnSinglePage:true,
+            hideOnSinglePage: true,
             pageSizeOptions: ["10", "20", "30", "40", "10000"],
             onShowSizeChange: (current: number, size: number) => {
               this.handleTableChange(current, size);

@@ -80,10 +80,17 @@ class StatutoryReportingTable extends React.Component<Iprops, Istatus> {
     }
   ];
   /** 表头 */
-  private columns = [
+  private columns:Array<ColumnProps<any>> = [
     {
       title: "",
-      dataIndex: "name"
+      dataIndex: "name",
+      render:(text, record,index) => {
+        if(index === 0){
+          return "总报告数"
+        }else {
+          return "新投犯报告数"
+        }
+      }
     },
     {
       title: "肺结核",
@@ -171,7 +178,9 @@ class StatutoryReportingTable extends React.Component<Iprops, Istatus> {
       service.post("faDingChuanRanFenBu/pageByQuarter", {}, { params }),
       service.post("baoGaoFaBingQingKuang/pageByQuarter", {}, { params })
     ];
-    Axios.all(axiosArray).then(Axios.spread((res1, res2) => {}));
+    Axios.all(axiosArray).then(Axios.spread((res1, res2) => {
+
+    }));
   }
   /**
    * 表格的title

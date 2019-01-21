@@ -1055,8 +1055,8 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
       {
         title: "手术一级创口愈合率",
         align: "center",
-        dataIndex: "shouShu_1ChuangKouYuHeLv",
-        key: "shouShu_1ChuangKouYuHeLv"
+        dataIndex: "shouShu1ChuangKouYuHeLv",
+        key: "shouShu1ChuangKouYuHeLv"
       },
       {
         title: "门诊收入",

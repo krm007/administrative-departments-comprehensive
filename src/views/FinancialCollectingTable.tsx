@@ -36,7 +36,7 @@ class FinancialCollectingTable extends React.Component<Iprops, Istate> {
             {this.state.key === "1" ? (
               <BocoTable
                 title={"在院病人费用汇总报表"}
-                url={"/yuanBingQuFeiYong/page"}
+                url={"heJi/YuanBingQuFeiYong/queryPage"}
                 tableTitle={MoreTableTitleConfig.get("YuanBingQuFeiYong")}
               />
             ) : (
@@ -70,7 +70,7 @@ class FinancialCollectingTable extends React.Component<Iprops, Istate> {
             {this.state.key === "4" ? (
               <BocoTable
                 title={"门诊医药费开单科室汇总表"}
-                url={"/menZhenKaiDanKeShiFei/page"}
+                url={"heJi/MenZhenKaiDanKeShiFei/queryPage"}
                 tableTitle={MoreTableTitleConfig.get("MenZhenKaiDanKeShiFei")}
               />
             ) : (
@@ -92,7 +92,7 @@ class FinancialCollectingTable extends React.Component<Iprops, Istate> {
             {this.state.key === "6" ? (
               <BocoTable
                 title={"门诊清单汇总"}
-                url={"/menZhenHuiZongQingDan/page"}
+                url={"heJi/MenZhenHuiZongQingDan/queryPage"}
                 tableTitle={MoreTableTitleConfig.get("MenZhenHuiZongQingDan")}
               />
             ) : (
