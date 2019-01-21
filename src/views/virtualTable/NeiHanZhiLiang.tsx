@@ -75,7 +75,6 @@ class NeiHanZhiLiang extends React.Component<Iprops, Istate> {
                         {this.state.key === "4" ? (
                             <BocoTable
                                 title={"申请单问题"}
-                                url={"/guaHaoRiBaoGeRenHuiZong/page"}
                                 tableTitle={VirtualTableTitleConfig.get("shenqingdanwenti")}
                             />
                         ) : (
@@ -86,7 +85,6 @@ class NeiHanZhiLiang extends React.Component<Iprops, Istate> {
                         {this.state.key === "5" ? (
                             <BocoTable
                                 title={"病案管理"}
-                                url={"/menZhenYeWuShouRu/page"}
                                 tableTitle={VirtualTableTitleConfig.get("binganguanli")}
                             />
                         ) : (
@@ -97,7 +95,6 @@ class NeiHanZhiLiang extends React.Component<Iprops, Istate> {
                         {this.state.key === "6" ? (
                             <BocoTable
                                 title={"出诊管理"}
-                                url={"/menZhenYeWuShouRu/page"}
                                 tableTitle={VirtualTableTitleConfig.get("chuzhenguanli")}
                             />
                         ) : (

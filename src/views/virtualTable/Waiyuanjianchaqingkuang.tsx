@@ -40,7 +40,6 @@ class Waiyuanjianchaqingkuang extends React.Component<Iprops, Istate> {
                         {this.state.key === "1" ? (
                             <BocoTable
                                 title={"外院检查情况"}
-                                url={"/menZhenHuiZongGeRen/page"}
                                 tableTitle={VirtualTableTitleConfig.get("waiyuanjianchaqingkuang")}
                             />
                         ) : (
@@ -51,7 +50,6 @@ class Waiyuanjianchaqingkuang extends React.Component<Iprops, Istate> {
                         {this.state.key === "2" ? (
                             <BocoTable
                                 title={"征求意见建议"}
-                                url={"/menZhenGuaZhangHuiZong/page"}
                                 tableTitle={VirtualTableTitleConfig.get("zhengqiuyijianjianyi")}
                                 orgPassable={true}
                             />
