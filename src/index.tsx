@@ -9,7 +9,6 @@ import zhCN from "antd/lib/locale-provider/zh_CN";
 import "moment/locale/zh-cn";
 import { Provider } from "react-redux";
 import stroe from "./redux/Store";
-import 'babel-polyfill';
 
 moment.locale("zh-cn");
 /**

@@ -277,6 +277,7 @@ const RegulationConfigs: RouteConfig[] = [
             <BocoTable
                 title={"门急诊医师工作量统计"}
                 url={"/yiShiGongZuoLiangTongJi/page"}
+                orgPassable={true}
                 tableTitle={NormalTableTitleConfig.get("YiShiGongZuoLiangTongJi")}
             />
         )
