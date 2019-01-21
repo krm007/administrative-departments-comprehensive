@@ -1,5 +1,5 @@
 import { createAction } from "redux-actions";
-import { LOGOUT, SETTABLEDATASOURCE } from "../ActionTypes";
+import { LOGOUT, SETORGLIST, SETTABLEDATASOURCE } from "../ActionTypes";
 
 /**
  * 登出
@@ -14,4 +14,14 @@ export const tableDataSource = createAction(
   (data:any) => {
     return data;
   }
+);
+
+/**
+ * 设置机构的数据
+ */
+export const setOrgList = createAction(
+    SETORGLIST,
+    (params:any) => {
+      return params;
+    }
 );

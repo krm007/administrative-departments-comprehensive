@@ -2,7 +2,8 @@ import { fromJS } from "immutable";
 import { AnyAction } from "redux";
 import { handleActions } from "redux-actions";
 import { combineReducers } from "redux-immutable";
-import { LOGIN, LOGOUT, SETTABLEDATASOURCE } from "../ActionTypes";
+import { LOGIN, LOGOUT, SETORGLIST, SETTABLEDATASOURCE } from "../ActionTypes";
+import { Action } from "redux-action";
 
 /**
  * 登录或退出
@@ -18,13 +19,36 @@ const loginOrLogoutReducer = handleActions<any>(
   },
   fromJS({ user: {} })
 );
+/**
+ * 设置表格数据
+ */
 const tableDataResource = handleActions<any>(
   {
-    [SETTABLEDATASOURCE]: (state, action: AnyAction) => {
-      return state.set("dataResource", fromJS(action.payload));
+    [SETTABLEDATASOURCE]: (
+      state,
+      action: Action<{ data: any; formData: any; status: boolean }>
+    ) => {
+      if (action.payload.status) {
+        return state.set("dataResource", fromJS(action.payload));
+      } else {
+        const params = action.payload;
+        params.formData = state.get("dataResource").get("formData");
+        return state.set("dataResource", fromJS(params));
+      }
     }
   },
   fromJS({ dataResource: {} })
+);
+/**
+ * 设置机构列表
+ */
+const orgList = handleActions<any>(
+  {
+    [SETORGLIST]: (state, action: AnyAction) => {
+      return state.set("orgList", fromJS(action.payload));
+    }
+  },
+  fromJS({ orgList: [] })
 );
 /**
  * redux-immutable提供一个combineReducers()函数，
@@ -33,5 +57,6 @@ const tableDataResource = handleActions<any>(
  */
 export default combineReducers({
   loginOrLogoutReducer,
-  tableDataResource
+  tableDataResource,
+  orgList
 });

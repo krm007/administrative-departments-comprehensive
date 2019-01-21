@@ -8,6 +8,9 @@ import { RouteConfig } from "react-router-config";
 import MyContent from "../component/MyContent";
 import breadcrumbNameMap from "../router/BreadCrumbLinks";
 import { RouteComponentProps } from "react-router";
+import { bindActionCreators } from "redux";
+import { getOrgList } from "../redux/action/ActionSaga";
+import { connect } from "react-redux";
 
 interface Istatus {
   collapse: boolean;
@@ -15,6 +18,7 @@ interface Istatus {
 }
 interface Iprops extends RouteComponentProps {
   route: RouteConfig;
+  getOrgList: () => void;
 }
 /**
  * 描述：
@@ -34,6 +38,10 @@ class BocoApp extends React.Component<Iprops, Istatus> {
       logo: true
     };
   }
+  public componentDidMount(): void {
+    this.props.getOrgList();
+  }
+
   public render() {
     return (
       <Layout>
@@ -63,4 +71,20 @@ class BocoApp extends React.Component<Iprops, Istatus> {
   }
 }
 
-export default BocoApp;
+const mapStateToProps = (state: any) => {
+  return {};
+};
+
+const mapDispatchToProps = ({} = (dispatch: any, ownProps: any) => {
+  return bindActionCreators(
+    {
+      getOrgList
+    },
+    dispatch
+  );
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(BocoApp);

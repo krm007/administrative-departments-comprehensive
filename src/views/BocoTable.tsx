@@ -44,6 +44,7 @@ interface IProps extends WithStyles<typeof styles>, FormComponentProps {
   timeFormat?: number;
   spin?: boolean;
   org: boolean;
+  orgList: any[];
   orgDefortValue: boolean;
   orgPassable: boolean;
 }
@@ -74,7 +75,8 @@ class BocoTable extends React.Component<IProps> {
     this.props.serchData({
       url: this.props.url,
       params,
-      formStructure: this.props.formStructure
+      formStructure: this.props.formStructure,
+      status
     });
   }
   /**
@@ -272,8 +274,8 @@ class BocoTable extends React.Component<IProps> {
                   style={{ width: 174 }}
                 >
                   {(() => {
-                    if (this.props.formData && this.props.formData.orgList) {
-                      return this.props.formData.orgList.map((value1: any) => {
+                    if (this.props.orgList) {
+                      return this.props.orgList.map((value1: any) => {
                         return (
                           <Select.Option
                             value={value1.value}
@@ -283,6 +285,8 @@ class BocoTable extends React.Component<IProps> {
                           </Select.Option>
                         );
                       });
+                    } else {
+                      return null;
                     }
                   })()}
                 </Select>
@@ -333,7 +337,11 @@ class BocoTable extends React.Component<IProps> {
 const mapStateToProps = (state: any) => {
   return {
     data: getTransformTableData(state),
-    formData: getTransformFormData(state)
+    formData: getTransformFormData(state),
+    orgList: state
+      .get("orgList")
+      .get("orgList")
+      .toJS()
   };
 };
 

@@ -4,7 +4,7 @@ import createHashHistory from "history/createHashHistory";
 
 const service = Axios.create({
   timeout: 15000,
-  baseURL: "/api"
+  baseURL:"/api"
 });
 
 /**
