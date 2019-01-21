@@ -38,6 +38,8 @@ const breadcrumbNameMap = {
     "/administrativeDepartment/slowDiseaseManagement/query": "慢病统计查询",
     "/administrativeDepartment/criticalPatients": "危重病人管理",
     "/administrativeDepartment/criticalPatients/query": "危重病人统计查询",
+    "/administrativeDepartment/deathPatient":"死亡病人管理",
+    "/administrativeDepartment/deathPatient/query": "死亡病人统计查询",
     "/administrativeDepartment/telemedicine": "远程医疗",
     "/administrativeDepartment/telemedicine/query": "远程医疗统计查询",
     "/administrativeDepartment/dualReferral": "双向转诊",
