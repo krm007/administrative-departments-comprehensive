@@ -261,7 +261,7 @@ const MenuConfig: menuArray[] = [
                         path: "/totalQualityManage/quanMianZhiLiangGuanLi/chumopingpingjia"
                     },  {
                         name: "锦旗信件",
-                        path: "/totalQualityManage/quanMianZhiLiangGuanLi/waiyuanjianchaqingkuang"
+                        path: "/totalQualityManage/quanMianZhiLiangGuanLi/jinqixinjian"
                     }
                 ]
             },{

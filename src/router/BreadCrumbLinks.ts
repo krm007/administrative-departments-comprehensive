@@ -48,7 +48,7 @@ const breadcrumbNameMap = {
     "/totalQualityManage/quanMianZhiLiangGuanLi/neihanzhiliang": "内涵质量",
     "/totalQualityManage/quanMianZhiLiangGuanLi/wenjuandiaocha": "问卷调查",
     "/totalQualityManage/quanMianZhiLiangGuanLi/chumopingpingjia": "触摸屏评价",
-    "/totalQualityManage/quanMianZhiLiangGuanLi/waiyuanjianchaqingkuang": "锦旗信件",
+    "/totalQualityManage/quanMianZhiLiangGuanLi/jinqixinjian": "锦旗信件",
     "/totalQualityManage/huanzhechuyuansuifang/fuwuzhiliangsuifang": "服务质量随访",
     "/totalQualityManage/huanzhechuyuansuifang/hulibusuifang": "服务质量随访",
     "/totalQualityManage/huanzhechuyuansuifang/danbingzhongsuifang": "单病种随访",

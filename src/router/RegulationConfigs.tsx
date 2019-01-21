@@ -7,6 +7,10 @@ import VirtualTableTitleConfig from "../config/VirtualTableTitleConfig";
 import Loading from "../component/Loading";
 import Home from "../views/Home";
 import TwoWayTransOutPatientTable from "../views/twoway-transOutpatient/TwoWayTransOutPatientTable";
+import InfectiousDiseaseStatisticsTable from "../views/InfectiousDiseaseStatisticsTable";
+import NeiHanZhiLiang from "../views/virtualTable/NeiHanZhiLiang";
+import Waiyuanjianchaqingkuang from "../views/virtualTable/Waiyuanjianchaqingkuang";
+import TongQi from "../views/virtualTable/TongQi";
 
 /** 慢病统计查询 */
 const ChronicDiseaseTable = loadable({
@@ -425,10 +429,10 @@ const RegulationConfigs: RouteConfig[] = [
             />
         )
     },
-    // {
-    //     path: "/administrativeDepartment/communicableDiseasesControl/query",
-    //     component: InfectiousDiseaseStatisticsTable
-    // },
+    {
+        path: "/administrativeDepartment/communicableDiseasesControl/query",
+        component: InfectiousDiseaseStatisticsTable
+    },
     {
         path: "/administrativeDepartment/slowDiseaseManagement/query",
         component: ChronicDiseaseTable
@@ -459,10 +463,10 @@ const RegulationConfigs: RouteConfig[] = [
     /** ****************** */
     /** 全面质量管理（未做） */
 
-    // {
-    //     path: "/totalQualityManage/quanMianZhiLiangGuanLi/neihanzhiliang",
-    //     component: NeiHanZhiLiang
-    // },
+    {
+        path: "/totalQualityManage/quanMianZhiLiangGuanLi/neihanzhiliang",
+        component: NeiHanZhiLiang
+    },
     {
         path: "/totalQualityManage/quanMianZhiLiangGuanLi/wenjuandiaocha",
         component: () => <BocoTable title={"问卷调查"} tableTitle={VirtualTableTitleConfig.get("wenjuandiaocha")}/>
@@ -470,10 +474,10 @@ const RegulationConfigs: RouteConfig[] = [
         path: "/totalQualityManage/quanMianZhiLiangGuanLi/chumopingpingjia",
         component: () => <BocoTable title={"触摸屏评价"} tableTitle={VirtualTableTitleConfig.get("chumopingpingjia")}/>
     },
-    // {
-    //     path: "/totalQualityManage/quanMianZhiLiangGuanLi/waiyuanjianchaqingkuang",
-    //     component: Waiyuanjianchaqingkuang
-    // },
+    {
+        path: "/totalQualityManage/quanMianZhiLiangGuanLi/jinqixinjian",
+        component: Waiyuanjianchaqingkuang
+    },
     {
         path: "/totalQualityManage/huanzhechuyuansuifang/fuwuzhiliangsuifang",
         component: () => <BocoTable title={"服务质量随访"} tableTitle={VirtualTableTitleConfig.get("fuwuzhiliangsuifang")}/>
@@ -537,10 +541,10 @@ const RegulationConfigs: RouteConfig[] = [
         path: "/decisionAnalysisReport/sub-account/yaopinguanli",
         component: () => <BocoTable title={"药品管理"} tableTitle={VirtualTableTitleConfig.get("yaopinguanli")}/>
     }, {
-        path: "/decisionAnalysisReport/sub-account/yaopinguanli",
+        path: "/decisionAnalysisReport/sub-account/wuziguanli",
         component: () => <BocoTable title={"物资管理"} tableTitle={VirtualTableTitleConfig.get("wuziguanli")}/>
     }, {
-        path: "/decisionAnalysisReport/sub-account/yaopinguanli",
+        path: "/decisionAnalysisReport/sub-account/jianyanzhongxin",
         component: () => <BocoTable title={"校验中心"} tableTitle={VirtualTableTitleConfig.get("jianyanzhongxin")}/>
     },
     {
@@ -557,10 +561,10 @@ const RegulationConfigs: RouteConfig[] = [
         component: () => <BocoTable title={"病人费用构成分析"}
                                     tableTitle={VirtualTableTitleConfig.get("bingrenfeiyonggouchengfenxi")}/>
     },
-    // {
-    //     path: "/decisionAnalysisReport/dataMining/compareAccount",
-    //     component: () => TongQI
-    // },
+    {
+        path: "/decisionAnalysisReport/dataMining/compareAccount",
+        component: TongQi
+    },
     {
         path: "/decisionAnalysisReport/dataMining/singleDisease",
         component: () => <BocoTable title={"单病种分析"} tableTitle={VirtualTableTitleConfig.get("danbingzhongfenxi")}/>
