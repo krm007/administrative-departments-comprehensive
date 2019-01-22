@@ -374,6 +374,7 @@ const RegulationConfigs: RouteConfig[] = [
       <BocoTable
         title={"在院病人分布状况"}
         url={"/zaiYuanBingRenFenBu/page"}
+        timeFormat={0}
         tableTitle={NormalTableTitleConfig.get("ZaiYuanBingRenFenBu")}
       />
     )
@@ -384,6 +385,7 @@ const RegulationConfigs: RouteConfig[] = [
       <BocoTable
         title={"在院疾病分布情况"}
         url={"/zaiYuanJiBingFenBu/pageZaiYuan"}
+        timeFormat={0}
         tableTitle={NormalTableTitleConfig.get("ZaiYuanJiBingFenBu")}
         formStructure={[
           {
@@ -422,6 +424,7 @@ const RegulationConfigs: RouteConfig[] = [
         title={"出院疾病统计分析"}
         url={"/zaiYuanJiBingFenBu/pageChuYuan"}
         tableTitle={NormalTableTitleConfig.get("ZaiYuanJiBingFenBu")}
+        timeFormat={0}
         formStructure={[
           {
             value: "zhenDuanMingCheng",
@@ -438,6 +441,7 @@ const RegulationConfigs: RouteConfig[] = [
       <BocoTable
         title={"床位使用状况分析"}
         url={"/chuangWeiShiYong/page"}
+        timeFormat={0}
         tableTitle={NormalTableTitleConfig.get("ChuangWeiShiYong")}
       />
     )
