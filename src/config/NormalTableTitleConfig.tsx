@@ -804,12 +804,14 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         dataIndex: "zhuangTai",
         key: "zhuangTai",
           render:(text,row,index) => {
-            if(text === 0){
+            if(text === "0"){
               return "在职"
-            }else if(text === 1){
+            }else if(text === "1"){
               return "离职"
-            }else{
+            }else if(text === "6"){
               return "退休"
+            }else{
+              return ""
             }
           }
       },
