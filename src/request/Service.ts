@@ -4,7 +4,8 @@ import createHashHistory from "history/createHashHistory";
 
 const service = Axios.create({
   timeout: 15000,
-  baseURL:"/api"
+  baseURL: "/api",
+  headers: { ajax: "ajax" }
 });
 
 /**
@@ -24,6 +25,9 @@ service.interceptors.request.use(
  */
 service.interceptors.response.use(
   response => {
+    if (response.data && response.data.code === 401) {
+      window.location.href = response.data.data;
+    }
     if (response.status === 401) {
       Modal.confirm({ content: "登录信息已过期！请重新登录" });
       createHashHistory().push("/login");

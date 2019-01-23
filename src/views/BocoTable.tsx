@@ -319,7 +319,6 @@ class BocoTable extends React.Component<IProps> {
             total: dataSoruce.total,
             showSizeChanger: true,
             showQuickJumper: true,
-            hideOnSinglePage: true,
             pageSizeOptions: ["10", "20", "30", "40", "10000"],
             onShowSizeChange: (current: number, size: number) => {
               this.handleTableChange(current, size);

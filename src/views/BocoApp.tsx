@@ -1,6 +1,6 @@
 import * as React from "react";
 import { Layout } from "antd";
-import MySider from "../component/MySider";
+import MySider, { MenuArray } from "../component/MySider";
 import MyHeader from "../component/MyHeader";
 import MyFooter from "../component/MyFooter";
 import MenuConfig from "../config/MenuConfig";
@@ -11,14 +11,38 @@ import { RouteComponentProps } from "react-router";
 import { bindActionCreators } from "redux";
 import { getOrgList } from "../redux/action/ActionSaga";
 import { connect } from "react-redux";
+import { getMenuList } from "../request/Request";
 
+interface BasicServiceMenues {
+  parentId: number;
+  id: number;
+  url: string;
+  name: string;
+  icon: string;
+}
 interface Istatus {
   collapse: boolean;
   logo: boolean;
+  menueList: MenuArray[];
 }
 interface Iprops extends RouteComponentProps {
   route: RouteConfig;
   getOrgList: () => void;
+}
+function getChildren(list: BasicServiceMenues[], root: number): MenuArray[] {
+  const newList: MenuArray[] = [];
+  list.forEach(value => {
+    if (root === value.parentId) {
+      const data = getChildren(list, value.id);
+      newList.push({
+        path: value.url,
+        IconType: value.icon,
+        name: value.name,
+        children: data
+      });
+    }
+  });
+  return newList;
 }
 /**
  * 描述：
@@ -35,14 +59,25 @@ class BocoApp extends React.Component<Iprops, Istatus> {
     super(props);
     this.state = {
       collapse: false,
-      logo: true
+      logo: true,
+      menueList: []
     };
   }
   public componentDidMount(): void {
     this.props.getOrgList();
+    getMenuList().then(value => {
+      if (value.data && typeof value.data === "object") {
+        this.setState({
+          menueList: getChildren(value.data, 0)
+        });
+      }
+    });
   }
 
   public render() {
+    /**
+     *  TODO 正式修改
+     */
     return (
       <Layout>
         <MySider
@@ -50,7 +85,7 @@ class BocoApp extends React.Component<Iprops, Istatus> {
           logo={this.state.logo}
           collapsed={this.state.collapse}
         />
-        <Layout>
+        <Layout style={{ overflowY: "auto", height: "100vh" }}>
           <MyHeader
             toggle={() => {
               this.setState({

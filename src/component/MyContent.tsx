@@ -7,13 +7,13 @@ import { BackTop, Layout } from "antd";
 
 const styles = (theme: Theme) =>
   createStyles<"root" | "content">({
-    root: {},
+    root: {
+      minHeight: "auto"
+    },
     content: {
       background: "#fff",
       margin: 14,
-        minHeight: "79vh",
-        overflowY: "auto",
-        borderRadius: 10
+      borderRadius: 10
     }
   });
 
