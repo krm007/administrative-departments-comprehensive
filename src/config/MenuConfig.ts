@@ -78,7 +78,7 @@ const MenuConfig: menuArray[] = [
           {
             name: "科室领用分析",
             path:
-              "/administrativeDepartment/generalAffairsManagement/departmentOfRecipients"
+                "/administrativeDepartment/generalAffairsManagement/departmentOfRecipients"
           },
           {
             name: "库房库存分析",

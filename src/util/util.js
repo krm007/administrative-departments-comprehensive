@@ -1,3 +1,20 @@
+/**
+ * 将url转换成路径list
+ * @param url
+ * @returns {string[]}
+ */
+export function urlToList(url) {
+    const urllist = url.split('/').filter(i=>i);
+    return urllist.map((urlItem, index) =>`/${urllist.slice(0,index+1).join('/')}`)
+}
+
+/**
+ * 格式化行合并数据
+ * @param value
+ * @param name
+ * @returns {*}
+ * @constructor
+ */
 export function FormatData(value, name) {
     const objs = {};
     let k;
