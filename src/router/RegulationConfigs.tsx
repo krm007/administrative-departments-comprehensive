@@ -7,11 +7,16 @@ import VirtualTableTitleConfig from "../config/VirtualTableTitleConfig";
 import Loading from "../component/Loading";
 import Home from "../views/Home";
 import TwoWayTransOutPatientTable from "../views/twoway-transOutpatient/TwoWayTransOutPatientTable";
-import InfectiousDiseaseStatisticsTable from "../views/InfectiousDiseaseStatisticsTable";
 import NeiHanZhiLiang from "../views/virtualTable/NeiHanZhiLiang";
 import Waiyuanjianchaqingkuang from "../views/virtualTable/Waiyuanjianchaqingkuang";
 import TongQi from "../views/virtualTable/TongQi";
 
+
+/** 传染病 */
+const InfectiousDiseaseStatisticsTable=loadable({
+  loader:()=> import("../views/InfectiousDiseaseStatisticsTable"),
+  loading:Loading
+});
 /** 慢病统计查询 */
 const ChronicDiseaseTable = loadable({
   loader: () => import("../views/ChronicDiseaseTable"),

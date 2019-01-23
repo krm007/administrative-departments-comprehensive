@@ -81,6 +81,7 @@ class BocoApp extends React.Component<Iprops, Istatus> {
     return (
       <Layout>
         <MySider
+            breadcrumbNameMap={breadcrumbNameMap}
           menuList={MenuConfig}
           logo={this.state.logo}
           collapsed={this.state.collapse}
