@@ -1463,13 +1463,6 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
           return `${index + 1}`;
         }
       },
-
-      {
-        title: "类型",
-        align: "center",
-        dataIndex: "leiXing",
-        key: "leiXing"
-      },
       {
         title: "床号",
         align: "center",
@@ -1477,7 +1470,7 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         key: "chuangHao"
       },
       {
-        title: "姓名",
+        title: "患者姓名",
         align: "center",
         dataIndex: "xingMing",
         key: "xingMing"
@@ -1489,10 +1482,28 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         key: "bingLiHao"
       },
       {
-        title: "当前状态",
+        title: "监区",
         align: "center",
-        dataIndex: "dhangQianZhuangTai",
-        key: "dhangQianZhuangTai"
+        dataIndex: "jianQu",
+        key: "jianQu"
+      },
+        {
+        title: "科室",
+        align: "center",
+        dataIndex: "keShi",
+        key: "keShi"
+      },
+      {
+        title: "主管医生",
+        align: "center",
+        dataIndex: "zhuGuanYiSheng",
+        key: "zhuGuanYiSheng"
+      },
+      {
+        title: "诊断名称",
+        align: "center",
+        dataIndex: "zhenDuanMingCheng",
+        key: "zhenDuanMingCheng"
       },
       {
         title: "开始时间",
@@ -1501,118 +1512,28 @@ const NormalTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         key: "kaiShiShiJian"
       },
       {
+        title: "当前状态",
+        align: "center",
+        dataIndex: "dangQianZhuangTai",
+        key: "dangQianZhuangTai"
+      },
+      {
+        title: "当前费用合计",
+        align: "center",
+        dataIndex: "dangQianFeiYongHeJi",
+        key: "dangQianFeiYongHeJi"
+      },
+      {
         title: "医嘱名称",
         align: "center",
         dataIndex: "yiZhuMingCheng",
         key: "yiZhuMingCheng"
       },
       {
-        title: "单次剂量",
+        title: "备注说明",
         align: "center",
-        dataIndex: "danCiJiLiang",
-        key: "danCiJiLiang"
-      },
-      {
-        title: "剂量单位",
-        align: "center",
-        dataIndex: "jiLiangDanWei",
-        key: "jiLiangDanWei"
-      },
-      {
-        title: "一次量",
-        align: "center",
-        dataIndex: "yiCiLiang",
-        key: "yiCiLiang"
-      },
-      {
-        title: "单位",
-        align: "center",
-        dataIndex: "danWei",
-        key: "danWei"
-      },
-      {
-        title: "停止时间",
-        align: "center",
-        dataIndex: "tingZhiShiJian",
-        key: "tingZhiShiJian"
-      },
-      {
-        title: "给药方式",
-        align: "center",
-        dataIndex: "geiYaoFangShi",
-        key: "geiYaoFangShi"
-      },
-      {
-        title: "执行频率",
-        align: "center",
-        dataIndex: "zhiXingPinLv",
-        key: "zhiXingPinLv"
-      },
-      {
-        title: "处方类型",
-        align: "center",
-        dataIndex: "chuFangLeiXing",
-        key: "chuFangLeiXing"
-      },
-      {
-        title: "制剂类型",
-        align: "center",
-        dataIndex: "zhiJiLeiXing",
-        key: "zhiJiLeiXing"
-      },
-      {
-        title: "领药类型",
-        align: "center",
-        dataIndex: "lingYaoLeiXing",
-        key: "lingYaoLeiXing"
-      },
-      {
-        title: "父医嘱",
-        align: "center",
-        dataIndex: "fuYiZhu",
-        key: "fuYiZhu"
-      },
-      {
-        title: "处理类型",
-        align: "center",
-        dataIndex: "chuLiLeiXing",
-        key: "chuLiLeiXing"
-      },
-      {
-        title: "医生嘱托",
-        align: "center",
-        dataIndex: "yiShengZhuTuo",
-        key: "yiShengZhuTuo"
-      },
-      {
-        title: "皮试结果",
-        align: "center",
-        dataIndex: "piShiJieGuo",
-        key: "piShiJieGuo"
-      },
-      {
-        title: "当日次数",
-        align: "center",
-        dataIndex: "dangRiCiShu",
-        key: "dangRiCiShu"
-      },
-      {
-        title: "急诊",
-        align: "center",
-        dataIndex: "jiZhen",
-        key: "jiZhen"
-      },
-      {
-        title: "描述说明",
-        align: "center",
-        dataIndex: "miaoShuShuoMing",
-        key: "miaoShuShuoMing"
-      },
-      {
-        title: "开单医生",
-        align: "center",
-        dataIndex: "kaiDanYiSheng",
-        key: "kaiDanYiSheng"
+        dataIndex: "beiZhuShuoMing",
+        key: "beiZhuShuoMing"
       }
     ]
   ],
