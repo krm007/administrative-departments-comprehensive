@@ -53,6 +53,7 @@ const breadcrumbNameMap = {
     "/totalQualityManage/quanMianZhiLiangGuanLi/jinqixinjian": "锦旗信件",
     "/totalQualityManage/huanzhechuyuansuifang/fuwuzhiliangsuifang": "服务质量随访",
     "/totalQualityManage/huanzhechuyuansuifang/hulibusuifang": "服务质量随访",
+    "/totalQualityManage/huanzhechuyuansuifang": "患者出院随访管理",
     "/totalQualityManage/huanzhechuyuansuifang/danbingzhongsuifang": "单病种随访",
     "/totalQualityManage/huizongtongjibaobiaoguanli/tongjihuizongbaobiao": "统计汇总报表",
     "/decisionAnalysisReport": "决策分析报表管理",
