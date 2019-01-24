@@ -11,11 +11,10 @@ import NeiHanZhiLiang from "../views/virtualTable/NeiHanZhiLiang";
 import Waiyuanjianchaqingkuang from "../views/virtualTable/Waiyuanjianchaqingkuang";
 import TongQi from "../views/virtualTable/TongQi";
 
-
 /** 传染病 */
-const InfectiousDiseaseStatisticsTable=loadable({
-  loader:()=> import("../views/InfectiousDiseaseStatisticsTable"),
-  loading:Loading
+const InfectiousDiseaseStatisticsTable = loadable({
+  loader: () => import("../views/InfectiousDiseaseStatisticsTable"),
+  loading: Loading
 });
 /** 慢病统计查询 */
 const ChronicDiseaseTable = loadable({
@@ -345,7 +344,7 @@ const RegulationConfigs: RouteConfig[] = [
     component: () => (
       <BocoTable
         title={"医技科室工作量统计"}
-        url={"/yiJiKeShiGongZuoLiang/page"}
+        url={"/yiJiKeShiGongZuoLiang/pageChildren"}
         tableTitle={NormalTableTitleConfig.get("YiJiKeShiGongZuoLiang")}
         formStructure={[
           {

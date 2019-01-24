@@ -87,16 +87,6 @@ class BocoTable extends React.Component<IProps> {
     const formData = this.getFormDataValue();
     this.getData({ offset: page, limit: size, ...formData },true);
   };
-  public previousAction = async () => {
-    const formData = this.getFormDataValue();
-    let total = 1000;
-    if (this.props.data && this.props.data.total) {
-      total = this.props.data.total;
-    }
-    await this.getData({ offset: 1, limit: total, ...formData });
-
-    alert(this.props.data.size+"++"+this.props.data.total);
-  };
   /**
    * 表格的title
    */
@@ -117,7 +107,6 @@ class BocoTable extends React.Component<IProps> {
           id="test-table-xls-button"
           className="download-table-xls-button"
           table="table-to-xls"
-          previousAction={this.previousAction}
           filename="tablexls"
           sheet="tablexls"
           buttonText="导出"
@@ -311,7 +300,6 @@ class BocoTable extends React.Component<IProps> {
             <Button htmlType={"submit"} type={"primary"}>
               搜索
             </Button>
-            <button onClick={()=>{this.previousAction()}}>点击我</button>
           </Form.Item>
         </Form>
         <Table

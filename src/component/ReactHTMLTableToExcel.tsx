@@ -14,7 +14,6 @@ interface Iprops {
   id: string;
   className: string;
   buttonText: string;
-  previousAction?: () => Promise<any>;
 }
 class ReactHTMLTableToExcel extends React.Component<Iprops> {
   public static base64(s: any) {
@@ -30,9 +29,6 @@ class ReactHTMLTableToExcel extends React.Component<Iprops> {
   }
 
   public handleDownload() {
-    if (this.props.previousAction) {
-      this.props.previousAction();
-    }
     if (!document) {
       if (process.env.NODE_ENV !== "production") {
         console.error("Failed to access document object");
