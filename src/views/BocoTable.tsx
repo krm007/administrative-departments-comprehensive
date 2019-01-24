@@ -7,13 +7,14 @@ import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { getTableDataSource } from "../redux/action/ActionSaga";
 import * as moment from "moment";
-import ReactHTMLTableToExcel from "../component/ReactHTMLTableToExcel";
+import ReactHTMLTableToExcelAll from "../component/ReactHTMLTableToExcelAll";
 import * as ReactDOM from "react-dom";
 import { BocoPage, FormStructure } from "../typings/tablePropsData";
 import {
   getTransformFormData,
   getTransformTableData
 } from "../redux/reselect/selectors";
+import service from "../request/Service";
 
 const styles = (theme: Theme) =>
   createStyles<"root">({
@@ -48,16 +49,23 @@ interface IProps extends WithStyles<typeof styles>, FormComponentProps {
   orgDefortValue: boolean;
   orgPassable: boolean;
 }
+interface Istatus {
+  exportData: any[];
+}
 /**
  * 描述：
  *  公用表格
  * @author sunshixiong
  * @date 2018/12/6-15:20
  */
-class BocoTable extends React.Component<IProps> {
+class BocoTable extends React.Component<IProps, Istatus> {
   private tableRefs: any;
+  private exprotChildren: any;
   constructor(props: IProps) {
     super(props);
+    this.state = {
+      exportData: []
+    };
   }
 
   public componentDidMount(): void {
@@ -65,12 +73,16 @@ class BocoTable extends React.Component<IProps> {
     const tableCon = ReactDOM.findDOMNode(this.tableRefs);
     if (tableCon instanceof Element) {
       const table = tableCon.querySelector("table");
+      console.log(table);
       if (table) {
         table.setAttribute("id", "table-to-xls");
         table.setAttribute("border", "1");
       }
     }
   }
+  public bindChildren = (ref: any) => {
+    this.exprotChildren = ref;
+  };
 
   public getData(params: any, status?: boolean) {
     this.props.serchData({
@@ -85,7 +97,31 @@ class BocoTable extends React.Component<IProps> {
    */
   public handleTableChange = (page: number, size?: number) => {
     const formData = this.getFormDataValue();
-    this.getData({ offset: page, limit: size, ...formData },true);
+    this.getData({ offset: page, limit: size, ...formData }, true);
+  };
+  /**
+   * 导出表格数据
+   */
+  public exportExcel = (e: any) => {
+    if (this.props.url) {
+      const formData = this.getFormDataValue();
+      service
+        .post(
+          this.props.url,
+          {},
+          { params: { offset: 1, limit: this.props.data.total, ...formData } }
+        )
+        .then(value => {
+          this.setState(
+            {
+              exportData: value.data.list
+            },
+            () => {
+              this.exprotChildren.handleDownload();
+            }
+          );
+        });
+    }
   };
   /**
    * 表格的title
@@ -103,13 +139,15 @@ class BocoTable extends React.Component<IProps> {
       />
       {this.props.title}
       <span style={{ float: "right" }}>
-        <ReactHTMLTableToExcel
+        <ReactHTMLTableToExcelAll
           id="test-table-xls-button"
           className="download-table-xls-button"
           table="table-to-xls"
           filename="tablexls"
           sheet="tablexls"
           buttonText="导出"
+          onClick={this.exportExcel}
+          onRef={this.bindChildren}
         />
       </span>
     </span>
@@ -279,10 +317,10 @@ class BocoTable extends React.Component<IProps> {
                       return this.props.orgList.map((value1: any) => {
                         return (
                           <Select.Option
-                            value={value1.value}
-                            key={value1.value}
+                            value={value1.organizationName}
+                            key={value1.organizationCode}
                           >
-                            {value1.key}
+                            {value1.organizationName}
                           </Select.Option>
                         );
                       });
@@ -306,9 +344,6 @@ class BocoTable extends React.Component<IProps> {
           dataSource={dataSoruce.list}
           columns={this.props.tableTitle}
           bordered={true}
-          ref={ref => {
-            this.tableRefs = ref;
-          }}
           title={this.tableTitle}
           scroll={{
             x: true
@@ -330,6 +365,17 @@ class BocoTable extends React.Component<IProps> {
             showTotal: total => `共 ${total} 行数据`
           }}
         />
+        <div style={{ display: "none" }}>
+          <Table
+            dataSource={this.state.exportData}
+            columns={this.props.tableTitle}
+            bordered={true}
+            ref={ref => {
+              this.tableRefs = ref;
+            }}
+            pagination={false}
+          />
+        </div>
       </div>
     );
   }
