@@ -1437,12 +1437,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         key: "riBaoId"
       },
       {
-        title: "机构ID",
-        align: "center",
-        dataIndex: "jiGouId",
-        key: "jiGouId"
-      },
-      {
         title: "日报类别",
         align: "center",
         dataIndex: "riBaoLeiBie",
@@ -1877,8 +1871,8 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
       {
         title: "B超费",
         align: "center",
-        dataIndex: "bChaoFei",
-        key: "bChaoFei"
+        dataIndex: "bchaoFei",
+        key: "bchaoFei"
       },
       {
         title: "心电图费",
@@ -2707,443 +2701,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
     ]
   ],
   [
-    "ZhuYuanRiBao",
-    [
-      {
-        title: "冲预交款",
-        align: "center",
-        dataIndex: "chongYuJiaoKuan",
-        key: "chongYuJiaoKuan"
-      },
-      {
-        title: "病人预交款",
-        align: "center",
-        dataIndex: "bingRenYuJiaoKuan",
-        key: "bingRenYuJiaoKuan"
-      },
-      {
-        title: "退预交款",
-        align: "center",
-        dataIndex: "tuiYuJiaoKuan",
-        key: "tuiYuJiaoKuan"
-      },
-      {
-        title: "零用金",
-        align: "center",
-        dataIndex: "lingYongJin",
-        key: "lingYongJin"
-      },
-      {
-        title: "挂账",
-        align: "center",
-        dataIndex: "guaZhgang",
-        key: "guaZhgang"
-      },
-      {
-        title: "挂账欠款",
-        align: "center",
-        dataIndex: "guaZhangQianZhang",
-        key: "guaZhangQianZhang"
-      },
-      {
-        title: "挂账余款",
-        align: "center",
-        dataIndex: "guaZhangYuKuan",
-        key: "guaZhangYuKuan"
-      },
-      {
-        title: "记账",
-        align: "center",
-        dataIndex: "jiZhang",
-        key: "jiZhang"
-      },
-      {
-        title: "记账金额",
-        align: "center",
-        dataIndex: "jiZhangJinE",
-        key: "jiZhangJinE"
-      },
-      {
-        title: "减免金额",
-        align: "center",
-        dataIndex: "jianMianJinE",
-        key: "jianMianJinE"
-      },
-      {
-        title: "省医保",
-        align: "center",
-        dataIndex: "shengYiBao",
-        key: "shengYiBao"
-      },
-      {
-        title: "普通省医保",
-        align: "center",
-        dataIndex: "puTongShengYiBao",
-        key: "puTongShengYiBao"
-      },
-      {
-        title: "两费离休离保",
-        align: "center",
-        dataIndex: "liangFeiLiXiuLiBao",
-        key: "liangFeiLiXiuLiBao"
-      },
-      {
-        title: "公费离休离保",
-        align: "center",
-        dataIndex: "gongFeiLiXiuLiBao",
-        key: "gongFeiLiXiuLiBao"
-      },
-      {
-        title: "行业离休离保",
-        align: "center",
-        dataIndex: "hangYeLiXiuLiBao",
-        key: "hangYeLiXiuLiBao"
-      },
-      {
-        title: "子女统筹",
-        align: "center",
-        dataIndex: "ziNvTongChou",
-        key: "ziNvTongChou"
-      },
-      {
-        title: "公费重保",
-        align: "center",
-        dataIndex: "gongFeiZhongBao",
-        key: "gongFeiZhongBao"
-      },
-      {
-        title: "市医保",
-        align: "center",
-        dataIndex: "shiYiBao",
-        key: "shiYiBao"
-      },
-      {
-        title: "普通市医保",
-        align: "center",
-        dataIndex: "puTongShiYiBao",
-        key: "puTongShiYiBao"
-      },
-      {
-        title: "离休医保",
-        align: "center",
-        dataIndex: "liXiuYiBao",
-        key: "liXiuYiBao"
-      },
-      {
-        title: "子女统筹",
-        align: "center",
-        dataIndex: "sybZiNvTongChou",
-        key: "sybZiNvTongChou"
-      },
-      {
-        title: "透析",
-        align: "center",
-        dataIndex: "touXi",
-        key: "touXi"
-      },
-      {
-        title: "省一卡通",
-        align: "center",
-        dataIndex: "shengYiKaTong",
-        key: "shengYiKaTong"
-      },
-      {
-        title: "实收小计",
-        align: "center",
-        dataIndex: "shiShouXiaoJi",
-        key: "shiShouXiaoJi"
-      },
-      {
-        title: "现金",
-        align: "center",
-        dataIndex: "xianJin",
-        key: "xianJin"
-      },
-      {
-        title: "支票",
-        align: "center",
-        dataIndex: "zhiPiao",
-        key: "zhiPiao"
-      },
-      {
-        title: "银行卡",
-        align: "center",
-        dataIndex: "yinHangKa",
-        key: "yinHangKa"
-      },
-      {
-        title: "无线POS",
-        align: "center",
-        dataIndex: "wuXianPos",
-        key: "wuXianPos"
-      },
-      {
-        title: "微信支付",
-        align: "center",
-        dataIndex: "weiXinZhiFu",
-        key: "weiXinZhiFu"
-      },
-      {
-        title: "支付宝",
-        align: "center",
-        dataIndex: "zhiFuBao",
-        key: "zhiFuBao"
-      },
-      {
-        title: "零用金",
-        align: "center",
-        dataIndex: "shiShouLingYongJin",
-        key: "shiShouLingYongJin"
-      },
-      {
-        title: "借方合计",
-        align: "center",
-        dataIndex: "jieFangHeJi",
-        key: "jieFangHeJi"
-      },
-      {
-        title: "合计住院收入",
-        align: "center",
-        dataIndex: "heJiZhuYuanShouRu",
-        key: "heJiZhuYuanShouRu"
-      },
-      {
-        title: "药品收入小计",
-        align: "center",
-        dataIndex: "yaoPinShouRuXiaoJi",
-        key: "yaoPinShouRuXiaoJi"
-      },
-      {
-        title: "西药费",
-        align: "center",
-        dataIndex: "xiYaoFei",
-        key: "xiYaoFei"
-      },
-      {
-        title: "中成药",
-        align: "center",
-        dataIndex: "zhongChengYao",
-        key: "zhongChengYao"
-      },
-      {
-        title: "中草药",
-        align: "center",
-        dataIndex: "zhongCaoYao",
-        key: "zhongCaoYao"
-      },
-      {
-        title: "医疗收入小计",
-        align: "center",
-        dataIndex: "yiLiaoShouRuXiaoJi",
-        key: "yiLiaoShouRuXiaoJi"
-      },
-      {
-        title: "床位费",
-        align: "center",
-        dataIndex: "chuangWeiFei",
-        key: "chuangWeiFei"
-      },
-      {
-        title: "检查费",
-        align: "center",
-        dataIndex: "jianChaFei",
-        key: "jianChaFei"
-      },
-      {
-        title: "CT费用",
-        align: "center",
-        dataIndex: "ctFei",
-        key: "ctFei"
-      },
-      {
-        title: "治疗费",
-        align: "center",
-        dataIndex: "zhiLiaoFei",
-        key: "zhiLiaoFei"
-      },
-      {
-        title: "血透费",
-        align: "center",
-        dataIndex: "xueTouFei",
-        key: "xueTouFei"
-      },
-      {
-        title: "手术费",
-        align: "center",
-        dataIndex: "shouShuFei",
-        key: "shouShuFei"
-      },
-      {
-        title: "材料费",
-        align: "center",
-        dataIndex: "caiLiaoFei",
-        key: "caiLiaoFei"
-      },
-      {
-        title: "化验费",
-        align: "center",
-        dataIndex: "huaYanFei",
-        key: "huaYanFei"
-      },
-      {
-        title: "输血费",
-        align: "center",
-        dataIndex: "shuXueFei",
-        key: "shuXueFei"
-      },
-      {
-        title: "输氧费",
-        align: "center",
-        dataIndex: "shuYangFei",
-        key: "shuYangFei"
-      },
-      {
-        title: "护理费",
-        align: "center",
-        dataIndex: "huLiFei",
-        key: "huLiFei"
-      },
-      {
-        title: "其他费",
-        align: "center",
-        dataIndex: "qiTaFei",
-        key: "qiTaFei"
-      },
-      {
-        title: "会诊费",
-        align: "center",
-        dataIndex: "huiZhenFei",
-        key: "huiZhenFei"
-      },
-      {
-        title: "诊疗费",
-        align: "center",
-        dataIndex: "zhenLiaoFei",
-        key: "zhenLiaoFei"
-      },
-      {
-        title: "其他收入小计",
-        align: "center",
-        dataIndex: "qiTaShouRuXiaoJi",
-        key: "qiTaShouRuXiaoJi"
-      },
-      {
-        title: "空调费",
-        align: "center",
-        dataIndex: "kongTiaoFei",
-        key: "kongTiaoFei"
-      },
-      {
-        title: "卫生组套费",
-        align: "center",
-        dataIndex: "weiShengZhuTaoFei",
-        key: "weiShengZhuTaoFei"
-      },
-      {
-        title: "陪客费",
-        align: "center",
-        dataIndex: "peiKeFei",
-        key: "peiKeFei"
-      },
-      {
-        title: "外院费",
-        align: "center",
-        dataIndex: "waiYuanFei",
-        key: "waiYuanFei"
-      },
-      {
-        title: "伙食费",
-        align: "center",
-        dataIndex: "huoShiFei",
-        key: "huoShiFei"
-      },
-      {
-        title: "监管费",
-        align: "center",
-        dataIndex: "jianGuanFei",
-        key: "jianGuanFei"
-      },
-      {
-        title: "零用金收入",
-        align: "center",
-        dataIndex: "lingYongJinShouRu",
-        key: "lingYongJinShouRu"
-      },
-      {
-        title: "预交款",
-        align: "center",
-        dataIndex: "yuJiaoKuan",
-        key: "yuJiaoKuan"
-      },
-      {
-        title: "微信支付",
-        align: "center",
-        dataIndex: "yjkWeiXinZhiFu",
-        key: "yjkWeiXinZhiFu"
-      },
-      {
-        title: "预交现金",
-        align: "center",
-        dataIndex: "yuJiaoXianJin",
-        key: "yuJiaoXianJin"
-      },
-      {
-        title: "预交支票",
-        align: "center",
-        dataIndex: "yuJiaoZhiPiao",
-        key: "yuJiaoZhiPiao"
-      },
-      {
-        title: "预交银行",
-        align: "center",
-        dataIndex: "yuJiaoYinHang",
-        key: "yuJiaoYinHang"
-      },
-      {
-        title: "无线pos",
-        align: "center",
-        dataIndex: "yjkWuXianPos",
-        key: "yjkWuXianPos"
-      },
-      {
-        title: "支付宝",
-        align: "center",
-        dataIndex: "yjkZhiFuBao",
-        key: "yjkZhiFuBao"
-      },
-      {
-        title: "应付小计",
-        align: "center",
-        dataIndex: "yinFuXiaoJi",
-        key: "yinFuXiaoJi"
-      },
-      {
-        title: "现金",
-        align: "center",
-        dataIndex: "yfxjXianJin",
-        key: "yfxjXianJin"
-      },
-      {
-        title: "支票",
-        align: "center",
-        dataIndex: "yfxjZhiPiao",
-        key: "yfxjZhiPiao"
-      },
-      {
-        title: "银行卡",
-        align: "center",
-        dataIndex: "yfxjYinHangKa",
-        key: "yfxjYinHangKa"
-      },
-      {
-        title: "贷方合计",
-        align: "center",
-        dataIndex: "daiFangHeJi",
-        key: "daiFangHeJi"
-      }
-    ]
-  ],
-  [
     "ZhuYuanQingDan",
     [
       {
@@ -3221,31 +2778,40 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
         title: "监狱",
         align: "center",
         dataIndex: "jianYu",
-        key: "jianYu"
+        key: "jianYu",
+        render: (value: string, row: any, index) => hejiColumns(value, 5)
       },
       {
         title: "监区",
         align: "center",
         dataIndex: "jianQu",
-        key: "jianQu"
+        key: "jianQu",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.jianYu, 0, value)
       },
       {
         title: "姓名",
         align: "center",
         dataIndex: "xingMing",
-        key: "xingMing"
+        key: "xingMing",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.jianYu, 0, value)
       },
       {
         title: "编号",
         align: "center",
         dataIndex: "bianHao",
-        key: "bianHao"
+        key: "bianHao",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.jianYu, 0, value)
       },
       {
         title: "挂账时间",
         align: "center",
         dataIndex: "guaZhangShiJian",
-        key: "guaZhangShiJian"
+        key: "guaZhangShiJian",
+        render: (value: string, row: any, index) =>
+          hejiColumns(row.jianYu, 0, value)
       },
       {
         title: "挂账金额",
@@ -3542,8 +3108,8 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
       {
         title: "B超",
         align: "center",
-        dataIndex: "bChao",
-        key: "bChao"
+        dataIndex: "bchao",
+        key: "bchao"
       },
       {
         title: "内镜",
@@ -3658,18 +3224,6 @@ const MoreTableTitleConfig: Map<string, Array<ColumnProps<any>>> = new Map<
   [
     "ZhuYuanRiBao",
     [
-      {
-        title: "医疗机构",
-        align: "center",
-        dataIndex: "yiLiaoJiGou",
-        key: "yiLiaoJiGou"
-      },
-      {
-        title: "日期",
-        align: "center",
-        dataIndex: "riQi",
-        key: "riQi"
-      },
       {
         title: "冲预交款",
         align: "center",

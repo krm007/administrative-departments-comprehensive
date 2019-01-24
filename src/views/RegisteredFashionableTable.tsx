@@ -50,8 +50,8 @@ class RegisteredFashionableTable extends React.Component<Iprops, Istate> {
             {this.state.key === "2" ? (
               <BocoTable
                 title={"门诊挂账统计"}
-                url={"/menZhenGuaZhangHuiZong/page"}
-                tableTitle={MoreTableTitleConfig.get("MenZhenGuaZhangHuiZong")}
+                url={"/menZhenGuaZhangTongJi/page"}
+                tableTitle={MoreTableTitleConfig.get("MenZhenGuaZhangTongJi")}
                 orgPassable={true}
               />
             ) : (

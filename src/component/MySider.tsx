@@ -2,7 +2,7 @@ import { createStyles, Theme, withStyles } from "@material-ui/core/styles";
 import { WithStyles } from "@material-ui/core/styles/withStyles";
 import * as React from "react";
 import Sider from "antd/lib/layout/Sider";
-import {Link, RouteComponentProps, withRouter} from "react-router-dom";
+import { Link, RouteComponentProps, withRouter } from "react-router-dom";
 import { Icon, Menu } from "antd";
 import backgroundBg from "src/images/backgroundBg.png";
 import Logo from "../images/logo.png";
@@ -51,14 +51,14 @@ export interface MenuArray {
   IconType?: string;
   children?: MenuArray[];
 }
-interface Iprops extends WithStyles<typeof styles> ,RouteComponentProps{
-  breadcrumbNameMap:object;
+interface Iprops extends WithStyles<typeof styles>, RouteComponentProps {
+  breadcrumbNameMap: object;
   collapsed?: boolean;
   menuList: MenuArray[];
   logo: boolean;
 }
 interface Istatus {
-  current:string;
+  current: string;
   openKeys: string[];
 }
 
@@ -100,27 +100,26 @@ class MySider extends React.Component<Iprops, Istatus> {
   constructor(props: Iprops) {
     super(props);
     this.state = {
-      current:'/',
+      current: "/",
       openKeys: []
     };
   }
-  public componentWillMount(){
+  public componentWillMount() {
     const url = this.props.location.pathname;
-    const url1 = url.split("/").filter(i=>i);
-    const nameList:any = [];
-     url1.map((_,index)=>{// 根据拆分的pathname匹配面包屑文件中的url取到汉字name,拼装成数组
+    const url1 = url.split("/").filter(i => i);
+    const nameList: any = [];
+    url1.map((_, index) => {
+      // 根据拆分的pathname匹配面包屑文件中的url取到汉字name,拼装成数组
       const $url = `/${url1.slice(0, index + 1).join("/")}`;
-      if(this.props.breadcrumbNameMap[$url]){
-        return(
-            nameList.push(this.props.breadcrumbNameMap[$url])
-        )
-      }else{
-        return ""
+      if (this.props.breadcrumbNameMap[$url]) {
+        return nameList.push(this.props.breadcrumbNameMap[$url]);
+      } else {
+        return "";
       }
     });
     this.setState({
-        openKeys:nameList.slice(0,nameList.length-1),
-        current:nameList[nameList.length-1]
+      openKeys: nameList.slice(0, nameList.length - 1),
+      current: nameList[nameList.length - 1]
     });
   }
   public handerChange = (openKeys: string[]) => {
@@ -157,11 +156,11 @@ class MySider extends React.Component<Iprops, Istatus> {
             theme={"dark"}
             mode={"inline"}
             className={classes.menu}
-          openKeys={this.state.openKeys}
+            openKeys={this.state.openKeys}
             onOpenChange={this.handerChange}
             defaultOpenKeys={this.state.openKeys}
             defaultSelectedKeys={[this.state.current]}
-          onClick={this.onClickMenu}
+            onClick={this.onClickMenu}
           >
             {RecursionMenu(this.props.menuList)}
           </Menu>
