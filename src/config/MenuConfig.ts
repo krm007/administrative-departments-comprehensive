@@ -1,9 +1,9 @@
-import { menuArray } from "../component/MySider";
+import { MenuArray } from "../component/MySider";
 
 /**
  * 自定义菜单数据
  */
-const MenuConfig: menuArray[] = [
+const MenuConfig: MenuArray[] = [
   {
     name: "行政主管部门综合查询",
     path: "/administrativeDepartment",
