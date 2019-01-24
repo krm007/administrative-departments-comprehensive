@@ -477,6 +477,7 @@ const RegulationConfigs: RouteConfig[] = [
         title={"危重病人清单"}
         url={"/zaiYuanWeiJiBingRen/page"}
         tableTitle={NormalTableTitleConfig.get("ZaiYuanWeiJiBingRen")}
+        timeFormat={0}
       />
     )
   },
